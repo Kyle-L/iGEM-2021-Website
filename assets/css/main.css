@@ -2,6 +2,7 @@
 
 :root {
   --accent-color: #335f31;
+  --shade-color: #1f381d;
 
   --main-font: Helvetica, sans-serif;
 
@@ -2047,10 +2048,10 @@ ul.pagination li > .page.active {
   color: #ffffff !important;
 }
 ul.pagination li > .page.active:hover {
-  background-color: #f67878;
+  background-color: var(--shade-color);
 }
 ul.pagination li > .page.active:active {
-  background-color: #f45c5c;
+  background-color: var(--shade-color);
 }
 ul.pagination li:first-child {
   padding-right: 0.75em;
@@ -2127,7 +2128,7 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"],
 button,
-.button {
+.customButton {
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
@@ -2159,42 +2160,42 @@ input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover,
 button:hover,
-.button:hover {
+.customButton:hover {
   background-color: rgba(245, 106, 106, 0.05);
 }
 input[type="submit"]:active,
 input[type="reset"]:active,
 input[type="button"]:active,
 button:active,
-.button:active {
+.customButton:active {
   background-color: rgba(245, 106, 106, 0.15);
 }
 input[type="submit"].icon:before,
 input[type="reset"].icon:before,
 input[type="button"].icon:before,
 button.icon:before,
-.button.icon:before {
+.customButton.icon:before {
   margin-right: 0.5em;
 }
 input[type="submit"].fit,
 input[type="reset"].fit,
 input[type="button"].fit,
 button.fit,
-.button.fit {
+.customButton.fit {
   width: 100%;
 }
 input[type="submit"].small,
 input[type="reset"].small,
 input[type="button"].small,
 button.small,
-.button.small {
+.customButton.small {
   font-size: 0.6em;
 }
 input[type="submit"].large,
 input[type="reset"].large,
 input[type="button"].large,
 button.large,
-.button.large {
+.customButton.large {
   font-size: 1em;
   height: 3.65em;
   line-height: 3.65em;
@@ -2203,7 +2204,7 @@ input[type="submit"].primary,
 input[type="reset"].primary,
 input[type="button"].primary,
 button.primary,
-.button.primary {
+.customButton.primary {
   background-color: var(--accent-color);
   box-shadow: none;
   color: #ffffff !important;
@@ -2212,15 +2213,15 @@ input[type="submit"].primary:hover,
 input[type="reset"].primary:hover,
 input[type="button"].primary:hover,
 button.primary:hover,
-.button.primary:hover {
-  background-color: #f67878;
+.customButton.primary:hover {
+  background-color: var(--shade-color);
 }
 input[type="submit"].primary:active,
 input[type="reset"].primary:active,
 input[type="button"].primary:active,
 button.primary:active,
-.button.primary:active {
-  background-color: #f45c5c;
+.customButton.primary:active {
+  background-color: var(--shade-color);
 }
 input[type="submit"].disabled,
 input[type="submit"]:disabled,
@@ -2230,8 +2231,8 @@ input[type="button"].disabled,
 input[type="button"]:disabled,
 button.disabled,
 button:disabled,
-.button.disabled,
-.button:disabled {
+.customButton.disabled,
+.customButton:disabled {
   pointer-events: none;
   opacity: 0.25;
 }
