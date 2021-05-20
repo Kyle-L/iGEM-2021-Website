@@ -33,11 +33,21 @@ html {
   font-size: 100% !important;
 }
 #top_menu_14 {
-  height: 18px;
+  height: 16px;
 }
 #top_menu_under {
-  height: 4px;
+  display: none;
 }
 #content {
     color: unset;
+}
+
+#HQ_page h1, h2, h3, h4, h5 {
+  font-family: revert;
+}
+
+#HQ_page p {
+  font-family: revert;
+  font-size: revert;
+  text-align: revert;
 }
