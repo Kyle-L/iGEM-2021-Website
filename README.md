@@ -1,3 +1,22 @@
+# Miami University's iGEM 2021 Team Website
+
+## Table of Contents
+- [Overview](#overview)
+- [Requirements](#reqs)
+- [Setup](#setup)
+
+<a name="overview"/></a>
+## Overview
+The website and accompanying development material for [Miami University's](https://miamioh.edu/) iGEM 2021 Team Website.
+
+<a name="reqs"/></a>
+## Pre-reqs
+- [ ] Python (version >= 3.0.0)
+- [ ] Pip
+- [ ] An [iGEM account](igem.org)
+
+<a name="setup"/></a>
+## Setup
 1. Clone the repository.
 ```
 $ git clone git@github.com:Kyle-L/iGEM-2021-Website.git
