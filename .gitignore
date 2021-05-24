@@ -3,3 +3,5 @@ wikisync.log
 wikisync.cookies
 upload_map.yml
 temp
+__pycache__
+env

@@ -1,2 +1,3 @@
 igem_wikisync==1.0.0
 python-dotenv==0.17.1
+staticjinja==1.0.3

@@ -1,5 +1,6 @@
 # Miami University's iGEM 2021 Team Website
 ![](https://img.shields.io/badge/-Website%20Under%20construction-orange)
+![](https://img.shields.io/github/repo-size/Kyle-L/iGEM-2021-Website)
 
 ## Table of Contents
 - [Overview](#overview)
@@ -16,30 +17,22 @@ The website for [Miami University's](https://miamioh.edu/) Team Website for the 
 
 <a name="reqs"/></a>
 ## Requirements
-- [ ] Git bash
-- [ ] Python (version >= 3.0.0)
-- [ ] Pip
-- [ ] An [iGEM account](igem.org)
+- [ ] [Git bash](https://git-scm.com/downloads)
+- [ ] [Python (version >= 3.0.0)](https://www.python.org/)
+- [ ] [Pip](https://pypi.org/project/pip/)
+- [ ] [An iGEM account](igem.org)
 - [ ] An IDE of your choice ([VSCode](https://code.visualstudio.com/) recommended)
 
 <a name="download"/></a>
-## How to Download and Edit the Site
-To download the site, simply execute the following command in Git bash.
+## How to Download and Setup the Site
+
+1. Download the site.
 ```
 $ git clone git@github.com:Kyle-L/iGEM-2021-Website.git
 ```
-Once the repository is cloned, you can start editing the site by navigating to the `/iGEM-2020-Website/site` directory. When the site is synced to the wiki, `/iGEM-2020-Website/site` is the directory that will be synced.
-
-<a name="wikisync-setup"/></a>
-## How to Sync Site with Team Wiki
-1. Check into the cloned repository's root.
-```
-cd iGEM-2021-Website/
-```
-
 2. Install Pipenv using pip, install pip if you haven't already.
 ```
-pip install pipenv
+$ pip install pipenv
 ```
 
 3. Setup a virtual environment with Pipenv.
@@ -47,7 +40,12 @@ pip install pipenv
 $ python -m venv env
 ```
 
-4. Start the virtual environment
+4. (on Windows) Start the virtual environment
+```
+$ ./env/Scritpts/activate
+```
+
+4. (on Unix / Linux / MAC OS) Start the virtual environment
 ```
 $ source env/bin/activate
 ```
@@ -56,14 +54,50 @@ $ source env/bin/activate
 ```
 $ pip install -r requirements.txt
 ```
+Now you are ready to start editing the site!
 
-6. Create the file `.env` at the root of `/iGEM-2021-Website` with following information. Replace `Your_username` and `Your_password` with your iGEM info.
+
+<a name="build"/></a>
+## How to Build the Site
+To cut down on down on code and make the site more maintainable, the Python package `staticjinja` has been setup to use as a templating engine. What does this mean? In the directory `iGEM-2021-Website/site`, the template layout of all the pages is definined in `.base.html`, however, the body of each page is defined in `iGEM-2021-Website/site/pages`. When the site is built, those bodies are inserted into the `.base.html` template layout. So, how do we build the site?
+
+1. Navigate to the root directory
+```
+$ cd iGEM-2021-Website/
+```
+2. Call the build script.
+```
+$ python ./build.py
+```
+
+You can now view the full website under `iGEM-2021-Website/temp/build`.
+
+
+<a name="edit"/></a>
+## How to Edit Pages
+To edit pages on the wiki, navigate to `iGEM-2021-Website/site/pages`. These are the html files which will be present when the site is built. For instance, if you create an html file called `test.html` and insert the following.
+```html
+<p>This is some placeholder text!</p>
+```
+When the site is built, that placeholder text will be placed into the layout defined in `.base.html`.
+
+<a name="wikisync-setup"/></a>
+## How to Sync Site with Team Wiki
+1. Check into the cloned repository's root.
+```
+$ cd iGEM-2021-Website/
+```
+
+2. Create the file `.env` at the root of `/iGEM-2021-Website` with following information. Replace `Your_username` and `Your_password` with your iGEM info.
 ```
 IGEM_USERNAME=Your_username
 IGEM_PASSWORD=Your_password
 ```
 
-7. Run `python wikisync.py`
+3. Run `python main.py`
+```
+# python ./main.py
+```
 
 <a name="igem"/></a>
 ## iGEM Wiki General Information
@@ -75,11 +109,37 @@ Please be conscientious of the requirements for the wiki and the expected delive
 The iGEM wiki already has a fair amount of CSS applied to each of the pages. If you would like to remove that CSS, add the following CSS to a page between the `style` tags.
 ```html
 <style> 
-#sideMenu, #top_title, .patrollink, #firstHeading, #home_logo, #sideMenu { display:none; }
-#content { padding:0px; width:100%; margin-top:-7px; margin-left:0px; border:none; }
-body, html { background-color:white; width: 100%; height: 100%; }
-#bodyContent h1, #bodyContent h2, #bodyContent h3, #bodyContent h4, #bodyContent h5 { margin-bottom: 0px; }
-#bodyContent a[href ^="https://"], .link-https { padding-right:0px; }
+    #sideMenu,
+    #top_title,
+    .patrollink,
+    #firstHeading,
+    #home_logo,
+    #sideMenu {
+        display: none;
+    }
+    #content {
+        padding: 0px;
+        width: 100%;
+        margin-top: -7px;
+        margin-left: 0px;
+        border: none;
+    }
+    body,
+    html {
+        background-color: white;
+        width: 100%;
+        height: 100%;
+    }
+    #bodyContent h1,
+    #bodyContent h2,
+    #bodyContent h3,
+    #bodyContent h4,
+    #bodyContent h5 {
+        margin-bottom: 0px;
+    }
+    #bodyContent a[href ^="https://"], .link-https {
+        padding-right: 0px;
+    }
 </style>
 ```
 For more information of the iGEM default CSS, checkout https://2021.igem.org/Resources/Template_Documentation.
