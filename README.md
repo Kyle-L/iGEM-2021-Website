@@ -6,7 +6,8 @@
 - [Overview](#overview)
 - [Requirements](#reqs)
 - [How to Download](#download)
-- [How to Sync with Wiki](#wikisync-setup)
+- [How to Locally Sync with Wiki](#wikisync-setup)
+- [How to Locally Sync with Wiki](#wikisync-local-setup)
 - [iGEM Wiki General Information](#igem)
 
 <a name="overview"/></a>
@@ -82,7 +83,15 @@ To edit pages on the wiki, navigate to `iGEM-2021-Website/site/pages`. These are
 When the site is built, that placeholder text will be placed into the layout defined in `.base.html`.
 
 <a name="wikisync-setup"/></a>
-## How to Sync Site with Team Wiki
+## How Sync Site with Team Wiki
+This repository is setup to make use of GitHub Actions to sync the site on a push to the master branch.
+On any push to the master branch, GitHub Actions will run the workflow in `.github/workflows/main.yaml` and sync the repository with the iGEM MediaWiki server.
+
+<a name="wikisync-local-setup"/></a>
+## How to Locally Sync Site with Team Wiki
+If you need to sync the site with you local wiki, you can use the following instructions.
+*Note: This repository is setup to make use of GitHub Actions to sync the site on a push to the master branch. Thus, these instructions should only be used if needed.*
+
 1. Check into the cloned repository's root.
 ```
 $ cd iGEM-2021-Website/
