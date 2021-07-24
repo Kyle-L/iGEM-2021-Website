@@ -2,6 +2,8 @@ import os
 import igem_wikisync as wikisync
 from dotenv import load_dotenv
 
+if __name__ == '__main__':
+    sync('temp\\build', 'temp\\sync', 'MiamiU_OH')
 
 def sync(src_dir, temp_build_dir, team):
     """

@@ -43,3 +43,6 @@ def _minimize(outpath):
         textfile = open(f, 'w')
         textfile.write(minified)
         textfile.close()
+
+if __name__ == '__main__':
+    build('temp\\build', 'site')
