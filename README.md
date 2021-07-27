@@ -7,15 +7,18 @@
 - [Overview](#overview)
 - [Requirements](#reqs)
 - [How to Download](#download)
-- [How to Locally Sync with Wiki](#wikisync-setup)
-- [How to Locally Sync with Wiki](#wikisync-local-setup)
+- [How to Sync with Wiki (Remote)](#wikisync-setup)
+- [How to Sync with Wiki (Local)](#wikisync-local-setup)
+- [How to Edit Pages (Remote / Local)](#edit)
 - [iGEM Wiki General Information](#igem)
+
 
 <a name="overview"/></a>
 ## Overview
 The website for [Miami University's](https://miamioh.edu/) Team Website for the [iGEM 2021 Competition](https://2021.igem.org/Main_Page).
 
 *Important note: There are a lot of strange and slopply looking design decisions that were made (For instance, a CSS file to undo CSS / A lack of templating). These decisions were made to take into account how iGEM's MediaWiki server handles file uploads.*
+
 
 <a name="reqs"/></a>
 ## Requirements
@@ -60,7 +63,7 @@ Now you are ready to start editing the site!
 
 
 <a name="build"/></a>
-## How to Build the Site
+## How to Build the Site (Local)
 To cut down on down on code and make the site more maintainable, the Python package `staticjinja` has been setup to use as a templating engine. What does this mean? In the directory `iGEM-2021-Website/site`, the template layout of all the pages is definined in `.base.html`, however, the body of each page is defined in `iGEM-2021-Website/site/pages`. When the site is built, those bodies are inserted into the `.base.html` template layout. So, how do we build the site?
 
 1. Navigate to the root directory
@@ -76,20 +79,22 @@ You can now view the full website under `iGEM-2021-Website/temp/build`.
 
 
 <a name="edit"/></a>
-## How to Edit Pages
-To edit pages on the wiki, navigate to `iGEM-2021-Website/site/pages`. These are the html files which will be present when the site is built. For instance, if you create an html file called `test.html` and insert the following.
+## How to Edit Pages (Remote / Local)
+To edit pages on the wiki, navigate to [`iGEM-2021-Website/site/pages`](/site/pages). These are the html files which will be present when the site is built. For instance, if you create an html file called `test.html` and insert the following.
 ```html
 <p>This is some placeholder text!</p>
 ```
 When the site is built, that placeholder text will be placed into the layout defined in `.base.html`.
 
+
 <a name="wikisync-setup"/></a>
-## How Sync Site with Team Wiki
+## How Sync Site with Team Wiki (Remote)
 This repository is setup to make use of GitHub Actions to sync the site on a push to the master branch.
 On any push to the master branch, GitHub Actions will run the workflow in `.github/workflows/main.yaml` and sync the repository with the iGEM MediaWiki server.
 
+
 <a name="wikisync-local-setup"/></a>
-## How to Locally Sync Site with Team Wiki
+## How to Sync Site with Team Wiki (Local)
 If you need to sync the site with you local wiki, you can use the following instructions.
 *Note: This repository is setup to make use of GitHub Actions to sync the site on a push to the master branch. Thus, these instructions should only be used if needed.*
 
@@ -108,6 +113,7 @@ IGEM_PASSWORD=Your_password
 ```
 # python ./main.py
 ```
+
 
 <a name="igem"/></a>
 ## iGEM Wiki General Information
