@@ -1,19 +1,8 @@
+import argparse
 import os
 from staticjinja import Site
 from pathlib import Path
 import minify_html
-
-def build(outpath, searchpath):
-    site = Site.make_site(
-        searchpath=searchpath,
-        outpath=outpath,
-        contexts=[(".*\.html", _page_context)],
-        rules=[(".*\.html", _page_render)],
-        staticpaths=["assets"]
-    )
-    site.render()
-
-    _minimize(outpath)
 
 
 def _page_context(template):
@@ -44,5 +33,45 @@ def _minimize(outpath):
         textfile.write(minified)
         textfile.close()
 
+
+def build(outpath, searchpath):
+    site = Site.make_site(
+        searchpath=searchpath,
+        outpath=outpath,
+        contexts=[(".*\.html", _page_context)],
+        rules=[(".*\.html", _page_render)],
+        staticpaths=["assets"]
+    )
+    site.render()
+
+    _minimize(outpath)
+    
+
 if __name__ == '__main__':
-    build('temp\\build', 'site')
+    """
+    If run as a main file (i.e., `python ./build.py`), Builds the local wiki
+
+    positional arguments:
+        build-directory  The output directory of the built wiki.
+        src              The source wiki that is being built.
+
+    """
+
+    parser = argparse.ArgumentParser(description='Builds the local wiki.')
+
+    parser.add_argument('Build',
+                        metavar='build-directory',
+                        type=str,
+                        help='The output directory of the built wiki.')
+
+    parser.add_argument('Site',
+                        metavar='src',
+                        type=str,
+                        help='The source wiki that is being built.')
+
+    args = parser.parse_args()
+
+    build_path = args.Build
+    src = args.Site
+
+    build(build_path, src)

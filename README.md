@@ -64,7 +64,7 @@ Now you are ready to start editing the site!
 
 <a name="build"/></a>
 ## How to Build the Site (Local)
-To cut down on down on code and make the site more maintainable, the Python package `staticjinja` has been setup to use as a templating engine. What does this mean? In the directory `iGEM-2021-Website/site`, the template layout of all the pages is definined in `.base.html`, however, the body of each page is defined in `iGEM-2021-Website/site/pages`. When the site is built, those bodies are inserted into the `.base.html` template layout. So, how do we build the site?
+To cut down on down on code and make the site more maintainable, the Python package `staticjinja` has been setup to use as a templating engine. What does this mean? In the directory `iGEM-2021-Website/site`, the template layout of all the pages is definined in `.base.html`, however, the body of each page is defined in `iGEM-2021-Website/src/pages`. When the site is built, those bodies are inserted into the `.base.html` template layout. So, how do we build the site?
 
 1. Navigate to the root directory
 ```
@@ -72,7 +72,7 @@ $ cd iGEM-2021-Website/
 ```
 2. Call the build script.
 ```
-$ python ./build.py
+$ python ./build.py 'temp\\build' 'site'
 ```
 
 You can now view the full website under `iGEM-2021-Website/temp/build`.
@@ -80,7 +80,7 @@ You can now view the full website under `iGEM-2021-Website/temp/build`.
 
 <a name="edit"/></a>
 ## How to Edit Pages (Remote / Local)
-To edit pages on the wiki, navigate to [`iGEM-2021-Website/site/pages`](/site/pages). These are the html files which will be present when the site is built. For instance, if you create an html file called `test.html` and insert the following.
+To edit pages on the wiki, navigate to [`iGEM-2021-Website/src/pages`](/src/pages). These are the html files which will be present when the site is built. For instance, if you create an html file called `test.html` and insert the following.
 ```html
 <p>This is some placeholder text!</p>
 ```
@@ -111,7 +111,7 @@ IGEM_PASSWORD=Your_password
 
 3. Run `python main.py`
 ```
-# python ./main.py
+# python ./wikisync 'temp\\build' 'temp\\sync' 'MiamiU_OH'
 ```
 
 
