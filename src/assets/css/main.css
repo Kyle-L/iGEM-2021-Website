@@ -3116,3 +3116,7 @@ button:disabled,
   margin-top: 0;
   padding-top: 0;
 }
+
+.hideme {
+    opacity:0;
+}
