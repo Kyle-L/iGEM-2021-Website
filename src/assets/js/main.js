@@ -44,12 +44,10 @@
   var s = e("#sidebar"),
     n = s.children(".inner");
   breakpoints.on("<=large", function () {
-    // For the time being these are disabled.
-    //s.addClass("inactive");
+    s.addClass("inactive");
   }),
     breakpoints.on(">large", function () {
-      // For the time being these are disabled.
-      //s.removeClass("inactive");
+      s.removeClass("inactive");
     }),
     "android" == browser.os &&
       "chrome" == browser.name &&
