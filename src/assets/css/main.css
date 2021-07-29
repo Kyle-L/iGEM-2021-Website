@@ -3116,7 +3116,6 @@ button:disabled,
   margin-top: 0;
   padding-top: 0;
 }
-
-.hideme {
+.fadeMe, .fadeMeInstantly {
     opacity:0;
 }

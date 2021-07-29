@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    $('.fadeMeInstantly').each( function(i){
+        $(this).animate({'opacity':'1'},500);
+    });
+
     $('.fadeMe').each( function(i){
         var bottom_of_object = $(this).position().top + ($(this).outerHeight())/3;
         var bottom_of_window = $(window).scrollTop() + $(window).height();
