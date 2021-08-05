@@ -71,8 +71,7 @@ To cut down on down on code and make the site more maintainable, the Python pack
 $ cd iGEM-2021-Website/
 ```
 2. Call the build script.
-```
-$ python ./build.py 'temp\\build' 'site'
+
 ```
 
 You can now view the full website under `iGEM-2021-Website/temp/build`.
