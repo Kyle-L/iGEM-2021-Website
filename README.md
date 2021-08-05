@@ -114,6 +114,14 @@ IGEM_PASSWORD=Your_password
 ```
 
 
+<a name="helpful"/></a>
+## Helpful
+### HTML Converter
+The file `html_converter.py` has been supplied to help convert files for web use. For instance, .docx to .html.
+
+That can be run with the following command: `python converter.py <some .docx path> <some .html path>`
+
+
 <a name="igem"/></a>
 ## iGEM Wiki General Information
 
