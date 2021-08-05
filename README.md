@@ -57,7 +57,7 @@ $ source env/bin/activate
 
 5. Install the requirements
 ```
-$ pip install -r requirements.txt
+$ ./e
 ```
 Now you are ready to start editing the site!
 
