@@ -110,7 +110,7 @@ IGEM_PASSWORD=Your_password
 
 3. Run `python main.py`
 ```
-# python ./wikisync 'temp\\build' 'temp\\sync' 'MiamiU_OH'
+# python wikisync.py 'temp\\build' 'temp\\sync' 'MiamiU_OH'
 ```
 
 

@@ -225,7 +225,7 @@ select,
 textarea {
   color: #7f888f;
   font-family: var(--body-font);
-  font-size: 13pt;
+  font-size: 12pt;
   font-weight: 400;
   line-height: 1.65;
 }
@@ -234,7 +234,7 @@ textarea {
   input,
   select,
   textarea {
-    font-size: 11pt;
+    font-size: 12pt;
   }
 }
 @media screen and (max-width: 1280px) {
@@ -242,7 +242,7 @@ textarea {
   input,
   select,
   textarea {
-    font-size: 10pt;
+    font-size: 12pt;
   }
 }
 @media screen and (max-width: 360px) {
@@ -250,7 +250,7 @@ textarea {
   input,
   select,
   textarea {
-    font-size: 9pt;
+    font-size: 12pt;
   }
 }
 
@@ -1814,12 +1814,12 @@ input[type="radio"] + label:before {
 }
 .image.left {
   float: left;
-  padding: 1em;
+  padding: 0 1.5em 1em 0;
   top: 0.25em;
 }
 .image.right {
   float: right;
-  padding: 1em;
+  padding: 0 0 1em 1.5em;
   top: 0.25em;
 }
 .image.fit {
