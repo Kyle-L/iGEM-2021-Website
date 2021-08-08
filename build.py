@@ -2,7 +2,7 @@ import argparse
 import os
 from staticjinja import Site
 from pathlib import Path
-import minify_html
+import htmlmin
 
 
 def _page_context(template):
@@ -28,7 +28,7 @@ def _minimize(outpath):
 
     for f in files:
         print(f'Minimizing {f}')
-        minified = minify_html.minify(open(f).read(), minify_js=True, minify_css=True)
+        minified = htmlmin.minify(open(f).read(), remove_empty_space=False)
         textfile = open(f, 'w')
         textfile.write(minified)
         textfile.close()
