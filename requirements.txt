@@ -1,6 +1,6 @@
 igem_wikisync==1.0.0
 python-dotenv==0.17.1
 staticjinja==1.0.3
-htmlmin==0.4.11
+htmlmin==0.1.12
 mammoth==1.4.16
 markdown==3.3.4
