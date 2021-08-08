@@ -3,3 +3,4 @@ python-dotenv==0.17.1
 staticjinja==1.0.3
 minify-html==0.4.11
 mammoth==1.4.16
+markdown==3.3.4
