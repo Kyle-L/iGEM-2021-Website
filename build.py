@@ -28,7 +28,7 @@ def _minimize(outpath):
 
     for f in files:
         print(f'Minimizing {f}')
-        minified = htmlmin.minify(open(f).read(), remove_empty_space=False)
+        minified = htmlmin.minify(open(f).read(), remove_empty_space=False, remove_comments=True)
         textfile = open(f, 'w')
         textfile.write(minified)
         textfile.close()
