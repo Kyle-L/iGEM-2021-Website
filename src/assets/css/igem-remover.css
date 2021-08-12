@@ -30,6 +30,9 @@ html {
 {
   padding-right: 0;
 }
+#bodyContent a[href ^="mailto:"], .link-mailto {
+  padding-right: 0;
+}
 #globalWrapper {
   font-size: 100% !important;
 }
