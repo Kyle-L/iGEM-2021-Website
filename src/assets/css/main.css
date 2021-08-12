@@ -1980,6 +1980,7 @@ ul.actions.fit.stacked {
 ul.icons {
   cursor: default;
   list-style: none;
+  margin: 0 0 0 0;
   padding-left: 0;
 }
 ul.icons li {
@@ -1995,6 +1996,7 @@ ul.icons li .icon {
 ul.icons li .icon:before {
   font-size: 1.25em;
 }
+
 
 /* Contact */
 ul.contact {
@@ -3140,4 +3142,10 @@ button:disabled,
 }
 .inline {
   display: inline;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
 }
