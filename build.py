@@ -24,6 +24,7 @@ def _minimize(html):
 
 
 def _replace_local_links_with_absolute(html, src_link="https://2021.igem.org/Team:MiamiU_OH"):
+    # A regex pattern recognize if a link starts for / to determine local links.
     pattern = "(^\/.*$)"
 
     soup = BeautifulSoup(html, features="lxml")
@@ -36,15 +37,17 @@ def _replace_local_links_with_absolute(html, src_link="https://2021.igem.org/Tea
     
 
 def _set_link_target(html, open_external_links_in_new_tab = True, open_internal_links_in_new_tab = False):
-    pattern = "(^\/.*$)"
+    # A regex pattern to recognize external links.
+    pattern = "^(?:[a-z]+:)?//"
 
     soup = BeautifulSoup(html, features="lxml")
 
     for a in soup.findAll('a'):
-        if re.match(pattern , a['href']) or not a['href']:
-            del a['target']
-        else:
+        if re.match(pattern , a['href']):
             a['target'] = "#blank"
+        else:
+            del a['target']
+            
 
     return str(soup)
 
@@ -82,7 +85,7 @@ def build(build_path, src_path):
         html = open(f).read()
 
         if '.html' in f:
-            print(f'Setting links targets for {f}')
+            print(f'Setting link targets for {f}')
             html = _set_link_target(html)
 
             print(f'Replacing local links with absolute for {f}')
