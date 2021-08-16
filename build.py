@@ -38,7 +38,7 @@ def _replace_local_links_with_absolute(html, src_link="https://2021.igem.org/Tea
 
 def _set_link_target(html, open_external_links_in_new_tab = True, open_internal_links_in_new_tab = False):
     # A regex pattern to recognize external links.
-    pattern = "^(?:[a-z]+:)?//"
+    pattern = "^(?:[a-z]+:)?\/\/"
 
     soup = BeautifulSoup(html, features="lxml")
 
