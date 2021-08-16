@@ -48,7 +48,6 @@ def _set_link_target(html, open_external_links_in_new_tab = True, open_internal_
         else:
             del a['target']
             
-
     return str(soup)
 
 def build(build_path, src_path):
