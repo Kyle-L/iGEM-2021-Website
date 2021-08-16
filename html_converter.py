@@ -2,6 +2,7 @@ import mammoth
 import markdown
 import argparse
 
+
 def convert_docx_to_html(input_filename, output_filename):
     """Converts a file from .doc, .docx, or .md to .html.
 
