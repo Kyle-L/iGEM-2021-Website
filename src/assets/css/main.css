@@ -2844,7 +2844,7 @@ button:disabled,
     overflow-x: hidden;
     overflow-y: auto;
     position: absolute;
-    top: 0;
+    /* top: 0; */
   }
   #sidebar > .inner:after {
     content: "";

@@ -94,7 +94,7 @@
                 1 == n.data("locked")
                   ? t <= 0
                     ? n.data("locked", 0).css("position", "").css("top", "")
-                    : n.css("top", -1 * a)
+                    : n.css("top", "")
                   : t > 0 &&
                     n
                       .data("locked", 1)
