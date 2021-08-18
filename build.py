@@ -75,7 +75,18 @@ def _set_link_target(html, open_external_links_in_new_tab = True, open_internal_
 
     for a in soup.findAll('a'):
         if a.has_attr('href') and re.match(pattern , a['href']):
+            # TODO: Decide on whether to use old or new code.
+
+            # Old code
             a['target'] = "#blank"
+
+            # New code
+            # span = soup.new_tag('span')
+            # span['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
+            # span['class'] = ['note', 'tooltip', 'link'] + a.get('class', [])
+            # span.contents = a.contents
+
+            # a.replace_with(span)
         else:
             del a['target']
             
@@ -131,11 +142,12 @@ def _add_tooltips_for_terms(html, glossary):
 
     paragraphs = soup.find_all(text = re.compile(keys, re.IGNORECASE))
     for paragraph in paragraphs:
-        fixed_text = paragraph
+        replaced_text = paragraph
         found_keys =  set(re.compile(keys, re.IGNORECASE).findall(str(paragraph)))
         for key in found_keys:
-            fixed_text = fixed_text.replace(key, f'<span class="note tooltip" title="<i>{glossary[key.lower()]["name"]}</i> - {glossary[key.lower()]["definition"]}">{key}</span>')
-        paragraph.replace_with(fixed_text)
+            title = f'<i>{glossary[key.lower()]["name"]}</i> - {glossary[key.lower()]["definition"]}'
+            replaced_text = replaced_text.replace(key, f'<span class="note tooltip" title="{title}">{key}</span>')
+        paragraph.replace_with(replaced_text)
 
     return str(soup)
 
@@ -170,9 +182,11 @@ def build(build_path, src_path):
             if '.html' in file or '.css' in file:
                 files.append(os.path.join(r, file))
 
-    glossary = _load_glossary(os.path.join(src_path, 'glossary.json'))
+    glossary = _load_glossary(os.path.join(src_path, '.glossary.json'))
 
     for f in files:
+        print('===================================')
+        print(f'Processing {f}')
         html = open(f).read()
 
         if '.html' in f:

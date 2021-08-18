@@ -254,7 +254,7 @@ textarea {
   }
 }
 
-a {
+a, .link {
   -moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   -webkit-transition: color 0.2s ease-in-out,
     border-bottom-color 0.2s ease-in-out;
@@ -263,12 +263,13 @@ a {
   border-bottom: dotted 1px;
   color: var(--accent-color);
   text-decoration: none;
+  cursor: pointer;
 }
-a:hover {
+a:hover, .link {
   border-bottom-color: var(--accent-color);
   color: var(--accent-color) !important;
 }
-a:hover strong {
+a:hover strong, .link strong {
   color: inherit;
 }
 
@@ -3155,6 +3156,10 @@ button:disabled,
     color: var(--primary-color);
     cursor: pointer;
     border-bottom: 1px dotted var(--primary-color);
+}
+
+.tooltipster-base, .tooltipster-base:before, .tooltipster-base:after {
+  all: unset;
 }
 .tooltipster-default {
 	border-radius: 1px; 
