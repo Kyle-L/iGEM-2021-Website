@@ -21,6 +21,14 @@ def _page_render(site, template, **kwargs):
 
 
 def _minimize(html):
+    """Minimizes the html for a page to save memory.
+
+    Args:
+        html (str): A single page's html as a string.
+
+    Returns:
+        str: The modified page html.
+    """    
     return htmlmin.minify(html, remove_empty_space=False, remove_comments=True)
 
 def _replace_local_links_with_absolute(html, src_link="https://2021.igem.org/Team:MiamiU_OH"):
@@ -74,7 +82,23 @@ def _set_link_target(html, open_external_links_in_new_tab = True, open_internal_
     return str(soup)
 
 
-def _build_glossary(file_path):
+def _load_glossary(file_path):
+    """Given a filepath loads a glossary and de-normalizes it to speed up build time.
+
+    Args:
+        file_path (str): The file path of a glossary in the form:
+        {
+            '[term name]': '[definition]'
+        }
+
+    Returns:
+        dict: The glossary in the form:
+        {
+            '[lower case term name]': {
+                'name': '[the name with capitalization]',
+                'definition': [definition]
+        }
+    """    
     dict = {}
 
     with open(file_path) as json_file:
@@ -89,23 +113,28 @@ def _build_glossary(file_path):
     return dict
 
 
-def _add_tooltips_for_terms(html, definitions):
-    """[summary]
+def _add_tooltips_for_terms(html, glossary):
+    """Adds tooltips to a particular page adding a tooltip span to words from the glossary.
 
     Args:
-        html ([type]): [description]
-        definitions ([type]): [description]
+        html (str): A single page's html as a string.
+        glossary (dict): The glossary in the form:
+        {
+            '[lower case term name]': {
+                'name': '[the name with capitalization]',
+                'definition': [definition]
+        }
     """
     soup = BeautifulSoup(html, features="lxml")
 
-    keys = "|".join(definitions.keys())
+    keys = "|".join(glossary.keys())
 
     paragraphs = soup.find_all(text = re.compile(keys, re.IGNORECASE))
     for paragraph in paragraphs:
         fixed_text = paragraph
         found_keys =  set(re.compile(keys, re.IGNORECASE).findall(str(paragraph)))
         for key in found_keys:
-            fixed_text = fixed_text.replace(key, f'<span class="note tooltip" title="<i>{definitions[key.lower()]["name"]}</i> - {definitions[key.lower()]["definition"]}">{key}</span>')
+            fixed_text = fixed_text.replace(key, f'<span class="note tooltip" title="<i>{glossary[key.lower()]["name"]}</i> - {glossary[key.lower()]["definition"]}">{key}</span>')
         paragraph.replace_with(fixed_text)
 
     return str(soup)
@@ -141,7 +170,7 @@ def build(build_path, src_path):
             if '.html' in file or '.css' in file:
                 files.append(os.path.join(r, file))
 
-    glossary = _build_glossary(os.path.join(src_path, 'glossary.json'))
+    glossary = _load_glossary(os.path.join(src_path, 'glossary.json'))
 
     for f in files:
         html = open(f).read()
