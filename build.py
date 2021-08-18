@@ -1,6 +1,7 @@
 import argparse
 from bs4 import BeautifulSoup
 import htmlmin
+import json
 import os
 from pathlib import Path
 from staticjinja import Site
@@ -22,8 +23,19 @@ def _page_render(site, template, **kwargs):
 def _minimize(html):
     return htmlmin.minify(html, remove_empty_space=False, remove_comments=True)
 
-
 def _replace_local_links_with_absolute(html, src_link="https://2021.igem.org/Team:MiamiU_OH"):
+    """
+    Replaces all local or relative links with absolute links. This is done because of the iGEM
+    team format does not support relative links.
+
+    Args:
+        html (str): A single page's html as a string.
+        src_link (str, optional): The absolute url used to prefix onto relative links. Defaults to "https://2021.igem.org/Team:MiamiU_OH".
+
+    Returns:
+        str: The modified page html.
+    """
+
     # A regex pattern recognize if a link starts for / to determine local links.
     pattern = "(^\/.*$)"
 
@@ -37,6 +49,17 @@ def _replace_local_links_with_absolute(html, src_link="https://2021.igem.org/Tea
     
 
 def _set_link_target(html, open_external_links_in_new_tab = True, open_internal_links_in_new_tab = False):
+    """Takes all a tags and sets whether external links to open in a new tab and whether internal links to open in the same tab.
+
+    Args:
+        html (str): A single page's html as a string.
+        open_external_links_in_new_tab (bool, optional): Determines whether external links open in a new tab. Defaults to True.
+        open_internal_links_in_new_tab (bool, optional): Determines whether internal links open in a new tab. Defaults to False.
+
+    Returns:
+        str: The modified page html.
+    """    
+
     # A regex pattern to recognize external links.
     pattern = "^(?:[a-z]+:)?\/\/"
 
@@ -49,6 +72,44 @@ def _set_link_target(html, open_external_links_in_new_tab = True, open_internal_
             del a['target']
             
     return str(soup)
+
+
+def _build_glossary(file_path):
+    dict = {}
+
+    with open(file_path) as json_file:
+        data = json.load(json_file)
+
+        for key in data.keys():
+            dict[key.lower()] = {
+                'name': key,
+                'definition': data[key]
+            }
+    
+    return dict
+
+
+def _add_tooltips_for_terms(html, definitions):
+    """[summary]
+
+    Args:
+        html ([type]): [description]
+        definitions ([type]): [description]
+    """
+    soup = BeautifulSoup(html, features="lxml")
+
+    keys = "|".join(definitions.keys())
+
+    paragraphs = soup.find_all(text = re.compile(keys, re.IGNORECASE))
+    for paragraph in paragraphs:
+        fixed_text = paragraph
+        found_keys =  set(re.compile(keys, re.IGNORECASE).findall(str(paragraph)))
+        for key in found_keys:
+            fixed_text = fixed_text.replace(key, f'<span class="note tooltip" title="<i>{definitions[key.lower()]["name"]}</i> - {definitions[key.lower()]["definition"]}">{key}</span>')
+        paragraph.replace_with(fixed_text)
+
+    return str(soup)
+
 
 def build(build_path, src_path):
     """
@@ -80,6 +141,8 @@ def build(build_path, src_path):
             if '.html' in file or '.css' in file:
                 files.append(os.path.join(r, file))
 
+    glossary = _build_glossary(os.path.join(src_path, 'glossary.json'))
+
     for f in files:
         html = open(f).read()
 
@@ -89,6 +152,9 @@ def build(build_path, src_path):
 
             print(f'Replacing local links with absolute for {f}')
             html = _replace_local_links_with_absolute(html)
+
+            print(f'Adding glossary terms for {f}')
+            html = _add_tooltips_for_terms(html, glossary)
 
         print(f'Minimizing {f}')
         html = _minimize(html)
