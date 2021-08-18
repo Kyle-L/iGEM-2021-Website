@@ -30,7 +30,7 @@ def _replace_local_links_with_absolute(html, src_link="https://2021.igem.org/Tea
     soup = BeautifulSoup(html, features="lxml")
 
     for a in soup.findAll('a'):
-        if 'href' in a and (re.match(pattern , a['href']) or not a['href']):
+        if a.has_attr('href') and (re.match(pattern , a['href']) or not a['href']):
             a['href'] = a['href'].replace(a['href'], src_link + a['href'])
 
     return str(soup)
@@ -43,7 +43,7 @@ def _set_link_target(html, open_external_links_in_new_tab = True, open_internal_
     soup = BeautifulSoup(html, features="lxml")
 
     for a in soup.findAll('a'):
-        if 'href' in a and re.match(pattern , a['href']):
+        if a.has_attr('href') and re.match(pattern , a['href']):
             a['target'] = "#blank"
         else:
             del a['target']
