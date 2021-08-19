@@ -252,12 +252,15 @@ def _insert_references_citations(html, references):
                 ref_id, len(page_references) + 1)
 
         span = soup.new_tag('span')
+
         span['title'] = f'<b>{references[ref_id]["title"]}</b> '
         if 'doi_url' in references[ref_id] and references[ref_id]["doi_url"]:
             span['title'] += f'(<a href="{references[ref_id]["doi_url"]}" target="#blank">External DOI Link</a>)'
         span['title'] += f'<br />'
         span['title'] += f'<i>{references[ref_id]["full"]}</i>'
-        
+        span['title'] += f'<br /><br />'
+        span['title'] += f'(<a href="#references">Jump to all references</a>)'
+
         span['class'] = ['note', 'tooltip', 'link'] + ref.get('class', [])
         span.string = f'({page_references[ref["identifier"]]})'
 
@@ -274,8 +277,9 @@ def _insert_bibliography_from_citations(html, references, page_references):
         div = soup.new_tag('div')
         for index in ordered_refs.keys():
             p = soup.new_tag('p')
-            p.string = f'{index}. {references[ordered_refs[index]]["full"]}'
+            p.string = f'{index}. {references[ordered_refs[index]]["full"]} (<a href="{references[ordered_refs[index]]["doi_url"]}" target="#blank">External DOI Link</a>)'
             div.append(p)
+            div['id'] = 'references'
 
         bib.replace_with(div)
 

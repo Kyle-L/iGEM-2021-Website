@@ -8,7 +8,7 @@ $(document).ready(function() {
           interactive: true,
           
         animation: 'grow',
-        trigger: 'hover'
+        trigger: 'hybrid'
     });
     
     
@@ -145,6 +145,52 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					if (this.options.trigger == 'hover') {
 						$this.on('mouseenter.tooltipster', function() {
 							object.showTooltip();
+						});
+						
+						// if this is an interactive tooltip, delay getting rid of the tooltip right away so you have a chance to hover on the tooltip
+						if (this.options.interactive == true) {
+							$this.on('mouseleave.tooltipster', function() {
+								var tooltipster = $this.data('tooltipster');
+								var keepAlive = false;
+								
+								if ((tooltipster !== undefined) && (tooltipster !== '')) {
+									tooltipster.mouseenter(function() {
+										keepAlive = true;
+									});
+									tooltipster.mouseleave(function() {
+										keepAlive = false;
+									});
+									
+									var tolerance = setTimeout(function() {
+										if (keepAlive == true) {
+											tooltipster.mouseleave(function() {
+												object.hideTooltip();
+											});
+										}
+										else {
+											object.hideTooltip();
+										}
+									}, object.options.interactiveTolerance);
+								}
+								else {
+									object.hideTooltip();
+								}
+							});
+						}
+						
+						// if this is a dumb tooltip, just get rid of it on mouseleave
+						else {
+							$this.on('mouseleave.tooltipster', function() {
+								object.hideTooltip();
+							});
+						}
+					}
+
+					if (this.options.trigger == 'hybrid') {
+						$this.on('click.tooltipster', function() {
+							if (($this.data('tooltipster') == '') || ($this.data('tooltipster') == undefined)) {
+								object.showTooltip();
+							}
 						});
 						
 						// if this is an interactive tooltip, delay getting rid of the tooltip right away so you have a chance to hover on the tooltip
