@@ -274,7 +274,7 @@ def _insert_bibliography_from_citations(html, references, page_references):
         div = soup.new_tag('div')
         for index in ordered_refs.keys():
             p = soup.new_tag('p')
-            p.string = f'{index}. {references[ordered_refs[index]]['full']}'
+            p.string = f'{index}. {references[ordered_refs[index]]["full"]}'
             div.append(p)
 
         bib.replace_with(div)
