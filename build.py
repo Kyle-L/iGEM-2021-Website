@@ -58,8 +58,7 @@ def build(build_path, src_path):
                 html, references, refer_results)
 
             print(f'Adding glossary terms for {f}')
-            html, terms = _add_tooltips_for_terms(html, glossary)
-            html = _insert_glossary_from_terms(html, glossary, terms)
+            html = _add_tooltips_for_terms(html, glossary)
 
             print(f'Setting link targets for {f}')
             html = _process_page_links(html, whitelist=process_links_whitelist)
@@ -220,7 +219,6 @@ def _add_tooltips_for_terms(html, glossary):
 
     keys = "|".join(glossary.keys())
 
-    terms = []
 
     paragraphs = soup.find_all(text=re.compile(keys, re.IGNORECASE))
     for paragraph in paragraphs:
@@ -228,32 +226,13 @@ def _add_tooltips_for_terms(html, glossary):
         found_keys = set(re.compile(
             keys, re.IGNORECASE).findall(str(paragraph)))
         for key in found_keys:
-            if key.lower() not in terms:
-                terms.append(key.lower())
-
             title = f'<i><b>{glossary[key.lower()]["name"]}</b></i> - {glossary[key.lower()]["definition"]}'
             replaced_text = replaced_text.replace(
                 key, f'<span class="note tooltip" title="{title}">{key}</span>')
         paragraph.replace_with(replaced_text)
 
-    return str(soup), terms
-
-def _insert_glossary_from_terms(html, glossary, terms):
-    soup = BeautifulSoup(html, features="lxml")
-
-    terms.sort()
-
-    for bib in soup.findAll('glossary'):
-        div = soup.new_tag('div')
-        for term in terms:
-            p = soup.new_tag('p')
-            p.string = f'<em>{glossary[term]["name"]}</em> - {glossary[term]["definition"]}'
-            div.append(p)
-            div['id'] = 'glossary'
-
-        bib.replace_with(div)
-
     return str(soup)
+
 
 def _load_references(file_path):
     """Given a filepath loads all references and converts it to a dict.
@@ -286,7 +265,7 @@ def _load_references(file_path):
 def _insert_references_citations(html, references):
     soup = BeautifulSoup(html, features="lxml")
 
-    page_references = {}
+    page_reference_order = {}
 
     for ref in soup.findAll('reference'):
         if ref['identifier'] not in references:
@@ -294,34 +273,46 @@ def _insert_references_citations(html, references):
 
         ref_id = ref['identifier']
 
-        if ref_id not in page_references:
-            page_references[ref_id] = page_references.get(
-                ref_id, len(page_references) + 1)
+        # Here, we use the page_reference_order to determine what references come in what order.
+        # This aims to mock number based reference systems.
+        if ref_id not in page_reference_order:
+            page_reference_order[ref_id] = page_reference_order.get(
+                ref_id, len(page_reference_order) + 1)
 
         span = soup.new_tag('span')
 
+        # The entire tooltip content is built here.
+        # Adds the doi if one is present, if not, we don't want to include since the users can't go there.
         span['title'] = f'<b>{references[ref_id]["title"]}</b> '
         if 'doi_url' in references[ref_id] and references[ref_id]["doi_url"]:
-            span['title'] += f'(<a href="{references[ref_id]["doi_url"]}" target="#blank">External DOI Link</a>)'
+            span['title'] += f'(<a href="{references[ref_id]["doi_url"]}" target="#blank" class="text-no-wrap">External DOI Link</a>)'
+
+        # A break to create contrast from the rest of the tooltip content.
         span['title'] += f'<br />'
-        span['title'] += f'<i>{references[ref_id]["full"]}</i>'
+
+        # Adds the full reference, we want to include text breaking since some links words can't wrap on mobile.
+        span['title'] += f'<span class="text-break"><i>{references[ref_id]["full"]}</i></span>'
+
+        # Add space and jump to reference if a user wants to see all other references this is a nice shortcut.
         span['title'] += f'<br /><br />'
         span['title'] += f'(<a href="#references">Jump to all references</a>)'
 
+        # Add all other classes so that it does not break intentional styling.
         span['class'] = ['note', 'tooltip', 'link'] + ref.get('class', [])
-        span.string = f'({page_references[ref["identifier"]]})'
+        span.string = f'({page_reference_order[ref["identifier"]]})'
 
         ref.replace_with(span)
 
-    return str(soup), page_references
+    return str(soup), page_reference_order
 
 
-def _insert_bibliography_from_citations(html, references, page_references):
+def _insert_bibliography_from_citations(html, references, page_reference_order):
     soup = BeautifulSoup(html, features="lxml")
 
-    ordered_refs = dict((v, k) for k, v in page_references.items())
+    ordered_refs = dict((v, k) for k, v in page_reference_order.items())
     for bib in soup.findAll('bibliography'):
         div = soup.new_tag('div')
+        div['class'] = bib.get('class', [])
         for index in ordered_refs.keys():
             p = soup.new_tag('p')
             p.string = f'{index}. {references[ordered_refs[index]]["full"]} (<a href="{references[ordered_refs[index]]["doi_url"]}" target="#blank">External DOI Link</a>)'

@@ -3160,7 +3160,6 @@ button:disabled,
 
 .tooltipster-base, .tooltipster-base:before, .tooltipster-base:after {
   all: unset;
-  word-break: break-all;
 }
 .tooltipster-default {
 	border-radius: 1px; 
@@ -3317,4 +3316,10 @@ button:disabled,
 	-o-transform: scale(1.1, 1.1);
 	-ms-transform: scale(1.1, 1.1);
 	transform: scale(1.1, 1.1);
+}
+.text-break{
+  word-break: break-all;
+}
+.text-no-wrap{
+  white-space: nowrap;
 }
