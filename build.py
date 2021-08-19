@@ -9,7 +9,7 @@ import re
 
 
 process_links_whitelist = ['facebook.com', 'linkedin.com',
-                           'twitter.com', 'instagram.com', 'igem.com', 'miamioh.edu']
+                           'twitter.com', 'instagram.com', 'igem.com', 'miamioh.edu', 'kylelierer.com']
 
 
 def build(build_path, src_path):
@@ -58,7 +58,8 @@ def build(build_path, src_path):
                 html, references, refer_results)
 
             print(f'Adding glossary terms for {f}')
-            html = _add_tooltips_for_terms(html, glossary)
+            html, terms = _add_tooltips_for_terms(html, glossary)
+            html = _insert_glossary_from_terms(html, glossary, terms)
 
             print(f'Setting link targets for {f}')
             html = _process_page_links(html, whitelist=process_links_whitelist)
@@ -75,13 +76,25 @@ def build(build_path, src_path):
 
 
 def _page_context(template):
-    # Reads the content of a page and places it into the body context.
+    """Reads the content of a page and places it into the body context.
+
+    Args:
+        template (str): The file path of the template file.
+
+    Returns:
+        str: The templated html page.
+    """
     page_content = Path(template.filename).read_text()
     return {"body": page_content}
 
 
 def _page_render(site, template, **kwargs):
-    # # i.e. site/pages/Team.html > temp/Team.html
+    """i.e. site/pages/Team.html > temp/Team.html
+
+    Args:
+        site (any): The staticjinja site object.
+        template (str): The file path of the template file.
+    """    
     out = os.path.join(site.outpath, os.path.basename(template.name))
     site.get_template(".base.html").stream(
         **kwargs).dump(str(out), encoding="utf-8")
@@ -207,31 +220,65 @@ def _add_tooltips_for_terms(html, glossary):
 
     keys = "|".join(glossary.keys())
 
+    terms = []
+
     paragraphs = soup.find_all(text=re.compile(keys, re.IGNORECASE))
     for paragraph in paragraphs:
         replaced_text = paragraph
         found_keys = set(re.compile(
             keys, re.IGNORECASE).findall(str(paragraph)))
         for key in found_keys:
-            title = f'<i>{glossary[key.lower()]["name"]}</i> - {glossary[key.lower()]["definition"]}'
+            if key.lower() not in terms:
+                terms.append(key.lower())
+
+            title = f'<i><b>{glossary[key.lower()]["name"]}</b></i> - {glossary[key.lower()]["definition"]}'
             replaced_text = replaced_text.replace(
                 key, f'<span class="note tooltip" title="{title}">{key}</span>')
         paragraph.replace_with(replaced_text)
 
+    return str(soup), terms
+
+def _insert_glossary_from_terms(html, glossary, terms):
+    soup = BeautifulSoup(html, features="lxml")
+
+    terms.sort()
+
+    for bib in soup.findAll('glossary'):
+        div = soup.new_tag('div')
+        for term in terms:
+            p = soup.new_tag('p')
+            p.string = f'<em>{glossary[term]["name"]}</em> - {glossary[term]["definition"]}'
+            div.append(p)
+            div['id'] = 'glossary'
+
+        bib.replace_with(div)
+
     return str(soup)
 
-
 def _load_references(file_path):
-    dict = {}
+    """Given a filepath loads all references and converts it to a dict.
 
+    Args:
+        file_path (str): The file path of a glossary in the form:
+        {
+            '[reference id]': {
+                'full': '[The full reference]',
+                'doi_url': '[The url of the doi i.e., https://10....]',
+                'title': '[The title of the reference, used for display]'
+        }
+
+    Returns:
+        dict: The glossary in the form:
+        {
+            '[reference id]': {
+                'full': '[The full reference]',
+                'doi_url': '[The url of the doi i.e., https://10....]',
+                'title': '[The title of the reference, used for display]'
+        }
+    """
+    dict = {}
     with open(file_path) as json_file:
-        data = json.loads(json_file.read());
-        for key in data.keys():
-            dict[key] = {
-                'title': data[key]['title'],
-                'full': data[key]['full'],
-                'doi_url': data[key]['doi_url'],
-            }
+        dict = json.loads(json_file.read())
 
     return dict
 
