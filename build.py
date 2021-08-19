@@ -8,148 +8,8 @@ from staticjinja import Site
 import re
 
 
-def _page_context(template):
-    ## Reads the content of a page and places it into the body context.
-    page_content = Path(template.filename).read_text()
-    return {"body": page_content}
-
-
-def _page_render(site, template, **kwargs):
-    # # i.e. site/pages/Team.html > temp/Team.html
-    out = os.path.join(site.outpath, os.path.basename(template.name))
-    site.get_template(".base.html").stream(**kwargs).dump(str(out), encoding="utf-8")
-
-
-def _minimize(html):
-    """Minimizes the html for a page to save memory.
-
-    Args:
-        html (str): A single page's html as a string.
-
-    Returns:
-        str: The modified page html.
-    """    
-    return htmlmin.minify(html, remove_empty_space=False, remove_comments=True)
-
-def _replace_local_links_with_absolute(html, src_link="https://2021.igem.org/Team:MiamiU_OH"):
-    """
-    Replaces all local or relative links with absolute links. This is done because of the iGEM
-    team format does not support relative links.
-
-    Args:
-        html (str): A single page's html as a string.
-        src_link (str, optional): The absolute url used to prefix onto relative links. Defaults to "https://2021.igem.org/Team:MiamiU_OH".
-
-    Returns:
-        str: The modified page html.
-    """
-
-    # A regex pattern recognize if a link starts for / to determine local links.
-    pattern = "(^\/.*$)"
-
-    soup = BeautifulSoup(html, features="lxml")
-
-    for a in soup.findAll('a'):
-        if a.has_attr('href') and (re.match(pattern , a['href']) or not a['href']):
-            a['href'] = a['href'].replace(a['href'], src_link + a['href'])
-
-    return str(soup)
-    
-
-def _set_link_target(html, open_external_links_in_new_tab = True, open_internal_links_in_new_tab = False):
-    """Takes all a tags and sets whether external links to open in a new tab and whether internal links to open in the same tab.
-
-    Args:
-        html (str): A single page's html as a string.
-        open_external_links_in_new_tab (bool, optional): Determines whether external links open in a new tab. Defaults to True.
-        open_internal_links_in_new_tab (bool, optional): Determines whether internal links open in a new tab. Defaults to False.
-
-    Returns:
-        str: The modified page html.
-    """    
-
-    # A regex pattern to recognize external links.
-    pattern = "^(?:[a-z]+:)?\/\/"
-
-    soup = BeautifulSoup(html, features="lxml")
-
-    for a in soup.findAll('a'):
-        if a.has_attr('href') and re.match(pattern , a['href']):
-            # TODO: Decide on whether to use old or new code.
-
-            # Old code
-            a['target'] = "#blank"
-
-            # New code
-            # span = soup.new_tag('span')
-            # span['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
-            # span['class'] = ['note', 'tooltip', 'link'] + a.get('class', [])
-            # span.contents = a.contents
-
-            # a.replace_with(span)
-        else:
-            del a['target']
-            
-    return str(soup)
-
-
-def _load_glossary(file_path):
-    """Given a filepath loads a glossary and de-normalizes it to speed up build time.
-
-    Args:
-        file_path (str): The file path of a glossary in the form:
-        {
-            '[term name]': '[definition]'
-        }
-
-    Returns:
-        dict: The glossary in the form:
-        {
-            '[lower case term name]': {
-                'name': '[the name with capitalization]',
-                'definition': [definition]
-        }
-    """    
-    dict = {}
-
-    with open(file_path) as json_file:
-        data = json.load(json_file)
-
-        for key in data.keys():
-            dict[key.lower()] = {
-                'name': key,
-                'definition': data[key]
-            }
-    
-    return dict
-
-
-def _add_tooltips_for_terms(html, glossary):
-    """Adds tooltips to a particular page adding a tooltip span to words from the glossary.
-
-    Args:
-        html (str): A single page's html as a string.
-        glossary (dict): The glossary in the form:
-        {
-            '[lower case term name]': {
-                'name': '[the name with capitalization]',
-                'definition': [definition]
-        }
-    """
-    soup = BeautifulSoup(html, features="lxml")
-
-    keys = "|".join(glossary.keys())
-
-    paragraphs = soup.find_all(text = re.compile(keys, re.IGNORECASE))
-    for paragraph in paragraphs:
-        replaced_text = paragraph
-        found_keys =  set(re.compile(keys, re.IGNORECASE).findall(str(paragraph)))
-        for key in found_keys:
-            title = f'<i>{glossary[key.lower()]["name"]}</i> - {glossary[key.lower()]["definition"]}'
-            replaced_text = replaced_text.replace(key, f'<span class="note tooltip" title="{title}">{key}</span>')
-        paragraph.replace_with(replaced_text)
-
-    return str(soup)
+process_links_whitelist = ['facebook.com', 'linkedin.com',
+                           'twitter.com', 'instagram.com', 'igem.com', 'miamioh.edu']
 
 
 def build(build_path, src_path):
@@ -174,7 +34,7 @@ def build(build_path, src_path):
         staticpaths=["assets"]
     )
     site.render()
-    
+
     # With the site built, performs quality of life modifications.
     files = []
     for r, d, f in os.walk(build_path):
@@ -183,6 +43,7 @@ def build(build_path, src_path):
                 files.append(os.path.join(r, file))
 
     glossary = _load_glossary(os.path.join(src_path, '.glossary.json'))
+    references = _load_references(os.path.join(src_path, '.references.json'))
 
     for f in files:
         print('===================================')
@@ -190,14 +51,20 @@ def build(build_path, src_path):
         html = open(f).read()
 
         if '.html' in f:
-            print(f'Setting link targets for {f}')
-            html = _set_link_target(html)
-
-            print(f'Replacing local links with absolute for {f}')
-            html = _replace_local_links_with_absolute(html)
+            print(f'Adding references for {f}')
+            html, refer_results = _insert_references_citations(
+                html, references)
+            html = _insert_bibliography_from_citations(
+                html, references, refer_results)
 
             print(f'Adding glossary terms for {f}')
             html = _add_tooltips_for_terms(html, glossary)
+
+            print(f'Setting link targets for {f}')
+            html = _process_page_links(html, whitelist=process_links_whitelist)
+
+            print(f'Replacing local links with absolute for {f}')
+            html = _prefix_relative_links(html)
 
         print(f'Minimizing {f}')
         html = _minimize(html)
@@ -205,6 +72,214 @@ def build(build_path, src_path):
         textfile = open(f, 'w')
         textfile.write(html)
         textfile.close()
+
+
+def _page_context(template):
+    # Reads the content of a page and places it into the body context.
+    page_content = Path(template.filename).read_text()
+    return {"body": page_content}
+
+
+def _page_render(site, template, **kwargs):
+    # # i.e. site/pages/Team.html > temp/Team.html
+    out = os.path.join(site.outpath, os.path.basename(template.name))
+    site.get_template(".base.html").stream(
+        **kwargs).dump(str(out), encoding="utf-8")
+
+
+def _minimize(html):
+    """Minimizes the html for a page to save memory.
+
+    Args:
+        html (str): A single page's html as a string.
+
+    Returns:
+        str: The modified page html.
+    """
+    return htmlmin.minify(html, remove_empty_space=False, remove_comments=True)
+
+
+def _prefix_relative_links(html, prefix="https://2021.igem.org/Team:MiamiU_OH"):
+    """
+    Replaces all local or relative links with absolute links. This is done because of the iGEM
+    team format does not support relative links.
+
+    Args:
+        html (str): A single page's html as a string.
+        prefix (str, optional): The absolute url used to prefix onto relative links. Defaults to "https://2021.igem.org/Team:MiamiU_OH".
+
+    Returns:
+        str: The modified page html.
+    """
+
+    # A regex pattern to recognize if a link starts for / or is empty.
+    # This is used to determine if it is local or not.
+    pattern = "(^\/.*$)"
+
+    soup = BeautifulSoup(html, features="lxml")
+
+    for a in soup.findAll('a'):
+        if a.has_attr('href') and (re.match(pattern, a['href']) or not a['href']):
+            a['href'] = a['href'].replace(a['href'], a['href'])
+
+    return str(soup)
+
+
+def _process_page_links(html, open_external_links_in_new_tab=True, open_internal_links_in_new_tab=False, whitelist=[]):
+    """Takes all a tags and sets whether external links to open in a new tab and whether internal links to open in the same tab.
+
+    Args:
+        html (str): A single page's html as a string.
+        open_external_links_in_new_tab (bool, optional): Determines whether external links open in a new tab. Defaults to True.
+        open_internal_links_in_new_tab (bool, optional): Determines whether internal links open in a new tab. Defaults to False.
+
+    Returns:
+        str: The modified page html.
+    """
+
+    # A regex pattern to recognize external links.
+    pattern = "^(?:[a-z]+:)?\/\/"
+
+    soup = BeautifulSoup(html, features="lxml")
+
+    for a in soup.findAll('a'):
+        if a.has_attr('href') and re.match(pattern, a['href']):
+            if not any(url in a['href'] for url in whitelist):
+                span = soup.new_tag('span')
+                span['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
+                span['class'] = ['note', 'tooltip',
+                                 'link'] + a.get('class', [])
+                span.contents = a.contents
+
+                a.replace_with(span)
+            else:
+                a['target'] = "#blank"
+        else:
+            del a['target']
+
+    return str(soup)
+
+
+def _load_glossary(file_path):
+    """Given a filepath loads a glossary and de-normalizes it to speed up build time.
+
+    Args:
+        file_path (str): The file path of a glossary in the form:
+        {
+            '[term name]': '[definition]'
+        }
+
+    Returns:
+        dict: The glossary in the form:
+        {
+            '[lower case term name]': {
+                'name': '[the name with capitalization]',
+                'definition': [definition]
+        }
+    """
+    dict = {}
+
+    with open(file_path) as json_file:
+        data = json.load(json_file)
+
+        for key in data.keys():
+            dict[key.lower()] = {
+                'name': key,
+                'definition': data[key]
+            }
+
+    return dict
+
+
+def _add_tooltips_for_terms(html, glossary):
+    """Adds tooltips to a particular page adding a tooltip span to words from the glossary.
+
+    Args:
+        html (str): A single page's html as a string.
+        glossary (dict): The glossary in the form:
+        {
+            '[lower case term name]': {
+                'name': '[the name with capitalization]',
+                'definition': [definition]
+        }
+    """
+    soup = BeautifulSoup(html, features="lxml")
+
+    keys = "|".join(glossary.keys())
+
+    paragraphs = soup.find_all(text=re.compile(keys, re.IGNORECASE))
+    for paragraph in paragraphs:
+        replaced_text = paragraph
+        found_keys = set(re.compile(
+            keys, re.IGNORECASE).findall(str(paragraph)))
+        for key in found_keys:
+            title = f'<i>{glossary[key.lower()]["name"]}</i> - {glossary[key.lower()]["definition"]}'
+            replaced_text = replaced_text.replace(
+                key, f'<span class="note tooltip" title="{title}">{key}</span>')
+        paragraph.replace_with(replaced_text)
+
+    return str(soup)
+
+
+def _load_references(file_path):
+    dict = {}
+
+    with open(file_path) as json_file:
+        data = json.loads(json_file.read());
+        for key in data.keys():
+            dict[key] = {
+                'title': data[key]['title'],
+                'full': data[key]['full'],
+                'doi_url': data[key]['doi_url'],
+            }
+
+    return dict
+
+
+def _insert_references_citations(html, references):
+    soup = BeautifulSoup(html, features="lxml")
+
+    page_references = {}
+
+    for ref in soup.findAll('reference'):
+        if ref['identifier'] not in references:
+            continue
+
+        ref_id = ref['identifier']
+
+        if ref_id not in page_references:
+            page_references[ref_id] = page_references.get(
+                ref_id, len(page_references) + 1)
+
+        span = soup.new_tag('span')
+        span['title'] = f'<b>{references[ref_id]["title"]}</b> '
+        if 'doi_url' in references[ref_id] and references[ref_id]["doi_url"]:
+            span['title'] += f'(<a href="{references[ref_id]["doi_url"]}" target="#blank">External DOI Link</a>)'
+        span['title'] += f'<br />'
+        span['title'] += f'<i>{references[ref_id]["full"]}</i>'
+        
+        span['class'] = ['note', 'tooltip', 'link'] + ref.get('class', [])
+        span.string = f'({page_references[ref["identifier"]]})'
+
+        ref.replace_with(span)
+
+    return str(soup), page_references
+
+
+def _insert_bibliography_from_citations(html, references, page_references):
+    soup = BeautifulSoup(html, features="lxml")
+
+    ordered_refs = dict((v, k) for k, v in page_references.items())
+    for bib in soup.findAll('bibliography'):
+        div = soup.new_tag('div')
+        for index in ordered_refs.keys():
+            p = soup.new_tag('p')
+            p.string = f'{index}. {references[ordered_refs[index]]['full']}'
+            div.append(p)
+
+        bib.replace_with(div)
+
+    return str(soup)
 
 
 if __name__ == '__main__':
