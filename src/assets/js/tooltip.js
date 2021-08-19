@@ -190,6 +190,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 						$this.on('click.tooltipster', function() {
 							if (($this.data('tooltipster') == '') || ($this.data('tooltipster') == undefined)) {
 								object.showTooltip();
+							} else {
+								object.hideTooltip();
 							}
 						});
 						
