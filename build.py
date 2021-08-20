@@ -132,7 +132,7 @@ def _prefix_relative_links(html, prefix="https://2021.igem.org/Team:MiamiU_OH"):
 
     for a in soup.findAll('a'):
         if a.has_attr('href') and (re.match(pattern, a['href']) or not a['href']):
-            a['href'] = a['href'].replace(a['href'], a['href'])
+            a['href'] = a['href'].replace(a['href'], prefix + a['href'])
 
     return str(soup)
 
