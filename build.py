@@ -285,13 +285,13 @@ def _insert_references_citations(html, references):
         # Adds the doi if one is present, if not, we don't want to include since the users can't go there.
         span['title'] = f'<b>{references[ref_id]["title"]}</b> '
         if 'doi_url' in references[ref_id] and references[ref_id]["doi_url"]:
-            span['title'] += f'(<a href="{references[ref_id]["doi_url"]}" target="#blank" class="text-no-wrap">External DOI Link</a>)'
+            span['title'] += f'(<a href="{references[ref_id]["doi_url"]}" target="#blank">External DOI Link</a>)'
 
         # A break to create contrast from the rest of the tooltip content.
         span['title'] += f'<br />'
 
         # Adds the full reference, we want to include text breaking since some links words can't wrap on mobile.
-        span['title'] += f'<span class="text-break"><i>{references[ref_id]["full"]}</i></span>'
+        span['title'] += f'<span><i>{references[ref_id]["full"]}</i></span>'
 
         # Add space and jump to reference if a user wants to see all other references this is a nice shortcut.
         span['title'] += f'<br /><br />'
