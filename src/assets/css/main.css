@@ -3317,3 +3317,9 @@ button:disabled,
 	-ms-transform: scale(1.1, 1.1);
 	transform: scale(1.1, 1.1);
 }
+.text-break{
+  word-break: break-all;
+}
+.text-no-wrap{
+  white-space: nowrap;
+}
