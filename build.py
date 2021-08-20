@@ -9,7 +9,7 @@ import re
 
 
 process_links_whitelist = ['facebook.com', 'linkedin.com',
-                           'twitter.com', 'instagram.com', 'igem.com', 'miamioh.edu', 'kylelierer.com']
+                           'twitter.com', 'instagram.com', 'igem.com', 'miamioh.edu', 'kylelierer.com', 'wangxlab.com']
 
 
 def build(build_path, src_path):
@@ -93,7 +93,7 @@ def _page_render(site, template, **kwargs):
     Args:
         site (any): The staticjinja site object.
         template (str): The file path of the template file.
-    """    
+    """
     out = os.path.join(site.outpath, os.path.basename(template.name))
     site.get_template(".base.html").stream(
         **kwargs).dump(str(out), encoding="utf-8")
@@ -218,7 +218,6 @@ def _add_tooltips_for_terms(html, glossary):
     soup = BeautifulSoup(html, features="lxml")
 
     keys = "|".join(glossary.keys())
-
 
     paragraphs = soup.find_all(text=re.compile(keys, re.IGNORECASE))
     for paragraph in paragraphs:
