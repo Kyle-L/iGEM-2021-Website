@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to iGEM
 
 on:
   # Trigger the workflow on push,
