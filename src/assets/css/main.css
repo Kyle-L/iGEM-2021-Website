@@ -264,12 +264,26 @@ a,
   cursor: pointer;
 }
 a:hover,
-.link {
+.link:hover {
+  text-decoration: none;
   border-bottom-color: var(--accent-color);
   color: var(--accent-color) !important;
 }
 a:hover strong,
-.link strong {
+.link:hover strong {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:active,
+.link:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited,
+.link:visited {
+  text-decoration: none;
   color: inherit;
 }
 
@@ -3355,7 +3369,7 @@ button:disabled,
   overflow: hidden;
 
   border-bottom: 0px;
-  text-decoration: none;
+  text-decoration: inherit;
   color: var(--primary-color);
   margin-right: 25px;
   padding: 10px 15px;
@@ -3363,6 +3377,7 @@ button:disabled,
 
 .tabbed-menu-nav-link.is-active {
   color: var(--secondary-color);
+  text-decoration: inherit;
 }
 
 .tab {
