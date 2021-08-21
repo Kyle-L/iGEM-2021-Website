@@ -1,21 +1,19 @@
 @import url(fontawesome-all.min.css);
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url(); 
-  src: local("../webfonts/OpenSans-Regular.eot"),
-      url() format("embedded-opentype"),
-      url("../webfonts/OpenSans-Regular.woff") format("woff"),
-      url("../webfonts/OpenSans-Regular.ttf") format("truetype"); 
+  font-family: "Open Sans";
+  src: url();
+  src: local("../webfonts/OpenSans-Regular.eot"), url() format("embedded-opentype"),
+    url("../webfonts/OpenSans-Regular.woff") format("woff"), url("../webfonts/OpenSans-Regular.ttf") format("truetype");
 }
 
 :root {
-  --accent-color: #549E39;
-  --shade-color: #5B8A72;
+  --accent-color: #549e39;
+  --shade-color: #5b8a72;
   --highlight-color: #bae9a8;
 
   --heading-font: Helvetica, sans-serif;
-  --body-font: 'Open Sans', sans-serif;
+  --body-font: "Open Sans", sans-serif;
 
   --primary-color: #9fa3a6;
   --secondary-color: #3d4449;
@@ -254,10 +252,10 @@ textarea {
   }
 }
 
-a, .link {
+a,
+.link {
   -moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  -webkit-transition: color 0.2s ease-in-out,
-    border-bottom-color 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   border-bottom: dotted 1px;
@@ -265,11 +263,13 @@ a, .link {
   text-decoration: none;
   cursor: pointer;
 }
-a:hover, .link {
+a:hover,
+.link {
   border-bottom-color: var(--accent-color);
   color: var(--accent-color) !important;
 }
-a:hover strong, .link strong {
+a:hover strong,
+.link strong {
   color: inherit;
 }
 
@@ -1998,7 +1998,6 @@ ul.icons li .icon:before {
   font-size: 1.25em;
 }
 
-
 /* Contact */
 ul.contact {
   list-style: none;
@@ -3138,8 +3137,9 @@ button:disabled,
   margin-top: 0;
   padding-top: 0;
 }
-.fadeMe, .fadeMeInstantly {
-    opacity:0;
+.fadeMe,
+.fadeMeInstantly {
+  opacity: 0;
 }
 .inline {
   display: inline;
@@ -3151,175 +3151,248 @@ button:disabled,
   float: right;
 }
 
-
-.note {    
-    color: var(--primary-color);
-    cursor: pointer;
-    border-bottom: 1px dotted var(--primary-color);
+.note {
+  color: var(--primary-color);
+  cursor: pointer;
+  border-bottom: 1px dotted var(--primary-color);
 }
 
-.tooltipster-base, .tooltipster-base:before, .tooltipster-base:after {
+.tooltipster-base,
+.tooltipster-base:before,
+.tooltipster-base:after {
   all: unset;
 }
 .tooltipster-default {
-	border-radius: 1px; 
-	border: 1px solid #eee;
- 
-	background: #fff;
-	color: #222;
+  border-radius: 1px;
+  border: 1px solid #eee;
+
+  background: #fff;
+  color: #222;
 }
 
 /* Use this next selector to style things like font-size and line-height: */
 .tooltipster-default .tooltipster-content {
-	font: 16px/24px var(--body-font);
-	
-	padding: 1em 1em 1em 1em;
-	overflow: hidden;
+  font: 16px/24px var(--body-font);
+
+  padding: 1em 1em 1em 1em;
+  overflow: hidden;
   border-left: 5px solid var(--accent-color);
 }
 .tooltipster-default .tooltipster-arrow .tooltipster-arrow-border {
-	/* border-color: ... !important; */
+  /* border-color: ... !important; */
 }
 /* If you're using the icon option, use this next selector to style them */
 .tooltipster-icon {
-	cursor: help;
-	margin-left: 4px;
+  cursor: help;
+  margin-left: 4px;
 }
 .tooltipster-base {
-	padding: 0;
-	font-size: 0;
-	line-height: 0;
-	position: absolute;
-	z-index: 9999999;
-	pointer-events: none;
-	width: auto;
-	overflow: visible;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  z-index: 9999999;
+  pointer-events: none;
+  width: auto;
+  overflow: visible;
 }
 .tooltipster-base .tooltipster-content {
-	overflow: hidden;
+  overflow: hidden;
 }
 .tooltipster-arrow {
-	display: block;
-	text-align: center;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
+  display: block;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
-.tooltipster-arrow span, .tooltipster-arrow-border {
-	display: block;
-	width: 0; 
-	height: 0;
-	position: absolute;
+.tooltipster-arrow span,
+.tooltipster-arrow-border {
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
 }
-.tooltipster-arrow-top span, .tooltipster-arrow-top-right span, .tooltipster-arrow-top-left span {
-	border-left: 8px solid transparent !important;
-	border-right: 8px solid transparent !important;
-	border-top: 8px solid;
-	bottom: -8px;
+.tooltipster-arrow-top span,
+.tooltipster-arrow-top-right span,
+.tooltipster-arrow-top-left span {
+  border-left: 8px solid transparent !important;
+  border-right: 8px solid transparent !important;
+  border-top: 8px solid;
+  bottom: -8px;
 }
-.tooltipster-arrow-top .tooltipster-arrow-border, .tooltipster-arrow-top-right .tooltipster-arrow-border, .tooltipster-arrow-top-left .tooltipster-arrow-border {
-	border-left: 9px solid transparent !important;
-	border-right: 9px solid transparent !important;
-	border-top: 9px solid;
-	bottom: -8px;
+.tooltipster-arrow-top .tooltipster-arrow-border,
+.tooltipster-arrow-top-right .tooltipster-arrow-border,
+.tooltipster-arrow-top-left .tooltipster-arrow-border {
+  border-left: 9px solid transparent !important;
+  border-right: 9px solid transparent !important;
+  border-top: 9px solid;
+  bottom: -8px;
 }
-.tooltipster-arrow-bottom span, .tooltipster-arrow-bottom-right span, .tooltipster-arrow-bottom-left span {
-	border-left: 8px solid transparent !important;
-	border-right: 8px solid transparent !important;
-	border-bottom: 8px solid;
-	top: -8px;
+.tooltipster-arrow-bottom span,
+.tooltipster-arrow-bottom-right span,
+.tooltipster-arrow-bottom-left span {
+  border-left: 8px solid transparent !important;
+  border-right: 8px solid transparent !important;
+  border-bottom: 8px solid;
+  top: -8px;
 }
-.tooltipster-arrow-bottom .tooltipster-arrow-border, .tooltipster-arrow-bottom-right .tooltipster-arrow-border, .tooltipster-arrow-bottom-left .tooltipster-arrow-border {
-	border-left: 9px solid transparent !important;
-	border-right: 9px solid transparent !important;
-	border-bottom: 9px solid;
-	top: -8px;
+.tooltipster-arrow-bottom .tooltipster-arrow-border,
+.tooltipster-arrow-bottom-right .tooltipster-arrow-border,
+.tooltipster-arrow-bottom-left .tooltipster-arrow-border {
+  border-left: 9px solid transparent !important;
+  border-right: 9px solid transparent !important;
+  border-bottom: 9px solid;
+  top: -8px;
 }
-.tooltipster-arrow-top span, .tooltipster-arrow-top .tooltipster-arrow-border, .tooltipster-arrow-bottom span, .tooltipster-arrow-bottom .tooltipster-arrow-border {
-	left: 0;
-	right: 0;
-	margin: 0 auto;
+.tooltipster-arrow-top span,
+.tooltipster-arrow-top .tooltipster-arrow-border,
+.tooltipster-arrow-bottom span,
+.tooltipster-arrow-bottom .tooltipster-arrow-border {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
-.tooltipster-arrow-top-left span, .tooltipster-arrow-bottom-left span {
-	left: 6px;
+.tooltipster-arrow-top-left span,
+.tooltipster-arrow-bottom-left span {
+  left: 6px;
 }
-.tooltipster-arrow-top-left .tooltipster-arrow-border, .tooltipster-arrow-bottom-left .tooltipster-arrow-border {
-	left: 5px;
+.tooltipster-arrow-top-left .tooltipster-arrow-border,
+.tooltipster-arrow-bottom-left .tooltipster-arrow-border {
+  left: 5px;
 }
-.tooltipster-arrow-top-right span,  .tooltipster-arrow-bottom-right span {
-	right: 6px;
+.tooltipster-arrow-top-right span,
+.tooltipster-arrow-bottom-right span {
+  right: 6px;
 }
-.tooltipster-arrow-top-right .tooltipster-arrow-border, .tooltipster-arrow-bottom-right .tooltipster-arrow-border {
-	right: 5px;
+.tooltipster-arrow-top-right .tooltipster-arrow-border,
+.tooltipster-arrow-bottom-right .tooltipster-arrow-border {
+  right: 5px;
 }
-.tooltipster-arrow-left span, .tooltipster-arrow-left .tooltipster-arrow-border {
-	border-top: 8px solid transparent !important;
-	border-bottom: 8px solid transparent !important; 
-	border-left: 8px solid;
-	top: 50%;
-	margin-top: -7px;
-	right: -8px;
+.tooltipster-arrow-left span,
+.tooltipster-arrow-left .tooltipster-arrow-border {
+  border-top: 8px solid transparent !important;
+  border-bottom: 8px solid transparent !important;
+  border-left: 8px solid;
+  top: 50%;
+  margin-top: -7px;
+  right: -8px;
 }
 .tooltipster-arrow-left .tooltipster-arrow-border {
-	border-top: 9px solid transparent !important;
-	border-bottom: 9px solid transparent !important; 
-	border-left: 9px solid;
-	margin-top: -8px;
+  border-top: 9px solid transparent !important;
+  border-bottom: 9px solid transparent !important;
+  border-left: 9px solid;
+  margin-top: -8px;
 }
-.tooltipster-arrow-right span, .tooltipster-arrow-right .tooltipster-arrow-border {
-	border-top: 8px solid transparent !important;
-	border-bottom: 8px solid transparent !important; 
-	border-right: 8px solid;
-	top: 50%;
-	margin-top: -7px;
-	left: -8px;
+.tooltipster-arrow-right span,
+.tooltipster-arrow-right .tooltipster-arrow-border {
+  border-top: 8px solid transparent !important;
+  border-bottom: 8px solid transparent !important;
+  border-right: 8px solid;
+  top: 50%;
+  margin-top: -7px;
+  left: -8px;
 }
 .tooltipster-arrow-right .tooltipster-arrow-border {
-	border-top: 9px solid transparent !important;
-	border-bottom: 9px solid transparent !important; 
-	border-right: 9px solid;
-	margin-top: -8px;
+  border-top: 9px solid transparent !important;
+  border-bottom: 9px solid transparent !important;
+  border-right: 9px solid;
+  margin-top: -8px;
 }
 .tooltipster-grow {
-	-webkit-transform: scale(0,0);
-	-moz-transform: scale(0,0);
-	-o-transform: scale(0,0);
-	-ms-transform: scale(0,0);
-	transform: scale(0,0);
-	-webkit-transition-property: -webkit-transform;
-	-moz-transition-property: -moz-transform;
-	-o-transition-property: -o-transform;
-	-ms-transition-property: -ms-transform;
-	transition-property: transform;
-	-webkit-backface-visibility: hidden;
+  -webkit-transform: scale(0, 0);
+  -moz-transform: scale(0, 0);
+  -o-transform: scale(0, 0);
+  -ms-transform: scale(0, 0);
+  transform: scale(0, 0);
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  -ms-transition-property: -ms-transform;
+  transition-property: transform;
+  -webkit-backface-visibility: hidden;
 }
 .tooltipster-grow-show {
-	-webkit-transform: scale(1,1);
-	-moz-transform: scale(1,1);
-	-o-transform: scale(1,1);
-	-ms-transform: scale(1,1);
-	transform: scale(1,1);
-	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
-	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
-	-moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
-	-ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
-	-o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
-	transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  -ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
 }
 /* CSS transition for when contenting is changing in a tooltip that is still open */
 .tooltipster-content-changing {
-	-webkit-transform: scale(1.1, 1.1);
-	-moz-transform: scale(1.1, 1.1);
-	-o-transform: scale(1.1, 1.1);
-	-ms-transform: scale(1.1, 1.1);
-	transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
 }
-.text-break{
-  word-break: break-all;
+
+/* Animated tabs */
+.tabbed-menu-nav {
+  list-style: none;
+  padding: auto;
+  position: relative;
+  margin-bottom: 10px;
 }
-.text-no-wrap{
-  white-space: nowrap;
+
+.tabbed-menu-nav-link {
+  color: var(--secondary-color);
+  font-family: var(--heading-font) !important;
+  font-weight: 700;
+  font-size: 1.75em;
+
+  border-bottom: 0px;
+  text-decoration: none;
+  color: var(--primary-color);
+  margin-right: 25px;
+  padding: 10px 15px;
+}
+
+.tabbed-menu-nav-link.is-active {
+  color: var(--secondary-color);
+}
+
+.tab {
+  display: none;
+  border-top: 1px solid var(--accent-color);
+}
+
+.tab.is-active {
+  display: block;
+}
+
+.tab-content {
+  padding: 20px;
+  position: relative;
+  animation: showTab 300ms ease-in-out both;
+}
+
+@keyframes showTab {
+  from {
+    opacity: 0;
+    top: 5px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.tabbed-menu-nav-marker {
+  min-height: 4px;
+  background-color: var(--accent-color);
+  position: absolute;
+  bottom: -10px;
+
+  transition: all 0.3s ease-out;
 }
