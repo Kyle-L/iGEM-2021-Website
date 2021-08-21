@@ -61,7 +61,7 @@ def build(build_path, src_path):
             html = _add_tooltips_for_terms(html, glossary)
 
             print(f'Setting link targets for {f}')
-            html = _process_page_links(html, whitelist=process_links_whitelist)
+            html = _auto_process_link_targets(html, whitelist=process_links_whitelist)
 
             print(f'Replacing local links with absolute for {f}')
             html = _prefix_relative_links(html)
@@ -137,14 +137,14 @@ def _prefix_relative_links(html, prefix="https://2021.igem.org/Team:MiamiU_OH"):
     return str(soup)
 
 
-def _process_page_links(html, open_external_links_in_new_tab=True, open_internal_links_in_new_tab=False, whitelist=[]):
+def _auto_process_link_targets(html, open_external_links_in_new_tab=True, open_internal_links_in_new_tab=False, whitelist=[]):
     """Takes all a tags and sets whether external links to open in a new tab and whether internal links to open in the same tab.
 
     Args:
         html (str): A single page's html as a string.
         open_external_links_in_new_tab (bool, optional): Determines whether external links open in a new tab. Defaults to True.
         open_internal_links_in_new_tab (bool, optional): Determines whether internal links open in a new tab. Defaults to False.
-
+        whitelist (str[], optional): The set of external links that will not have tooltip pop up. Defaults to [].
     Returns:
         str: The modified page html.
     """
