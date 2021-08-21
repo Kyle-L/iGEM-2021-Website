@@ -3346,10 +3346,13 @@ button:disabled,
 }
 
 .tabbed-menu-nav-link {
-  color: var(--secondary-color);
+  color: var(--accent-color);
   font-family: var(--heading-font) !important;
   font-weight: 700;
-  font-size: 1.75em;
+  font-size: 1.25em;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
 
   border-bottom: 0px;
   text-decoration: none;

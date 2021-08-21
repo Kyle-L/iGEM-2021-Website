@@ -69,7 +69,7 @@ function Tabs(options) {
 
 var m = new Tabs({
     el: ".tabbed-menu",
-    marker: true
+    marker: false
 });
 
 m.init();
