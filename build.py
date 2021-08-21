@@ -35,41 +35,42 @@ def build(build_path, src_path):
     )
     site.render()
 
-    # With the site built, performs quality of life modifications.
-    files = []
-    for r, d, f in os.walk(build_path):
-        for file in f:
-            if '.html' in file or '.css' in file:
-                files.append(os.path.join(r, file))
-
+    # Loads in a glossary and references to automatically add them to the site easily.
     glossary = _load_glossary(os.path.join(src_path, '.glossary.json'))
     references = _load_references(os.path.join(src_path, '.references.json'))
 
-    for f in files:
-        print(f'Processing {f}')
-        html = open(f).read()
-        page = iGEM_Page(html, glossary, references)
+    # With the site built, performs quality of life modifications.
+    for r, d, f in os.walk(build_path):
+        for rel_file in f:
+            if '.html' in rel_file or '.css' in rel_file:
+                # Gets the absolute file path to make file processing cleaner.
+                abs_file = os.path.join(r, rel_file)
 
-        if '.html' in f:
-            #print(f'Adding references for {f}')
-            refer_results = page.insert_references_citations()
-            page.insert_bibliography_from_citations(refer_results)
+                print(f'Processing {abs_file}')
+                html = open(abs_file).read()
+                page = iGEM_Page(html, glossary, references)
 
-            #print(f'Adding glossary terms for {f}')
-            page.add_tooltips_for_terms()
+                if '.html' in abs_file:
+                    #print(f'Adding references for {f}')
+                    refer_results = page.insert_references_citations()
+                    page.insert_bibliography_from_citations(refer_results)
 
-            #print(f'Setting link targets for {f}')
-            page.auto_set_link_targets(tooltip_whitelist=process_links_whitelist)
+                    #print(f'Adding glossary terms for {f}')
+                    page.add_tooltips_for_terms()
 
-            #print(f'Replacing local links with absolute for {f}')
-            page.prefix_relative_links()
+                    #print(f'Setting link targets for {f}')
+                    page.auto_set_link_targets(
+                        tooltip_whitelist=process_links_whitelist)
 
-        #print(f'Minimizing {f}')
-        page.minimize()
+                    #print(f'Replacing local links with absolute for {f}')
+                    page.prefix_relative_links()
 
-        textfile = open(f, 'w')
-        textfile.write(html)
-        textfile.close()
+                #print(f'Minimizing {f}')
+                page.minimize()
+
+                textfile = open(abs_file, 'w')
+                textfile.write(html)
+                textfile.close()
 
 
 def _page_context(template):
@@ -311,6 +312,7 @@ class iGEM_Page ():
                 div['id'] = 'references'
 
             bib.replace_with(div)
+
 
 if __name__ == '__main__':
     """
