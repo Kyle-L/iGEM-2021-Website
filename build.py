@@ -215,7 +215,7 @@ def _add_tooltips_for_terms(html, glossary):
                 'definition': [definition]
         }
     """
-    soup = BeautifulSoup(html, features="lxml")
+    soup = BeautifulSoup(html, 'html.parser')
 
     keys = "|".join(glossary.keys())
 
@@ -226,10 +226,11 @@ def _add_tooltips_for_terms(html, glossary):
             keys, re.IGNORECASE).findall(str(paragraph)))
         for key in found_keys:
             title = f'<i><b>{glossary[key.lower()]["name"]}</b></i> - {glossary[key.lower()]["definition"]}'
+            
             replaced_text = replaced_text.replace(
                 key, f'<span class="note tooltip" title="{title}">{key}</span>')
-        paragraph.replace_with(replaced_text)
-
+        paragraph.replace_with(BeautifulSoup(replaced_text, 'html.parser'))
+        
     return str(soup)
 
 
