@@ -122,7 +122,7 @@ The file `html_converter.py` has been supplied to help convert files for web use
 
 That can be run with the following command: 
 ```shell
-$ python converter.py <some .docx path> <some .html path>
+$ python converter.py <some .docx, .doc or .md path> <some .html path>
 ```
 
 
