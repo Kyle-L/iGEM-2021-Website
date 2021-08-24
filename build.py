@@ -215,7 +215,7 @@ def _add_tooltips_for_terms(html, glossary):
                 'definition': [definition]
         }
     """
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, features="lxml")
 
     keys = "|".join(glossary.keys())
 
@@ -229,7 +229,7 @@ def _add_tooltips_for_terms(html, glossary):
             
             replaced_text = replaced_text.replace(
                 key, f'<span class="note tooltip" title="{title}">{key}</span>')
-        paragraph.replace_with(BeautifulSoup(replaced_text, 'html.parser'))
+        paragraph.replace_with(BeautifulSoup(replaced_text, features="lxml"))
         
     return str(soup)
 
@@ -314,11 +314,17 @@ def _insert_bibliography_from_citations(html, references, page_reference_order):
         div = soup.new_tag('div')
         div['class'] = bib.get('class', [])
         for index in ordered_refs.keys():
-            p = soup.new_tag('p')
-            p.string = f'{index}. {references[ordered_refs[index]]["full"]} (<a href="{references[ordered_refs[index]]["doi_url"]}" target="#blank">External DOI Link</a>)'
-            div.append(p)
-            div['id'] = 'references'
+            a = soup.new_tag('a')
+            div.append(a)
 
+            a['href'] = references[ordered_refs[index]]["doi_url"]
+            a['target'] = '#blank'
+            a.string = 'External DOI Link'
+
+            p = soup.new_tag('p')
+            a.wrap(p)
+
+            div['id'] = 'references'
         bib.replace_with(div)
 
     return str(soup)
