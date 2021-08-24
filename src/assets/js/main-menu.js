@@ -44,12 +44,10 @@
   var s = e("#sidebar"),
     n = s.children(".inner");
   breakpoints.on("<=large", function () {
-    // For the time being these are disabled.
-    //s.addClass("inactive");
+    s.addClass("inactive");
   }),
     breakpoints.on(">large", function () {
-      // For the time being these are disabled.
-      //s.removeClass("inactive");
+      s.removeClass("inactive");
     }),
     "android" == browser.os &&
       "chrome" == browser.name &&
@@ -96,7 +94,7 @@
                 1 == n.data("locked")
                   ? t <= 0
                     ? n.data("locked", 0).css("position", "").css("top", "")
-                    : n.css("top", -1 * a)
+                    : n.css("top", "")
                   : t > 0 &&
                     n
                       .data("locked", 1)

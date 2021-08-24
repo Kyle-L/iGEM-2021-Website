@@ -26,8 +26,11 @@ html {
 #bodyContent h5 {
   margin-bottom: 0;
 }
-#bodyContent a[href^="https://"],.link-https
+#bodyContent a[href ^="https://"], .link-https
 {
+  padding-right: 0;
+}
+#bodyContent a[href ^="mailto:"], .link-mailto {
   padding-right: 0;
 }
 #globalWrapper {

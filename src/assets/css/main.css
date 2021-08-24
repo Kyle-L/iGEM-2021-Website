@@ -1,21 +1,19 @@
 @import url(fontawesome-all.min.css);
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url(); 
-  src: local("../webfonts/OpenSans-Regular.eot"),
-      url() format("embedded-opentype"),
-      url("../webfonts/OpenSans-Regular.woff") format("woff"),
-      url("../webfonts/OpenSans-Regular.ttf") format("truetype"); 
+  font-family: "Open Sans";
+  src: url();
+  src: local("../webfonts/OpenSans-Regular.eot"), url() format("embedded-opentype"),
+    url("../webfonts/OpenSans-Regular.woff") format("woff"), url("../webfonts/OpenSans-Regular.ttf") format("truetype");
 }
 
 :root {
-  --accent-color: #549E39;
-  --shade-color: #5B8A72;
+  --accent-color: #549e39;
+  --shade-color: #5b8a72;
   --highlight-color: #bae9a8;
 
   --heading-font: Helvetica, sans-serif;
-  --body-font: 'Open Sans', sans-serif;
+  --body-font: "Open Sans", sans-serif;
 
   --primary-color: #9fa3a6;
   --secondary-color: #3d4449;
@@ -234,7 +232,7 @@ textarea {
   input,
   select,
   textarea {
-    font-size: 11pt;
+    font-size: 12pt;
   }
 }
 @media screen and (max-width: 1280px) {
@@ -254,21 +252,38 @@ textarea {
   }
 }
 
-a {
+a,
+.link {
   -moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  -webkit-transition: color 0.2s ease-in-out,
-    border-bottom-color 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   border-bottom: dotted 1px;
   color: var(--accent-color);
   text-decoration: none;
+  cursor: pointer;
 }
-a:hover {
+a:hover,
+.link:hover {
+  text-decoration: none;
   border-bottom-color: var(--accent-color);
   color: var(--accent-color) !important;
 }
-a:hover strong {
+a:hover strong,
+.link:hover strong {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:active,
+.link:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited,
+.link:visited {
+  text-decoration: none;
   color: inherit;
 }
 
@@ -1793,6 +1808,24 @@ input[type="radio"] + label:before {
   font-family: "Font Awesome 5 Brands";
 }
 
+/* iFrame */
+.fluidMedia {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+.fluidMedia iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* Image */
 .image {
   border-radius: 0.375em;
@@ -1806,7 +1839,7 @@ input[type="radio"] + label:before {
 }
 .image.left,
 .image.right {
-  max-width: 40%;
+  max-width: 100%;
 }
 .image.left img,
 .image.right img {
@@ -1824,7 +1857,7 @@ input[type="radio"] + label:before {
 }
 .image.fit {
   display: block;
-  margin: 0 0 2em 0;
+  margin: 1em 0 1em 0;
   width: 100%;
 }
 .image.fit img {
@@ -1962,6 +1995,7 @@ ul.actions.fit.stacked {
 ul.icons {
   cursor: default;
   list-style: none;
+  margin: 0 0 0 0;
   padding-left: 0;
 }
 ul.icons li {
@@ -2161,7 +2195,7 @@ button,
   height: 3.5em;
   letter-spacing: 0.075em;
   line-height: 3.5em;
-  padding: 0 2.25em;
+  padding: 0 2.25em !important;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -2824,7 +2858,7 @@ button:disabled,
     overflow-x: hidden;
     overflow-y: auto;
     position: absolute;
-    top: 0;
+    /* top: 0; */
   }
   #sidebar > .inner:after {
     content: "";
@@ -2937,6 +2971,7 @@ button:disabled,
   -ms-flex-shrink: 1;
   flex-shrink: 1;
   width: 50%;
+  padding: 1em;
 }
 #banner .image {
   -moz-flex-grow: 0;
@@ -3115,4 +3150,267 @@ button:disabled,
   border-top: 0;
   margin-top: 0;
   padding-top: 0;
+}
+.fadeMe,
+.fadeMeInstantly {
+  opacity: 0;
+}
+.inline {
+  display: inline;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+.note {
+  color: var(--primary-color);
+  cursor: pointer;
+  border-bottom: 1px dotted var(--primary-color);
+}
+
+.tooltipster-base,
+.tooltipster-base:before,
+.tooltipster-base:after {
+  all: unset;
+}
+.tooltipster-default {
+  border-radius: 1px;
+  border: 1px solid #eee;
+
+  background: #fff;
+  color: #222;
+}
+
+/* Use this next selector to style things like font-size and line-height: */
+.tooltipster-default .tooltipster-content {
+  font: 16px/24px var(--body-font);
+
+  padding: 1em 1em 1em 1em;
+  overflow: hidden;
+  border-left: 5px solid var(--accent-color);
+}
+.tooltipster-default .tooltipster-arrow .tooltipster-arrow-border {
+  /* border-color: ... !important; */
+}
+/* If you're using the icon option, use this next selector to style them */
+.tooltipster-icon {
+  cursor: help;
+  margin-left: 4px;
+}
+.tooltipster-base {
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  z-index: 9999999;
+  pointer-events: none;
+  width: auto;
+  overflow: visible;
+}
+.tooltipster-base .tooltipster-content {
+  overflow: hidden;
+}
+.tooltipster-arrow {
+  display: block;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.tooltipster-arrow span,
+.tooltipster-arrow-border {
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.tooltipster-arrow-top span,
+.tooltipster-arrow-top-right span,
+.tooltipster-arrow-top-left span {
+  border-left: 8px solid transparent !important;
+  border-right: 8px solid transparent !important;
+  border-top: 8px solid;
+  bottom: -8px;
+}
+.tooltipster-arrow-top .tooltipster-arrow-border,
+.tooltipster-arrow-top-right .tooltipster-arrow-border,
+.tooltipster-arrow-top-left .tooltipster-arrow-border {
+  border-left: 9px solid transparent !important;
+  border-right: 9px solid transparent !important;
+  border-top: 9px solid;
+  bottom: -8px;
+}
+.tooltipster-arrow-bottom span,
+.tooltipster-arrow-bottom-right span,
+.tooltipster-arrow-bottom-left span {
+  border-left: 8px solid transparent !important;
+  border-right: 8px solid transparent !important;
+  border-bottom: 8px solid;
+  top: -8px;
+}
+.tooltipster-arrow-bottom .tooltipster-arrow-border,
+.tooltipster-arrow-bottom-right .tooltipster-arrow-border,
+.tooltipster-arrow-bottom-left .tooltipster-arrow-border {
+  border-left: 9px solid transparent !important;
+  border-right: 9px solid transparent !important;
+  border-bottom: 9px solid;
+  top: -8px;
+}
+.tooltipster-arrow-top span,
+.tooltipster-arrow-top .tooltipster-arrow-border,
+.tooltipster-arrow-bottom span,
+.tooltipster-arrow-bottom .tooltipster-arrow-border {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.tooltipster-arrow-top-left span,
+.tooltipster-arrow-bottom-left span {
+  left: 6px;
+}
+.tooltipster-arrow-top-left .tooltipster-arrow-border,
+.tooltipster-arrow-bottom-left .tooltipster-arrow-border {
+  left: 5px;
+}
+.tooltipster-arrow-top-right span,
+.tooltipster-arrow-bottom-right span {
+  right: 6px;
+}
+.tooltipster-arrow-top-right .tooltipster-arrow-border,
+.tooltipster-arrow-bottom-right .tooltipster-arrow-border {
+  right: 5px;
+}
+.tooltipster-arrow-left span,
+.tooltipster-arrow-left .tooltipster-arrow-border {
+  border-top: 8px solid transparent !important;
+  border-bottom: 8px solid transparent !important;
+  border-left: 8px solid;
+  top: 50%;
+  margin-top: -7px;
+  right: -8px;
+}
+.tooltipster-arrow-left .tooltipster-arrow-border {
+  border-top: 9px solid transparent !important;
+  border-bottom: 9px solid transparent !important;
+  border-left: 9px solid;
+  margin-top: -8px;
+}
+.tooltipster-arrow-right span,
+.tooltipster-arrow-right .tooltipster-arrow-border {
+  border-top: 8px solid transparent !important;
+  border-bottom: 8px solid transparent !important;
+  border-right: 8px solid;
+  top: 50%;
+  margin-top: -7px;
+  left: -8px;
+}
+.tooltipster-arrow-right .tooltipster-arrow-border {
+  border-top: 9px solid transparent !important;
+  border-bottom: 9px solid transparent !important;
+  border-right: 9px solid;
+  margin-top: -8px;
+}
+.tooltipster-grow {
+  -webkit-transform: scale(0, 0);
+  -moz-transform: scale(0, 0);
+  -o-transform: scale(0, 0);
+  -ms-transform: scale(0, 0);
+  transform: scale(0, 0);
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  -ms-transition-property: -ms-transform;
+  transition-property: transform;
+  -webkit-backface-visibility: hidden;
+}
+.tooltipster-grow-show {
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  -ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+/* CSS transition for when contenting is changing in a tooltip that is still open */
+.tooltipster-content-changing {
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+}
+
+/* Animated tabs */
+.tabbed-menu-nav {
+  list-style: none;
+  padding: auto;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.tabbed-menu-nav-link {
+  color: var(--accent-color);
+  font-family: var(--heading-font) !important;
+  font-weight: 700;
+  font-size: 1.25em;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+
+  border-bottom: 0px;
+  text-decoration: inherit;
+  color: var(--primary-color);
+  margin-right: 25px;
+  padding: 10px 15px;
+}
+
+.tabbed-menu-nav-link.is-active {
+  color: var(--secondary-color);
+  text-decoration: inherit;
+}
+
+.tab {
+  display: none;
+  border-top: 1px solid var(--accent-color);
+}
+
+.tab.is-active {
+  display: block;
+}
+
+.tab-content {
+  padding: 20px;
+  position: relative;
+  animation: showTab 300ms ease-in-out both;
+}
+
+@keyframes showTab {
+  from {
+    opacity: 0;
+    top: 5px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.tabbed-menu-nav-marker {
+  min-height: 4px;
+  background-color: var(--accent-color);
+  position: absolute;
+  bottom: -10px;
+
+  transition: all 0.3s ease-out;
 }

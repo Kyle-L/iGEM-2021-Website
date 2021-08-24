@@ -32,31 +32,31 @@ The website for [Miami University's](https://miamioh.edu/) Team Website for the 
 ## How to Download and Setup the Site
 
 1. Download the site.
-```
+```shell
 $ git clone git@github.com:Kyle-L/iGEM-2021-Website.git
 ```
 2. Install Pipenv using pip, install pip if you haven't already.
-```
+```shell
 $ pip install pipenv
 ```
 
 3. Setup a virtual environment with Pipenv.
-```
+```shell
 $ python -m venv env
 ```
 
 4. (on Windows) Start the virtual environment
-```
-$ ./env/Scritpts/activate
+```shell
+$ ./env/Scripts/activate
 ```
 
 4. (on Unix / Linux / MAC OS) Start the virtual environment
-```
+```shell
 $ source env/bin/activate
 ```
 
 5. Install the requirements
-```
+```shell
 $ pip install -r requirements.txt
 ```
 Now you are ready to start editing the site!
@@ -67,12 +67,12 @@ Now you are ready to start editing the site!
 To cut down on down on code and make the site more maintainable, the Python package `staticjinja` has been setup to use as a templating engine. What does this mean? In the directory `iGEM-2021-Website/site`, the template layout of all the pages is definined in `.base.html`, however, the body of each page is defined in `iGEM-2021-Website/src/pages`. When the site is built, those bodies are inserted into the `.base.html` template layout. So, how do we build the site?
 
 1. Navigate to the root directory
-```
+```shell
 $ cd iGEM-2021-Website/
 ```
 2. Call the build script.
-```
-$ python ./build.py 'temp\\build' 'site'
+```shell
+$ python build.py 'temp/build' 'src'
 ```
 
 You can now view the full website under `iGEM-2021-Website/temp/build`.
@@ -99,7 +99,7 @@ If you need to sync the site with you local wiki, you can use the following inst
 *Note: This repository is setup to make use of GitHub Actions to sync the site on a push to the master branch. Thus, these instructions should only be used if needed.*
 
 1. Check into the cloned repository's root.
-```
+```shell
 $ cd iGEM-2021-Website/
 ```
 
@@ -109,9 +109,20 @@ IGEM_USERNAME=Your_username
 IGEM_PASSWORD=Your_password
 ```
 
-3. Run `python main.py`
+1. Run `python main.py`
+```shell
+$ python wikisync.py 'temp\\build' 'temp\\sync' 'MiamiU_OH'
 ```
-# python ./wikisync 'temp\\build' 'temp\\sync' 'MiamiU_OH'
+
+
+<a name="helpful"/></a>
+## Helpful
+### HTML Converter
+The file `html_converter.py` has been supplied to help convert files for web use by converting a `.docx`, `.doc`, or `.md` file to `.html`.
+
+That can be run with the following command: 
+```shell
+$ python converter.py <some .docx, .doc or .md path> <some .html path>
 ```
 
 
