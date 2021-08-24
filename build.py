@@ -51,20 +51,22 @@ def build(build_path, src_path):
         html = open(f).read()
 
         if '.html' in f:
-            print(f'Adding references for {f}')
-            html, refer_results = _insert_references_citations(
-                html, references)
-            html = _insert_bibliography_from_citations(
-                html, references, refer_results)
+            page = iGEM_Page(html, glossary, references)
 
-            print(f'Adding glossary terms for {f}')
-            html = _add_tooltips_for_terms(html, glossary)
+            print(f'Adding references for {f}')
+            refer_results = page._insert_references_citations(references)
+            page._insert_bibliography_from_citations(references, refer_results)
 
             print(f'Setting link targets for {f}')
-            html = _process_page_links(html, whitelist=process_links_whitelist)
+            page._process_page_links(whitelist=process_links_whitelist)
+
+            print(f'Adding glossary terms for {f}')
+            page._add_tooltips_for_terms(glossary)
 
             print(f'Replacing local links with absolute for {f}')
-            html = _prefix_relative_links(html)
+            page._prefix_relative_links()
+
+            html = str(page)
 
         print(f'Minimizing {f}')
         html = _minimize(html)
@@ -111,67 +113,6 @@ def _minimize(html):
     return htmlmin.minify(html, remove_empty_space=False, remove_comments=True)
 
 
-def _prefix_relative_links(html, prefix="https://2021.igem.org/Team:MiamiU_OH"):
-    """
-    Replaces all local or relative links with absolute links. This is done because of the iGEM
-    team format does not support relative links.
-
-    Args:
-        html (str): A single page's html as a string.
-        prefix (str, optional): The absolute url used to prefix onto relative links. Defaults to "https://2021.igem.org/Team:MiamiU_OH".
-
-    Returns:
-        str: The modified page html.
-    """
-
-    # A regex pattern to recognize if a link starts for / or is empty.
-    # This is used to determine if it is local or not.
-    pattern = "(^\/.*$)"
-
-    soup = BeautifulSoup(html, features="lxml")
-
-    for a in soup.findAll('a'):
-        if a.has_attr('href') and (re.match(pattern, a['href']) or not a['href']):
-            a['href'] = a['href'].replace(a['href'], prefix + a['href'])
-
-    return str(soup)
-
-
-def _process_page_links(html, open_external_links_in_new_tab=True, open_internal_links_in_new_tab=False, whitelist=[]):
-    """Takes all a tags and sets whether external links to open in a new tab and whether internal links to open in the same tab.
-
-    Args:
-        html (str): A single page's html as a string.
-        open_external_links_in_new_tab (bool, optional): Determines whether external links open in a new tab. Defaults to True.
-        open_internal_links_in_new_tab (bool, optional): Determines whether internal links open in a new tab. Defaults to False.
-
-    Returns:
-        str: The modified page html.
-    """
-
-    # A regex pattern to recognize external links.
-    pattern = "^(?:[a-z]+:)?\/\/"
-
-    soup = BeautifulSoup(html, features="lxml")
-
-    for a in soup.findAll('a'):
-        if a.has_attr('href') and re.match(pattern, a['href']):
-            if not any(url in a['href'] for url in whitelist):
-                span = soup.new_tag('span')
-                span['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
-                span['class'] = ['note', 'tooltip',
-                                 'link'] + a.get('class', [])
-                span.contents = a.contents
-
-                a.replace_with(span)
-            else:
-                a['target'] = "#blank"
-        else:
-            del a['target']
-
-    return str(soup)
-
-
 def _load_glossary(file_path):
     """Given a filepath loads a glossary and de-normalizes it to speed up build time.
 
@@ -203,37 +144,6 @@ def _load_glossary(file_path):
     return dict
 
 
-def _add_tooltips_for_terms(html, glossary):
-    """Adds tooltips to a particular page adding a tooltip span to words from the glossary.
-
-    Args:
-        html (str): A single page's html as a string.
-        glossary (dict): The glossary in the form:
-        {
-            '[lower case term name]': {
-                'name': '[the name with capitalization]',
-                'definition': [definition]
-        }
-    """
-    soup = BeautifulSoup(html, features="lxml")
-
-    keys = "|".join(glossary.keys())
-
-    paragraphs = soup.find_all(text=re.compile(keys, re.IGNORECASE))
-    for paragraph in paragraphs:
-        replaced_text = paragraph
-        found_keys = set(re.compile(
-            keys, re.IGNORECASE).findall(str(paragraph)))
-        for key in found_keys:
-            title = f'<i><b>{glossary[key.lower()]["name"]}</b></i> - {glossary[key.lower()]["definition"]}'
-            
-            replaced_text = replaced_text.replace(
-                key, f'<span class="note tooltip" title="{title}">{key}</span>')
-        paragraph.replace_with(BeautifulSoup(replaced_text, features="lxml"))
-        
-    return str(soup)
-
-
 def _load_references(file_path):
     """Given a filepath loads all references and converts it to a dict.
 
@@ -262,72 +172,153 @@ def _load_references(file_path):
     return dict
 
 
-def _insert_references_citations(html, references):
-    soup = BeautifulSoup(html, features="lxml")
+class iGEM_Page():
 
-    page_reference_order = {}
+    def __init__(self, html, glossary, references):
+        self.glossary = glossary
+        self.references = references
+        self.soup = BeautifulSoup(html, features="html.parser")
 
-    for ref in soup.findAll('reference'):
-        if ref['identifier'] not in references:
-            continue
+    def _prefix_relative_links(self, prefix="https://2021.igem.org/Team:MiamiU_OH"):
+        """
+        Replaces all local or relative links with absolute links. This is done because of the iGEM
+        team format does not support relative links.
 
-        ref_id = ref['identifier']
+        Args:
+            html (str): A single page's html as a string.
+            prefix (str, optional): The absolute url used to prefix onto relative links. Defaults to "https://2021.igem.org/Team:MiamiU_OH".
 
-        # Here, we use the page_reference_order to determine what references come in what order.
-        # This aims to mock number based reference systems.
-        if ref_id not in page_reference_order:
-            page_reference_order[ref_id] = page_reference_order.get(
-                ref_id, len(page_reference_order) + 1)
+        Returns:
+            str: The modified page html.
+        """
 
-        span = soup.new_tag('span')
+        # A regex pattern to recognize if a link starts for / or is empty.
+        # This is used to determine if it is local or not.
+        pattern = "(^\/.*$)"
 
-        # The entire tooltip content is built here.
-        # Adds the doi if one is present, if not, we don't want to include since the users can't go there.
-        span['title'] = f'<b>{references[ref_id]["title"]}</b> '
-        if 'doi_url' in references[ref_id] and references[ref_id]["doi_url"]:
-            span['title'] += f'(<a href="{references[ref_id]["doi_url"]}" target="#blank">External DOI Link</a>)'
+        for a in self.soup.findAll('a'):
+            if a.has_attr('href') and (re.match(pattern, a['href']) or not a['href']):
+                a['href'] = a['href'].replace(a['href'], prefix + a['href'])
 
-        # A break to create contrast from the rest of the tooltip content.
-        span['title'] += f'<br />'
+    def _process_page_links(self, open_external_links_in_new_tab=True, open_internal_links_in_new_tab=False, whitelist=[]):
+        """Takes all a tags and sets whether external links to open in a new tab and whether internal links to open in the same tab.
 
-        # Adds the full reference, we want to include text breaking since some links words can't wrap on mobile.
-        span['title'] += f'<span><i>{references[ref_id]["full"]}</i></span>'
+        Args:
+            html (str): A single page's html as a string.
+            open_external_links_in_new_tab (bool, optional): Determines whether external links open in a new tab. Defaults to True.
+            open_internal_links_in_new_tab (bool, optional): Determines whether internal links open in a new tab. Defaults to False.
 
-        # Add space and jump to reference if a user wants to see all other references this is a nice shortcut.
-        span['title'] += f'<br /><br />'
-        span['title'] += f'(<a href="#references">Jump to all references</a>)'
+        Returns:
+            str: The modified page html.
+        """
 
-        # Add all other classes so that it does not break intentional styling.
-        span['class'] = ['note', 'tooltip', 'link'] + ref.get('class', [])
-        span.string = f'({page_reference_order[ref["identifier"]]})'
+        # A regex pattern to recognize external links.
+        pattern = "^(?:[a-z]+:)?\/\/"
 
-        ref.replace_with(span)
+        for a in self.soup.findAll('a'):
+            if a.has_attr('href') and re.match(pattern, a['href']):
+                if not any(url in a['href'] for url in whitelist):
+                    span = self.soup.new_tag('span')
+                    span['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
+                    span['class'] = ['note', 'tooltip',
+                                     'link'] + a.get('class', [])
+                    span.contents = a.contents
+                    a.replace_with(span)
+                else:
+                    a['target'] = "#blank"
+            else:
+                del a['target']
 
-    return str(soup), page_reference_order
 
+    def _add_tooltips_for_terms(self, glossary):
+        """Adds tooltips to a particular page adding a tooltip span to words from the glossary.
 
-def _insert_bibliography_from_citations(html, references, page_reference_order):
-    soup = BeautifulSoup(html, features="lxml")
+        Args:
+            html (str): A single page's html as a string.
+            glossary (dict): The glossary in the form:
+            {
+                '[lower case term name]': {
+                    'name': '[the name with capitalization]',
+                    'definition': [definition]
+            }
+        """
+        keys = "|".join(glossary.keys())
 
-    ordered_refs = dict((v, k) for k, v in page_reference_order.items())
-    for bib in soup.findAll('bibliography'):
-        div = soup.new_tag('div')
-        div['class'] = bib.get('class', [])
-        for index in ordered_refs.keys():
-            a = soup.new_tag('a')
-            div.append(a)
+        paragraphs = self.soup.find_all(text=re.compile(keys, re.IGNORECASE))
+        for paragraph in paragraphs:
+            replaced_text = paragraph
+            found_keys = set(re.compile(
+                keys, re.IGNORECASE).findall(str(paragraph)))
+            for key in found_keys:
+                title = f'<i><b>{glossary[key.lower()]["name"]}</b></i> - {glossary[key.lower()]["definition"]}'
 
-            a['href'] = references[ordered_refs[index]]["doi_url"]
-            a['target'] = '#blank'
-            a.string = 'External DOI Link'
+                replaced_text = replaced_text.replace(
+                    key, f'<span class="note tooltip" title="{title}">{key}</span>')
+            paragraph.replace_with(BeautifulSoup(
+                replaced_text, features="html.parser"))
 
-            p = soup.new_tag('p')
-            a.wrap(p)
+    def _insert_references_citations(self, references):
+        page_reference_order = {}
 
-            div['id'] = 'references'
-        bib.replace_with(div)
+        for ref in self.soup.findAll('reference'):
+            if ref['identifier'] not in references:
+                continue
 
-    return str(soup)
+            ref_id = ref['identifier']
+
+            # Here, we use the page_reference_order to determine what references come in what order.
+            # This aims to mock number based reference systems.
+            if ref_id not in page_reference_order:
+                page_reference_order[ref_id] = page_reference_order.get(
+                    ref_id, len(page_reference_order) + 1)
+
+            span = self.soup.new_tag('span')
+
+            # The entire tooltip content is built here.
+            # Adds the doi if one is present, if not, we don't want to include since the users can't go there.
+            span['title'] = f'<b>{references[ref_id]["title"]}</b> '
+            if 'doi_url' in references[ref_id] and references[ref_id]["doi_url"]:
+                span['title'] += f'(<a href="{references[ref_id]["doi_url"]}" target="#blank">External DOI Link</a>)'
+
+            # A break to create contrast from the rest of the tooltip content.
+            span['title'] += f'<br />'
+
+            # Adds the full reference, we want to include text breaking since some links words can't wrap on mobile.
+            span['title'] += f'<span><i>{references[ref_id]["full"]}</i></span>'
+
+            # Add space and jump to reference if a user wants to see all other references this is a nice shortcut.
+            span['title'] += f'<br /><br />'
+            span['title'] += f'(<a href="#references">Jump to all references</a>)'
+
+            # Add all other classes so that it does not break intentional styling.
+            span['class'] = ['note', 'tooltip', 'link'] + ref.get('class', [])
+            span.string = f'({page_reference_order[ref["identifier"]]})'
+
+            ref.replace_with(span)
+
+        return page_reference_order
+
+    def _insert_bibliography_from_citations(self, references, page_reference_order):
+        ordered_refs = dict((v, k) for k, v in page_reference_order.items())
+        for bib in self.soup.findAll('bibliography'):
+            div = self.soup.new_tag('div')
+            div['class'] = bib.get('class', [])
+            for index in ordered_refs.keys():
+                a = self.soup.new_tag('a')
+                div.append(a)
+
+                a['href'] = references[ordered_refs[index]]["doi_url"]
+                a['target'] = '#blank'
+                a.string = 'External DOI Link'
+
+                p = self.soup.new_tag('p')
+                a.wrap(p)
+
+                div['id'] = 'references'
+            bib.replace_with(div)
+
+    def __str__(self):
+        return str(self.soup)
 
 
 if __name__ == '__main__':
