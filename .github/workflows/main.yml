@@ -28,6 +28,13 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      - name: Cache Temporary Sync Build
+        id: cache-sync
+        uses: actions/cache@v2
+        with:
+          path: temp/sync
+          key: sync-${{ hashFiles('upload_map.yml') }}
+
       - name: Build Wiki
         run: python build.py 'temp\\build' 'src'
         
