@@ -28,13 +28,6 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Cache Temporary Sync Build
-        id: cache-sync
-        uses: actions/cache@v2
-        with:
-          path: temp/sync
-          key: sync-${{ hashFiles('upload_map.yml') }}
-
       - name: Build Wiki
         run: python build.py 'temp\\build' 'src'
         
@@ -42,5 +35,5 @@ jobs:
         env:
             IGEM_USERNAME: ${{secrets.IGEM_USERNAME}}
             IGEM_PASSWORD: ${{secrets.IGEM_PASSWORD}}
-        run: python wikisync.py 'temp\\build' 'temp\\sync' 'MiamiU_OH'
+        run: python wikisync.py 'temp\\build' 'temp\\sync' '${{secrets.IGEM_TEAM_NAME}}'
           
