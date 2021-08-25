@@ -220,15 +220,13 @@ class iGEM_Page():
                 if not any(url in a['href'] for url in whitelist):
                     span = self.soup.new_tag('span')
                     span['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
-                    span['class'] = ['note', 'tooltip',
-                                     'link'] + a.get('class', [])
+                    span['class'] = ['tooltip', 'link'] + a.get('class', [])
                     span.contents = a.contents
                     a.replace_with(span)
                 else:
                     a['target'] = "#blank"
             else:
                 del a['target']
-
 
     def _add_tooltips_for_terms(self, glossary):
         """Adds tooltips to a particular page adding a tooltip span to words from the glossary.
@@ -257,7 +255,6 @@ class iGEM_Page():
             paragraph.replace_with(BeautifulSoup(
                 replaced_text, features="html.parser"))
 
-
     def _insert_references_citations(self, references):
         page_reference_order = {}
 
@@ -279,7 +276,8 @@ class iGEM_Page():
             # Adds the doi if one is present, if not, we don't want to include since the users can't go there.
             span['title'] = f'<b>{references[ref_id]["title"]}</b> '
             if 'doi_url' in references[ref_id] and references[ref_id]["doi_url"]:
-                span['title'] += f'(<a href="{references[ref_id]["doi_url"]}" target="#blank">External DOI Link</a>)'
+                span[
+                    'title'] += f'<a href="{references[ref_id]["doi_url"]}" target="#blank">(External DOI Link)</a>'
 
             # A break to create contrast from the rest of the tooltip content.
             span['title'] += f'<br />'
@@ -289,16 +287,15 @@ class iGEM_Page():
 
             # Add space and jump to reference if a user wants to see all other references this is a nice shortcut.
             span['title'] += f'<br /><br />'
-            span['title'] += f'(<a href="#references">Jump to all references</a>)'
+            span['title'] += f'<a href="#references">(Jump to all references)</a>'
 
             # Add all other classes so that it does not break intentional styling.
-            span['class'] = ['note', 'tooltip', 'link'] + ref.get('class', [])
+            span['class'] = ['note', 'tooltip'] + ref.get('class', [])
             span.string = f'({page_reference_order[ref["identifier"]]})'
 
             ref.replace_with(span)
 
         return page_reference_order
-
 
     def _insert_bibliography_from_citations(self, references, page_reference_order):
         ordered_refs = dict((v, k) for k, v in page_reference_order.items())
@@ -312,9 +309,9 @@ class iGEM_Page():
 
                 a['href'] = references[ordered_refs[index]]["doi_url"]
                 a['target'] = '#blank'
-                a.string = 'External DOI Link'
+                a.string = '(External DOI Link)'
 
-                p.string = references[ordered_refs[index]]["full"]
+                p.string = f'{index} {references[ordered_refs[index]]["full"]} '
 
                 p.append(a)
 
