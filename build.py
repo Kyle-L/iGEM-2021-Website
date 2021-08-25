@@ -54,14 +54,14 @@ def build(build_path, src_path):
             page = iGEM_Page(html, glossary, references)
 
             print(f'Adding references for {f}')
-            refer_results = page._insert_references_citations(references)
-            page._insert_bibliography_from_citations(references, refer_results)
+            refer_results = page.insert_references_citations(references)
+            page.insert_bibliography_from_citations(references, refer_results)
 
             print(f'Setting link targets for {f}')
-            page._process_page_links(whitelist=process_links_whitelist)
+            page.set_page_link_targets_automatically(whitelist=process_links_whitelist)
 
             print(f'Adding glossary terms for {f}')
-            page._add_tooltips_for_terms(glossary)
+            page.add_tooltips_for_terms(glossary)
 
             print(f'Replacing local links with absolute for {f}')
             page._prefix_relative_links()
@@ -101,16 +101,16 @@ def _page_render(site, template, **kwargs):
         **kwargs).dump(str(out), encoding="utf-8")
 
 
-def _minimize(html):
-    """Minimizes the html for a page to save memory.
+def _minimize(content):
+    """Minimizes html, css, and js to save memory.
 
     Args:
-        html (str): A single page's html as a string.
+        content (str): An .html, .css, or .js file as a string.
 
     Returns:
         str: The modified page html.
     """
-    return htmlmin.minify(html, remove_empty_space=False, remove_comments=True)
+    return htmlmin.minify(content, remove_empty_space=False, remove_comments=True)
 
 
 def _load_glossary(file_path):
@@ -179,6 +179,7 @@ class iGEM_Page():
         self.references = references
         self.soup = BeautifulSoup(html)
 
+
     def _prefix_relative_links(self, prefix="https://2021.igem.org/Team:MiamiU_OH"):
         """
         Replaces all local or relative links with absolute links. This is done because of the iGEM
@@ -200,7 +201,8 @@ class iGEM_Page():
             if a.has_attr('href') and (re.match(pattern, a['href']) or not a['href']):
                 a['href'] = a['href'].replace(a['href'], prefix + a['href'])
 
-    def _process_page_links(self, open_external_links_in_new_tab=True, open_internal_links_in_new_tab=False, whitelist=[]):
+
+    def set_page_link_targets_automatically(self, open_external_links_in_new_tab=True, open_internal_links_in_new_tab=False, whitelist=[]):
         """Takes all a tags and sets whether external links to open in a new tab and whether internal links to open in the same tab.
 
         Args:
@@ -227,7 +229,7 @@ class iGEM_Page():
                     a['target'] = "#blank"
 
                     
-    def _add_tooltips_for_terms(self, glossary):
+    def add_tooltips_for_terms(self, glossary):
         """Adds tooltips to a particular page adding a tooltip span to words from the glossary.
 
         Args:
@@ -254,7 +256,8 @@ class iGEM_Page():
             paragraph.replace_with(BeautifulSoup(
                 replaced_text, features="html.parser"))
 
-    def _insert_references_citations(self, references):
+
+    def insert_references_citations(self, references):
         page_reference_order = {}
 
         for ref in self.soup.findAll('reference'):
@@ -296,7 +299,8 @@ class iGEM_Page():
 
         return page_reference_order
 
-    def _insert_bibliography_from_citations(self, references, page_reference_order):
+
+    def insert_bibliography_from_citations(self, references, page_reference_order):
         ordered_refs = dict((v, k) for k, v in page_reference_order.items())
         for bib in self.soup.findAll('bibliography'):
             div = self.soup.new_tag('div')
@@ -316,6 +320,7 @@ class iGEM_Page():
 
                 div['id'] = 'references'
             bib.replace_with(div)
+
 
     def __str__(self):
         return str(self.soup)
