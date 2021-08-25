@@ -177,7 +177,7 @@ class iGEM_Page():
     def __init__(self, html, glossary, references):
         self.glossary = glossary
         self.references = references
-        self.soup = BeautifulSoup(html, features="html.parser")
+        self.soup = BeautifulSoup(html)
 
     def _prefix_relative_links(self, prefix="https://2021.igem.org/Team:MiamiU_OH"):
         """
@@ -221,13 +221,12 @@ class iGEM_Page():
                     span = self.soup.new_tag('span')
                     span['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
                     span['class'] = ['tooltip', 'link'] + a.get('class', [])
-                    span.contents = a.contents
+                    span.string = a.string
                     a.replace_with(span)
                 else:
                     a['target'] = "#blank"
-            else:
-                del a['target']
 
+                    
     def _add_tooltips_for_terms(self, glossary):
         """Adds tooltips to a particular page adding a tooltip span to words from the glossary.
 
