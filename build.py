@@ -257,6 +257,7 @@ class iGEM_Page():
             paragraph.replace_with(BeautifulSoup(
                 replaced_text, features="html.parser"))
 
+
     def _insert_references_citations(self, references):
         page_reference_order = {}
 
@@ -298,6 +299,7 @@ class iGEM_Page():
 
         return page_reference_order
 
+
     def _insert_bibliography_from_citations(self, references, page_reference_order):
         ordered_refs = dict((v, k) for k, v in page_reference_order.items())
         for bib in self.soup.findAll('bibliography'):
@@ -305,14 +307,16 @@ class iGEM_Page():
             div['class'] = bib.get('class', [])
             for index in ordered_refs.keys():
                 a = self.soup.new_tag('a')
-                div.append(a)
+                p = self.soup.new_tag('p')
+                div.append(p)
 
                 a['href'] = references[ordered_refs[index]]["doi_url"]
                 a['target'] = '#blank'
                 a.string = 'External DOI Link'
 
-                p = self.soup.new_tag('p')
-                a.wrap(p)
+                p.string = references[ordered_refs[index]]["full"]
+
+                p.append(a)
 
                 div['id'] = 'references'
             bib.replace_with(div)
