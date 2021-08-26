@@ -263,11 +263,14 @@ a, .link {
   text-decoration: none;
   cursor: pointer;
 }
-a:hover, .link {
+a:hover, .link:hover {
   border-bottom-color: var(--accent-color);
   color: var(--accent-color) !important;
 }
-a:hover strong, .link strong {
+a:visited, .link:visited {
+  color: var(--accent-color);
+}
+a:hover strong, .link:hover strong {
   color: inherit;
 }
 
