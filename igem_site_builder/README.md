@@ -4,6 +4,7 @@ The iGEM Site Builder is a utility package to aid in the process of building a s
 - [convert-file](#convert-file)
 - [template-site](#template-site)
 - [post-process](#post-process)
+- [build-site](#build-site)
 - [sync-site](#sync-site)
 
 ## convert-file
@@ -81,6 +82,31 @@ positional arguments:
 optional arguments:
   -h, --help    show this help message and exit
 ```
+
+## build-site
+Build site combines the commands [template-site](#template-site) and [post-process](#post-process) for convenience.
+*Note: template-site and post-process are still separate commands in case the site needs to be built without post-processing.*
+
+The file directory structure is expected to be as follows:
+```
+_src
+├── _assets
+│   ├── css
+│   ├── images  
+│   ├── js
+│   ├── webfonts 
+│
+├── _pages
+│   ├── index.html.
+│   ├── other_page.html
+│   ├── ...
+│
+├── .template.html
+├── .external-link-whitelist.json
+├── .glossary.json
+└── .references.json
+```
+With this structure, all files in the 'pages' directory are inserted into the template file '.template.html'. This is done to cutdown on the amount of re-used HTML. Additionally, everything in the 'assets' directory is simply copied to the output directory.
 
 ## sync-site
 Syncs a source site with the a team's iGEM Wiki on the iGEM MediaWiki server.

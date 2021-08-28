@@ -50,6 +50,16 @@ if __name__ == '__main__':
                         type=str,
                         help='The path with the following process files: ".glossary.json", ".references.json", and ".external-link-whitelist.json"')
 
+    # Build (Template & Post Processing Combined)
+    template_parser = subparsers.add_parser("build-site", help='template-site help', description='Builds a source site. This combines both templating and post processing')
+    template_parser.add_argument('Build',
+                        metavar='output-path',
+                        type=str,
+                        help='The path where the templated site will be output to.')
+    template_parser.add_argument('Source',
+                        metavar='source-path',
+                        type=str,
+                        help='The path where the source site and its templates are.')
 
     # Sync
     sync_parser = subparsers.add_parser("sync-site", help='sync-site help', description='Syncs a source site with the a team\'s iGEM Wiki on the iGEM MediaWiki server.')
@@ -65,7 +75,7 @@ if __name__ == '__main__':
                         metavar='team-name',
                         type=str,
                         help='The iGEM team name.')
-    sync_parser.set_defaults(which='sync-site')
+
 
     args = parser.parse_args()
 
@@ -83,6 +93,12 @@ if __name__ == '__main__':
         build_path = args.Site
         process_path = args.Process
         apply_post_processes(build_path, process_path)
+
+    elif args.command == 'build-site':
+        build_path = args.Build
+        source_path = args.Source
+        template(build_path, source_path)
+        apply_post_processes(build_path, source_path)
 
     elif args.command == 'sync-site':
         build_path = args.Site

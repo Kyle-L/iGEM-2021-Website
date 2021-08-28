@@ -28,10 +28,10 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Templates Wiki
+      - name: Template Site
         run: python igem_site_builder template-site 'temp\\build' 'src'
 
-      - name: Apply Post Process to the Wiki
+      - name: Apply Post Processing
         run: python igem_site_builder post-process 'temp\\build' 'src'
         
       - name: Deploy to iGEM MediaWiki Server
