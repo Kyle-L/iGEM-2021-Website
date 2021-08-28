@@ -87,6 +87,18 @@ optional arguments:
 Build site combines the commands [template-site](#template-site) and [post-process](#post-process) for convenience.
 *Note: template-site and post-process are still separate commands in case the site needs to be built without post-processing.*
 
+**Usage:**
+usage:  build-site [-h] output-path source-path
+
+Builds a source site. This combines both templating and post processing
+
+positional arguments:
+  output-path  The path where the templated site will be output to.
+  source-path  The path where the source site and its templates are.
+
+optional arguments:
+  -h, --help   show this help message and exit
+
 The file directory structure is expected to be as follows:
 ```
 _src
