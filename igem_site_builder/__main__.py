@@ -17,7 +17,7 @@ if __name__ == '__main__':
     subparsers = parser.add_subparsers(help='commands', dest='command')
 
     # Convert
-    convert_parser = subparsers.add_parser("convert-file", help='convert-file help', description='Converts a file from .doc, .docx, or .md to .html.')
+    convert_parser = subparsers.add_parser("convert-file", help='Converts a file from .doc, .docx, or .md to .html.', description='Converts a file from .doc, .docx, or .md to .html.')
     convert_parser.add_argument('InFile',
                         metavar='input-file',
                         type=str,
@@ -28,7 +28,7 @@ if __name__ == '__main__':
                         help='The output path to the file that is being converted from .doc, .docx, or .md to .html')
 
     # Template
-    template_parser = subparsers.add_parser("template-site", help='template-site help', description='Templates a source site.')
+    template_parser = subparsers.add_parser("template-site", help='Templates a source site.', description='Templates a source site.')
     template_parser.add_argument('Build',
                         metavar='output-path',
                         type=str,
@@ -39,7 +39,7 @@ if __name__ == '__main__':
                         help='The path where the source site and its templates are.')
 
     # Post Process
-    post_parser = subparsers.add_parser("post-process", help='post-process help', description='Applies post processing to a site.')
+    post_parser = subparsers.add_parser("post-process", help='Applies post processing to a site.', description='Applies post processing to a site.')
     post_parser.add_argument('Site',
                         metavar='site-path',
                         type=str,
@@ -51,7 +51,7 @@ if __name__ == '__main__':
                         help='The path with the following process files: ".glossary.json", ".references.json", and ".external-link-whitelist.json"')
 
     # Build (Template & Post Processing Combined)
-    template_parser = subparsers.add_parser("build-site", help='template-site help', description='Builds a source site. This combines both templating and post processing')
+    template_parser = subparsers.add_parser("build-site", help='Builds a source site. This combines both templating and post processing', description='Builds a source site. This combines both templating and post processing')
     template_parser.add_argument('Build',
                         metavar='output-path',
                         type=str,
@@ -62,7 +62,7 @@ if __name__ == '__main__':
                         help='The path where the source site and its templates are.')
 
     # Sync
-    sync_parser = subparsers.add_parser("sync-site", help='sync-site help', description='Syncs a source site with the a team\'s iGEM Wiki on the iGEM MediaWiki server.')
+    sync_parser = subparsers.add_parser("sync-site", help='Syncs a source site with the a team\'s iGEM Wiki on the iGEM MediaWiki server.', description='Syncs a source site with the a team\'s iGEM Wiki on the iGEM MediaWiki server.')
     sync_parser.add_argument('Site',
                         metavar='site-directory',
                         type=str,
