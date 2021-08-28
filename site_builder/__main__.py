@@ -85,7 +85,7 @@ if __name__ == '__main__':
         apply_post_processes(build_path, process_path)
 
     elif args.command == 'sync-site':
-        build_path = args.Build
+        build_path = args.Site
         temp_sync_path = args.Temp
         team_name = args.Team
         sync(build_path, temp_sync_path, team_name)
