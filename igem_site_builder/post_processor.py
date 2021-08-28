@@ -117,7 +117,7 @@ def _load_references(file_path):
         {
             '[reference id]': {
                 'full': '[The full reference]',
-                'doi_url': '[The url of the doi i.e., https://10....]',
+                'url' (optional): '[The url of the doi i.e., https://10....]',
                 'title': '[The title of the reference, used for display]'
         }
 
@@ -126,7 +126,7 @@ def _load_references(file_path):
         {
             '[reference id]': {
                 'full': '[The full reference]',
-                'doi_url': '[The url of the doi i.e., https://10....]',
+                'url' (optional): '[The url of the doi i.e., https://10....]',
                 'title': '[The title of the reference, used for display]'
         }
     """
@@ -309,11 +309,14 @@ class iGEM_HTML(iGEM_File):
                 p = self._soup.new_tag('p')
                 div.append(p)
 
-                a['href'] = references[ordered_refs[index]]["doi_url"]
-                a['target'] = '#blank'
-                a.string = '(External DOI Link)'
+                reference = references[ordered_refs[index]]
 
-                p.string = f'{index} {references[ordered_refs[index]]["full"]} '
+                if 'url' in reference and reference["url"]:
+                    a['href'] = reference["url"]
+                    a['target'] = '#blank'
+                    a.string = f'({reference["url"]})'
+
+                p.string = f'{index} {reference["full"]} '
 
                 p.append(a)
 
