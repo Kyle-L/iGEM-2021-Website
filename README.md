@@ -1,23 +1,28 @@
 ![Logo animation](https://github.com/Kyle-L/iGEM-2021-Website/blob/main/src/assets/images/logo.gif?raw=true)
-# Miami University's iGEM 2021 Team Website
+# Miami University's iGEM 2021 Team Website <!-- omit in toc -->
 ![](https://img.shields.io/badge/-Website%20Under%20construction-orange)
 ![](https://img.shields.io/github/repo-size/Kyle-L/iGEM-2021-Website)
 
-## Table of Contents
+## Table of Contents <!-- omit in toc -->
 - [Overview](#overview)
-- [Requirements](#reqs)
-- [How to Download](#download)
-- [How to Sync with Wiki (Remote)](#wikisync-setup)
-- [How to Sync with Wiki (Local)](#wikisync-local-setup)
-- [How to Edit Pages (Remote / Local)](#edit)
-- [iGEM Wiki General Information](#igem)
-
+- [Requirements](#requirements)
+- [How to Download and Setup the Site](#how-to-download-and-setup-the-site)
+- [How to Build the Site (Local)](#how-to-build-the-site-local)
+- [How to Edit Pages (Remote / Local)](#how-to-edit-pages-remote--local)
+- [How Sync Site with the Team Wiki (Remote)](#how-sync-site-with-the-team-wiki-remote)
+- [How to Sync Site with the Team Wiki (Local)](#how-to-sync-site-with-the-team-wiki-local)
+- [Helpful](#helpful)
+  - [HTML Converter](#html-converter)
+- [iGEM Wiki General Information](#igem-wiki-general-information)
+  - [Deliverables / Requirements](#deliverables--requirements)
+  - [Default Wiki CSS](#default-wiki-css)
+  - [Making Manual Changes](#making-manual-changes)
 
 <a name="overview"/></a>
 ## Overview
 The website for [Miami University's](https://miamioh.edu/) Team Website for the [iGEM 2021 Competition](https://2021.igem.org/Main_Page).
 
-*Important note: There are a lot of strange and slopply looking design decisions that were made (For instance, a CSS file to undo CSS / A lack of templating). These decisions were made to take into account how iGEM's MediaWiki server handles file uploads.*
+*Important note: There are a lot of strange and sloppily looking design decisions that were made (For instance, a CSS file to undo CSS). These decisions were made to take into account how iGEM's MediaWiki server handles file uploads.*
 
 
 <a name="reqs"/></a>
@@ -64,15 +69,19 @@ Now you are ready to start editing the site!
 
 <a name="build"/></a>
 ## How to Build the Site (Local)
-To cut down on down on code and make the site more maintainable, the Python package `staticjinja` has been setup to use as a templating engine. What does this mean? In the directory `iGEM-2021-Website/site`, the template layout of all the pages is definined in `.base.html`, however, the body of each page is defined in `iGEM-2021-Website/src/pages`. When the site is built, those bodies are inserted into the `.base.html` template layout. So, how do we build the site?
+To cut down on down on code and make the site more maintainable, the Python package `iGEM Site Builder` has been setup to use as a utility package to aid in the process of building a site for the iGEM competition. What does this mean? In the directory `iGEM-2021-Website/src`, a template layout for all the pages is definined in `iGEM-2021-Website/src/.template.html`. When built, the body of each page which is defined in `iGEM-2021-Website/src/pages` is inserted into this template. So, how do we build the site?
 
 1. Navigate to the root directory
 ```shell
 $ cd iGEM-2021-Website/
 ```
-2. Call the build script.
+2. Call the `template-site` command. This will take the body of each page in `iGEM-2021-Website/src/pages` and insert it into the template at `iGEM-2021-Website/src/.template.html`
 ```shell
-$ python build.py 'temp/build' 'src'
+$ python site_builder template-site 'temp\\build' 'src'
+```
+3. Call the `post-process` command. Post processing applies some nice quality of life changes to the templated site. To see more on what those specific changes are, checkout section on post-process in documentation for [iGEM Site Builder](igem_site_builder/README.md).
+```shell
+$ python site_builder post-process 'temp\\build' 'src'
 ```
 
 You can now view the full website under `iGEM-2021-Website/temp/build`.
@@ -84,17 +93,20 @@ To edit pages on the wiki, navigate to [`iGEM-2021-Website/src/pages`](/src/page
 ```html
 <p>This is some placeholder text!</p>
 ```
-When the site is built, that placeholder text will be placed into the layout defined in `.base.html`.
+When the site is built, that placeholder text will be placed into the layout defined in `.template.html`.
 
 
 <a name="wikisync-setup"/></a>
-## How Sync Site with Team Wiki (Remote)
-This repository is setup to make use of GitHub Actions to sync the site on a push to the master branch.
-On any push to the master branch, GitHub Actions will run the workflow in `.github/workflows/main.yaml` and sync the repository with the iGEM MediaWiki server.
+## How Sync Site with the Team Wiki (Remote)
+This repository is setup to make use of GitHub Actions and [iGEM Site Builder](igem_site_builder/) to sync the site on a push to the `master` and `dev` branch.
+On any push to the master or `dev` branch, GitHub Actions will run the workflow in `.github/workflows/main.yaml` and sync the repository with the iGEM MediaWiki server.
+
+Specifically, the entire CI/CD pipeline looks like the following:
+![A visualization of the entire CI/CD pipeline](docs/pipeline.svg)
 
 
 <a name="wikisync-local-setup"/></a>
-## How to Sync Site with Team Wiki (Local)
+## How to Sync Site with the Team Wiki (Local)
 If you need to sync the site with you local wiki, you can use the following instructions.
 *Note: This repository is setup to make use of GitHub Actions to sync the site on a push to the master branch. Thus, these instructions should only be used if needed.*
 
@@ -109,20 +121,20 @@ IGEM_USERNAME=Your_username
 IGEM_PASSWORD=Your_password
 ```
 
-1. Run `python main.py`
+3. Run `python site_builder sync-site`. *Note: please ensure that you have properly built the site.*
 ```shell
-$ python wikisync.py 'temp\\build' 'temp\\sync' 'MiamiU_OH'
+$ python site_builder sync-site 'temp\\build' 'temp\\sync' 'MiamiU_OH'
 ```
 
 
 <a name="helpful"/></a>
 ## Helpful
 ### HTML Converter
-The file `html_converter.py` has been supplied to help convert files for web use by converting a `.docx`, `.doc`, or `.md` file to `.html`.
+The utility `python site-builder convert-file` has been supplied to help convert files for web use by converting a `.docx`, `.doc`, or `.md` file to `.html`.
 
 That can be run with the following command: 
 ```shell
-$ python converter.py <some .docx, .doc or .md path> <some .html path>
+$ python site-builder convert-file <some .docx, .doc or .md path> <some .html path>
 ```
 
 

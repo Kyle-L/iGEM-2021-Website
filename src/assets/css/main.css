@@ -252,10 +252,10 @@ textarea {
   }
 }
 
-a,
-.link {
+a, .link {
   -moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  -webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out,
+    border-bottom-color 0.2s ease-in-out;
   -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   border-bottom: dotted 1px;
@@ -263,27 +263,14 @@ a,
   text-decoration: none;
   cursor: pointer;
 }
-a:hover,
-.link:hover {
-  text-decoration: none;
+a:hover, .link:hover {
   border-bottom-color: var(--accent-color);
   color: var(--accent-color) !important;
 }
-a:hover strong,
-.link:hover strong {
-  text-decoration: none;
-  color: inherit;
+a:visited, .link:visited {
+  color: var(--accent-color);
 }
-
-a:active,
-.link:active {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:visited,
-.link:visited {
-  text-decoration: none;
+a:hover strong, .link:hover strong {
   color: inherit;
 }
 
