@@ -29,14 +29,14 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Templates Wiki
-        run: python site_builder template-site 'temp\\build' 'src'
+        run: python igem_site_builder template-site 'temp\\build' 'src'
 
       - name: Apply Post Process to the Wiki
-        run: python site_builder post-process 'temp\\build' 'src'
+        run: python igem_site_builder post-process 'temp\\build' 'src'
         
       - name: Deploy to iGEM MediaWiki Server
         env:
             IGEM_USERNAME: ${{secrets.IGEM_USERNAME}}
             IGEM_PASSWORD: ${{secrets.IGEM_PASSWORD}}
-        run: python site_builder sync-site 'temp\\build' 'temp\\sync' '${{secrets.IGEM_TEAM_NAME}}'
+        run: python igem_site_builder sync-site 'temp\\build' 'temp\\sync' '${{secrets.IGEM_TEAM_NAME}}'
           
