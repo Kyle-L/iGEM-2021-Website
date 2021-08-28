@@ -28,12 +28,15 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Build Wiki
-        run: python build.py 'temp\\build' 'src'
+      - name: Templates Wiki
+        run: python site_builder template-site 'temp\\build' 'src'
+
+      - name: Apply Post Process to the Wiki
+        run: python site_builder post-process 'temp\\build' 'src'
         
       - name: Deploy to iGEM MediaWiki Server
         env:
             IGEM_USERNAME: ${{secrets.IGEM_USERNAME}}
             IGEM_PASSWORD: ${{secrets.IGEM_PASSWORD}}
-        run: python wikisync.py 'temp\\build' 'temp\\sync' '${{secrets.IGEM_TEAM_NAME}}'
+        run: python site_builder sync-site 'temp\\build' 'temp\\sync' '${{secrets.IGEM_TEAM_NAME}}'
           

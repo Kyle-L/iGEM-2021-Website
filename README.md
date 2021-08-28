@@ -70,9 +70,13 @@ To cut down on down on code and make the site more maintainable, the Python pack
 ```shell
 $ cd iGEM-2021-Website/
 ```
-2. Call the build script.
+2. Call the template command.
 ```shell
-$ python build.py 'temp/build' 'src'
+$ python site_builder template-site 'temp\\build' 'src'
+```
+3. Call the post process command.
+```shell
+$ python site_builder post-process 'temp\\build' 'src'
 ```
 
 You can now view the full website under `iGEM-2021-Website/temp/build`.
@@ -84,7 +88,7 @@ To edit pages on the wiki, navigate to [`iGEM-2021-Website/src/pages`](/src/page
 ```html
 <p>This is some placeholder text!</p>
 ```
-When the site is built, that placeholder text will be placed into the layout defined in `.base.html`.
+When the site is built, that placeholder text will be placed into the layout defined in `.template.html`.
 
 
 <a name="wikisync-setup"/></a>
@@ -111,7 +115,7 @@ IGEM_PASSWORD=Your_password
 
 1. Run `python main.py`
 ```shell
-$ python wikisync.py 'temp\\build' 'temp\\sync' 'MiamiU_OH'
+$ python site_builder sync-site 'temp\\build' 'temp\\sync' 'MiamiU_OH'
 ```
 
 
@@ -122,7 +126,7 @@ The file `html_converter.py` has been supplied to help convert files for web use
 
 That can be run with the following command: 
 ```shell
-$ python converter.py <some .docx, .doc or .md path> <some .html path>
+$ python site-builder convert-file <some .docx, .doc or .md path> <some .html path>
 ```
 
 
