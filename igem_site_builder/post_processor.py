@@ -221,11 +221,9 @@ class iGEM_HTML(iGEM_File):
         for a in self._soup.findAll('a'):
             if a.has_attr('href') and re.match(pattern, a['href']):
                 if not any(url in a['href'] for url in whitelist):
-                    span = self._soup.new_tag('span')
-                    span['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
-                    span['class'] = ['tooltip', 'link'] + a.get('class', [])
-                    span.contents = a.contents
-                    a.replace_with(span)
+                    a.name = 'span'
+                    a['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
+                    a['class'] = ['tooltip', 'link'] + a.get('class', [])
                 else:
                     a['target'] = "#blank"
 
