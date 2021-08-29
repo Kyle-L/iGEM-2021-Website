@@ -8,20 +8,19 @@ The iGEM Site Builder is a utility package to aid in the process of building a s
 - [sync-site](#sync-site)
 
 ## convert-file
-Converts a file from .doc, .docx, or .md to .html.
+Converts a file from .doc, .docx, or .md to .html and outputs that as a string..
 
 **Usage:**
 ```
-usage:  convert-file [-h] input-file output-file
+usage:  convert-file [-h] input-file
 
 Converts a file from .doc, .docx, or .md to .html.
 
 positional arguments:
-  input-file   The input path to the file that is being converted from .doc, .docx, or .md to .html
-  output-file  The output path to the file that is being converted from .doc, .docx, or .md to .html
+  input-file  The input path to the file that is being converted from .doc, .docx, or .md to .html and outputs that as a string.
 
 optional arguments:
-  -h, --help   show this help message and exit
+  -h, --help  show this help message and exit
 ```
 
 ## template-site

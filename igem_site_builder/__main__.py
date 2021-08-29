@@ -5,14 +5,6 @@ from wikisync import sync
 from html_converter import auto_convert_to_html
 
 if __name__ == '__main__':
-    """
-    If run as a main file (i.e., `python ./build.py`), templates a source site.
-
-    positional arguments:
-        build-path    The output path of the templated site.
-        src-path      The source path site that is being templated.
-
-    """
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(help='commands', dest='command')
 
@@ -21,11 +13,7 @@ if __name__ == '__main__':
     convert_parser.add_argument('InFile',
                         metavar='input-file',
                         type=str,
-                        help='The input path to the file that is being converted from .doc, .docx, or .md to .html')
-    convert_parser.add_argument('OutFile',
-                        metavar='output-file',
-                        type=str,
-                        help='The output path to the file that is being converted from .doc, .docx, or .md to .html')
+                        help='The input path to the file that is being converted from .doc, .docx, or .md to .html and outputs that as a string.')
 
     # Template
     template_parser = subparsers.add_parser("template-site", help='Templates a source site.', description='Templates a source site.')
@@ -81,8 +69,7 @@ if __name__ == '__main__':
 
     if args.command == 'convert-file':
         input_filename = args.InFile
-        output_filename = args.OutFile
-        auto_convert_to_html(input_filename, output_filename)
+        print(auto_convert_to_html(input_filename))
 
     if args.command == 'template-site':
         build_path = args.Build
