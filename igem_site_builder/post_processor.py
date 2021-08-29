@@ -314,7 +314,7 @@ class iGEM_HTML(iGEM_File):
                     a['target'] = '#blank'
                     a.string = f'({reference["url"]})'
 
-                p.string = f'{index} {reference["full"]} '
+                p.string = f'{index}. {reference["full"]} '
 
                 p.append(a)
 
