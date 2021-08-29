@@ -34,7 +34,8 @@ def template(build_path, src_path):
             outpath=os.path.abspath(build_path),
             contexts=[(".*\.html", _page_context)],
             rules=[(".*\.html", _page_render)],
-            staticpaths=["assets"]
+            staticpaths=["assets"],
+            encoding='utf8'
         )
         site.render()
     except:

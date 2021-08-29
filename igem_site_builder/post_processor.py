@@ -97,7 +97,7 @@ def _load_glossary(file_path):
     """
     dict = {}
 
-    with open(file_path) as json_file:
+    with open(file_path, encoding='utf-8') as json_file:
         data = json.load(json_file)
 
         for key in data.keys():
@@ -131,7 +131,7 @@ def _load_references(file_path):
         }
     """
     dict = {}
-    with open(file_path) as json_file:
+    with open(file_path, encoding='utf-8') as json_file:
         dict = json.loads(json_file.read())
 
     return dict
@@ -176,7 +176,7 @@ class iGEM_CSS(iGEM_File):
 class iGEM_HTML(iGEM_File):
     def __init__(self, path):
         super().__init__(path)
-        self._soup = BeautifulSoup(open(self._path).read(), features='lxml')
+        self._soup = BeautifulSoup(open(self._path, encoding='utf-8').read(), features='lxml')
 
     def minimize(self):
         self._soup = BeautifulSoup(htmlmin.minify(
@@ -322,6 +322,6 @@ class iGEM_HTML(iGEM_File):
             bib.replace_with(div)
 
     def save(self):
-        textfile = open(self._path, 'w')
+        textfile = open(self._path, 'w', encoding='utf-8')
         textfile.write(str(self._soup))
         textfile.close()
