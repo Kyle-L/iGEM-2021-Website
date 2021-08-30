@@ -11,7 +11,7 @@ def convert_docx_to_html(input_filename):
 
     with open(input_filename, "rb") as docx_file:
         result = mammoth.convert_to_html(docx_file)
-        return result.value.encode('utf-8')
+        return result.value
 
 
 def convert_and_save_docx_to_html(input_filename, output_filename):
@@ -60,8 +60,7 @@ def convert_docx_to_md(input_filename):
 
     with open(input_filename, "rb") as docx_file:
         result = mammoth.convert_to_markdown(docx_file)
-        html = result.value
-        return html
+        return result.value
 
 def convert_and_save_docx_to_md(input_filename, output_filename):
     """Converts a file from .doc or .docx to .md and writes it to 'utf-8' file.
@@ -71,7 +70,7 @@ def convert_and_save_docx_to_md(input_filename, output_filename):
         output_filename (str): The file path of the outputted .md file.
     """    
 
-    html = convert_docx_to_html(input_filename)
+    html = convert_docx_to_md(input_filename)
     with open(output_filename, "w", encoding="utf-8") as f:
         f.write(html)
 

@@ -2,15 +2,14 @@ import argparse
 from templater import template
 from post_processor import apply_post_processes
 from wikisync import sync
-from html_converter import auto_convert
-import sys
+from converter import auto_convert
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(help='commands', dest='command')
 
     # Convert
-    convert_parser = subparsers.add_parser("convert-file", help='Converts a file from .doc, .docx, or .md to .html or .md.', description='Converts a file from .doc, .docx, or .md to .html to .md.')
+    convert_parser = subparsers.add_parser("convert", help='Converts a file from .doc, .docx, or .md to .html or .md.', description='Converts a file from .doc, .docx, or .md to .html to .md.')
     convert_parser.add_argument('InFile',
                         metavar='input-file',
                         type=str,
@@ -21,7 +20,7 @@ if __name__ == '__main__':
                         help='The output path to the file that is being converted from .doc, .docx, or .md to .html or .md and outputs that as a string.')
 
     # Template
-    template_parser = subparsers.add_parser("template-site", help='Templates a source site.', description='Templates a source site.')
+    template_parser = subparsers.add_parser("template", help='Templates a source site.', description='Templates a source site.')
     template_parser.add_argument('Build',
                         metavar='output-path',
                         type=str,
@@ -44,7 +43,7 @@ if __name__ == '__main__':
                         help='The path with the following process files: ".glossary.json", ".references.json", and ".external-link-whitelist.json"')
 
     # Build (Template & Post Processing Combined)
-    template_parser = subparsers.add_parser("build-site", help='Builds a source site. This combines both templating and post processing', description='Builds a source site. This combines both templating and post processing')
+    template_parser = subparsers.add_parser("build", help='Builds a source site. This combines both templating and post processing', description='Builds a source site. This combines both templating and post processing')
     template_parser.add_argument('Build',
                         metavar='output-path',
                         type=str,
@@ -55,7 +54,7 @@ if __name__ == '__main__':
                         help='The path where the source site and its templates are.')
 
     # Sync
-    sync_parser = subparsers.add_parser("sync-site", help='Syncs a source site with the a team\'s iGEM Wiki on the iGEM MediaWiki server.', description='Syncs a source site with the a team\'s iGEM Wiki on the iGEM MediaWiki server.')
+    sync_parser = subparsers.add_parser("sync", help='Syncs a source site with the a team\'s iGEM Wiki on the iGEM MediaWiki server.', description='Syncs a source site with the a team\'s iGEM Wiki on the iGEM MediaWiki server.')
     sync_parser.add_argument('Site',
                         metavar='site-directory',
                         type=str,
@@ -72,12 +71,12 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    if args.command == 'convert-file':
+    if args.command == 'convert':
         input_filename = args.InFile
         output_filename = args.OutFile
         auto_convert(input_filename, output_filename)
 
-    if args.command == 'template-site':
+    if args.command == 'template':
         build_path = args.Build
         source_path = args.Source
         template(build_path, source_path)
@@ -87,13 +86,13 @@ if __name__ == '__main__':
         process_path = args.Process
         apply_post_processes(build_path, process_path)
 
-    elif args.command == 'build-site':
+    elif args.command == 'build':
         build_path = args.Build
         source_path = args.Source
         template(build_path, source_path)
         apply_post_processes(build_path, source_path)
 
-    elif args.command == 'sync-site':
+    elif args.command == 'sync':
         build_path = args.Site
         temp_sync_path = args.Temp
         team_name = args.Team

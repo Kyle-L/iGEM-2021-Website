@@ -1,34 +1,35 @@
 # iGEM Site Builder
 The iGEM Site Builder is a utility package to aid in the process of building a site for the iGEM competition.
 
-- [convert-file](#convert-file)
-- [template-site](#template-site)
+- [convert](#convert)
+- [template](#template)
 - [post-process](#post-process)
 - [build-site](#build-site)
 - [sync-site](#sync-site)
 
-## convert-file
+## convert
 Converts a file from .doc, .docx, or .md to .html and outputs that as a string..
 
 **Usage:**
 ```
-usage:  convert-file [-h] input-file
+usage:  convert [-h] input-file output-file
 
-Converts a file from .doc, .docx, or .md to .html.
+Converts a file from .doc, .docx, or .md to .html to .md.
 
 positional arguments:
-  input-file  The input path to the file that is being converted from .doc, .docx, or .md to .html and outputs that as a string.
+  input-file   The input path to the file that is being converted from .doc, .docx, or .md to .html and outputs that as a string.
+  output-file  The output path to the file that is being converted from .doc, .docx, or .md to .html or .md and outputs that as a string.
 
 optional arguments:
-  -h, --help  show this help message and exit
+  -h, --help   show this help message and exit
 ```
 
-## template-site
+## template
 Here, using a Python package called [staticjinja](https://github.com/staticjinja/staticjinja).
 
 **Usage:**
 ```
-usage:  template-site [-h] output-path source-path
+usage:  template [-h] output-path source-path
 
 Templates a source site.
 
@@ -87,7 +88,7 @@ Build site combines the commands [template-site](#template-site) and [post-proce
 *Note: template-site and post-process are still separate commands in case the site needs to be built without post-processing.*
 
 **Usage:**
-usage:  build-site [-h] output-path source-path
+usage:  build [-h] output-path source-path
 
 Builds a source site. This combines both templating and post processing
 
@@ -97,8 +98,6 @@ positional arguments:
 
 optional arguments:
   -h, --help   show this help message and exit
-
-The file directory structure is expected to be as follows:
 ```
 _src
 ├── _assets
@@ -124,7 +123,7 @@ Syncs a source site with the a team's iGEM Wiki on the iGEM MediaWiki server.
 
 **Usage:**
 ```
-usage:  sync-site [-h] site-directory temp-directory team-name
+usage:  sync [-h] site-directory temp-directory team-name
 
 Syncs a source site with the a team's iGEM Wiki on the iGEM MediaWiki server.
 

@@ -2,7 +2,7 @@ import argparse
 import os
 from pathlib import Path
 from staticjinja import Site
-from html_converter import convert_md_to_html, convert_docx_to_html
+from converter import convert_md_to_html, convert_docx_to_html
 
 class console_colors:
     HEADER = '\033[95m'
