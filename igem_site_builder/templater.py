@@ -27,19 +27,19 @@ def template(build_path, src_path):
 
     print(console_colors.HEADER + f'Templating site.' + console_colors.OKBLUE)
 
-    # try:
-    # Builds the site with staticjinja.
-    site = Site.make_site(
-        searchpath=os.path.abspath(src_path),
-        outpath=os.path.abspath(build_path),
-        contexts=[(".*\.html", _html_context), (".*\.md", _md_context), (".*\.docx", _docx_context)],
-        rules=[(".*\.html", _render), (".*\.md", _render), (".*\.docx", _render)],
-        staticpaths=["assets"],
-        encoding='utf-8'
-    )
-    site.render()
-    # except:
-    #     print(console_colors.WARNING + f'Something went wrong templating the site!!!' + console_colors.ENDC)
+    try:
+        # Builds the site with staticjinja.
+        site = Site.make_site(
+            searchpath=os.path.abspath(src_path),
+            outpath=os.path.abspath(build_path),
+            contexts=[(".*\.html", _html_context), (".*\.md", _md_context), (".*\.docx", _docx_context)],
+            rules=[(".*\.html", _render), (".*\.md", _render), (".*\.docx", _render)],
+            staticpaths=["assets"],
+            encoding='utf-8'
+        )
+        site.render()
+    except:
+        print(console_colors.WARNING + f'Something went wrong templating the site!!!' + console_colors.ENDC)
 
     print(console_colors.OKGREEN + f'Templating done!' + console_colors.ENDC)
 
