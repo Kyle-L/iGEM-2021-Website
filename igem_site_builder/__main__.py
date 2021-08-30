@@ -2,18 +2,23 @@ import argparse
 from templater import template
 from post_processor import apply_post_processes
 from wikisync import sync
-from html_converter import auto_convert_to_html
+from html_converter import auto_convert
+import sys
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(help='commands', dest='command')
 
     # Convert
-    convert_parser = subparsers.add_parser("convert-file", help='Converts a file from .doc, .docx, or .md to .html.', description='Converts a file from .doc, .docx, or .md to .html.')
+    convert_parser = subparsers.add_parser("convert-file", help='Converts a file from .doc, .docx, or .md to .html or .md.', description='Converts a file from .doc, .docx, or .md to .html to .md.')
     convert_parser.add_argument('InFile',
                         metavar='input-file',
                         type=str,
                         help='The input path to the file that is being converted from .doc, .docx, or .md to .html and outputs that as a string.')
+    convert_parser.add_argument('OutFile',
+                        metavar='output-file',
+                        type=str,
+                        help='The output path to the file that is being converted from .doc, .docx, or .md to .html or .md and outputs that as a string.')
 
     # Template
     template_parser = subparsers.add_parser("template-site", help='Templates a source site.', description='Templates a source site.')
@@ -69,7 +74,8 @@ if __name__ == '__main__':
 
     if args.command == 'convert-file':
         input_filename = args.InFile
-        print(auto_convert_to_html(input_filename))
+        output_filename = args.OutFile
+        auto_convert(input_filename, output_filename)
 
     if args.command == 'template-site':
         build_path = args.Build
