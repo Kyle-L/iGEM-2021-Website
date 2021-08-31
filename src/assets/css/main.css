@@ -240,7 +240,7 @@ textarea {
   input,
   select,
   textarea {
-    font-size: 10pt;
+    font-size: 12pt;
   }
 }
 @media screen and (max-width: 360px) {
@@ -248,7 +248,7 @@ textarea {
   input,
   select,
   textarea {
-    font-size: 9pt;
+    font-size: 12pt;
   }
 }
 
