@@ -45,40 +45,40 @@ def apply_post_processes(build_path, process_path):
     for root, directories, files in os.walk(build_path):
         for file in files:
             process_file = None
-            # try:
-            if '.css' in file:
-                print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
-                process_file = iGEM_CSS(os.path.join(root, file))
+            try:
+                if '.css' in file:
+                    print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
+                    process_file = iGEM_CSS(os.path.join(root, file))
 
-                print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
-                process_file.minimize()
+                    print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
+                    process_file.minimize()
 
-                print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
-                process_file.save()
+                    print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
+                    process_file.save()
 
-            if '.html' in file:
-                print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
-                process_file = iGEM_HTML(os.path.join(root, file))
+                if '.html' in file:
+                    print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
+                    process_file = iGEM_HTML(os.path.join(root, file))
 
-                print(console_colors.OKBLUE + f'Adding references...' + console_colors.ENDC)
-                process_file.insert_references(references)
+                    print(console_colors.OKBLUE + f'Adding references...' + console_colors.ENDC)
+                    process_file.insert_references(references)
 
-                print(console_colors.OKBLUE + f'Setting link targets...' + console_colors.ENDC)
-                process_file.set_page_link_targets_automatically(whitelist=process_links_whitelist)
+                    print(console_colors.OKBLUE + f'Setting link targets...' + console_colors.ENDC)
+                    process_file.set_page_link_targets_automatically(whitelist=process_links_whitelist)
 
-                print(console_colors.OKBLUE + f'Adding glossary terms...' + console_colors.ENDC)
-                process_file.add_tooltips_for_terms(glossary)
+                    print(console_colors.OKBLUE + f'Adding glossary terms...' + console_colors.ENDC)
+                    process_file.add_tooltips_for_terms(glossary)
 
-                print(console_colors.OKBLUE + f'Replacing local links with absolute...' + console_colors.ENDC)
-                process_file.prefix_relative_links()
+                    print(console_colors.OKBLUE + f'Replacing local links with absolute...' + console_colors.ENDC)
+                    process_file.prefix_relative_links()
 
-                print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
-                process_file.minimize()
+                    print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
+                    process_file.minimize()
 
-                print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
-                process_file.save()
-            # except:
-            #     print(console_colors.WARNING + f'Something went wrong processing {file}' + console_colors.ENDC)
+                    print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
+                    process_file.save()
+            except:
+                print(console_colors.WARNING + f'Something went wrong processing {file}' + console_colors.ENDC)
 
 
 def _load_glossary(file_path):
