@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $('*').each( function(i){
+    $('div').each( function(i){
         $(this).css('opacity', '0');
     });
 
@@ -8,7 +8,7 @@ $(document).ready(function() {
         $(this).animate({'opacity':'1'},500);
     });
 
-    $('*').each( function(i){
+    $('div').each( function(i){
         var bottom_of_object = $(this).position().top + ($(this).outerHeight())/8;
         var bottom_of_window = $(window).scrollTop() + $(window).height();
         if( bottom_of_window > bottom_of_object ){
