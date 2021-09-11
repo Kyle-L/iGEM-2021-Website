@@ -29,7 +29,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Template Site
-        run: python igem_site_builder template-site 'temp\\build' 'src'
+        run: python igem_site_builder template 'temp\\build' 'src'
 
       - name: Apply Post Processing
         run: python igem_site_builder post-process 'temp\\build' 'src'
@@ -38,5 +38,5 @@ jobs:
         env:
             IGEM_USERNAME: ${{secrets.IGEM_USERNAME}}
             IGEM_PASSWORD: ${{secrets.IGEM_PASSWORD}}
-        run: python igem_site_builder sync-site 'temp\\build' 'temp\\sync' '${{secrets.IGEM_TEAM_NAME}}'
+        run: python igem_site_builder sync 'temp\\build' 'temp\\sync' '${{secrets.IGEM_TEAM_NAME}}'
           

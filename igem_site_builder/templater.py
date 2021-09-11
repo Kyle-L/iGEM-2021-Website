@@ -2,7 +2,7 @@ import argparse
 import os
 from pathlib import Path
 from staticjinja import Site
-
+from converter import convert_md_to_html
 
 class console_colors:
     HEADER = '\033[95m'
@@ -32,9 +32,10 @@ def template(build_path, src_path):
         site = Site.make_site(
             searchpath=os.path.abspath(src_path),
             outpath=os.path.abspath(build_path),
-            contexts=[(".*\.html", _page_context)],
-            rules=[(".*\.html", _page_render)],
-            staticpaths=["assets"]
+            contexts=[(".*\.html", _html_context), (".*\.md", _md_context)],
+            rules=[(".*\.html", _render), (".*\.md", _render), (".*\.docx", _render)],
+            staticpaths=["assets"],
+            encoding='utf-8'
         )
         site.render()
     except:
@@ -43,7 +44,7 @@ def template(build_path, src_path):
     print(console_colors.OKGREEN + f'Templating done!' + console_colors.ENDC)
 
 
-def _page_context(template):
+def _html_context(template):
     """Reads the content of a page and places it into the body context.
 
     Args:
@@ -52,16 +53,29 @@ def _page_context(template):
     Returns:
         str: The templated html page.
     """
-    page_content = Path(template.filename).read_text()
+    page_content = open(template.filename, encoding="utf-8").read()
     return {"body": page_content}
 
 
-def _page_render(site, template, **kwargs):
+def _md_context(template):
+    """Reads the content of a page and places it into the body context.
+
+    Args:
+        template (str): The file path of the template file.
+
+    Returns:
+        str: The templated html page.
+    """
+    page_content = f'{convert_md_to_html(template.filename)}'
+    return {"body": page_content}
+
+
+def _render(site, template, **kwargs):
     """i.e. site/pages/Team.html > temp/Team.html
 
     Args:
         site (any): The staticjinja site object.
         template (str): The file path of the template file.
     """
-    out = os.path.join(site.outpath, os.path.basename(template.name))
+    out = os.path.join(site.outpath, Path(template.name).with_suffix('.html').name)
     site.get_template('.template.html').stream(**kwargs).dump(str(out), encoding="utf-8")

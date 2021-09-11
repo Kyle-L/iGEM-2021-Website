@@ -4,8 +4,8 @@ import htmlmin
 import json
 import os
 import re
+from pathlib import Path, PurePath
 from abc import ABC, abstractmethod
-
 
 class console_colors:
     HEADER = '\033[95m'
@@ -17,7 +17,7 @@ class console_colors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
-
+    
 
 def apply_post_processes(build_path, process_path):
     """
@@ -32,50 +32,53 @@ def apply_post_processes(build_path, process_path):
         build_path (str): The output directory of the built wiki.
         src (str): The source wiki that is being built.
     """
-    process_links_whitelist = json.load(open(os.path.join(process_path, '.external-link-whitelist.json')))
-    glossary = _load_glossary(os.path.join(process_path, '.glossary.json'))
-    references = _load_references(os.path.join(process_path, '.references.json'))
+    process_links_whitelist = []
+    references = glossary = {}
+    try:
+        process_links_whitelist = json.load(open(PurePath(process_path, '.external-link-whitelist.json'), encoding='utf-8'))
+        references = json.load(open(PurePath(process_path, '.references.json'), encoding='utf-8'))
+        glossary = _load_glossary(PurePath(process_path, '.glossary.json'))
+    except:
+        print(console_colors.WARNING + f'Something went wrong loading source files.' + console_colors.ENDC)
 
     # With the site built, performs quality of life modifications.
-    for r, d, f in os.walk(build_path):
-        for file in f:
-
+    for root, directories, files in os.walk(build_path):
+        for file in files:
             process_file = None
-            # try:
-            if '.css' in file:
-                print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
-                process_file = iGEM_CSS(os.path.join(r, file))
+            try:
+                if '.css' in file:
+                    print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
+                    process_file = iGEM_CSS(os.path.join(root, file))
 
-                print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
-                process_file.minimize()
+                    print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
+                    process_file.minimize()
 
-                print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
-                process_file.save()
+                    print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
+                    process_file.save()
 
-            if '.html' in file:
-                print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
-                process_file = iGEM_HTML(os.path.join(r, file))
+                if '.html' in file:
+                    print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
+                    process_file = iGEM_HTML(os.path.join(root, file))
 
-                print(console_colors.OKBLUE + f'Adding references...' + console_colors.ENDC)
-                process_file.insert_references(references)
+                    print(console_colors.OKBLUE + f'Adding references...' + console_colors.ENDC)
+                    process_file.insert_references(references)
 
-                print(console_colors.OKBLUE + f'Setting link targets...' + console_colors.ENDC)
-                process_file.set_page_link_targets_automatically(whitelist=process_links_whitelist)
+                    print(console_colors.OKBLUE + f'Setting link targets...' + console_colors.ENDC)
+                    process_file.set_page_link_targets_automatically(whitelist=process_links_whitelist)
 
-                print(console_colors.OKBLUE + f'Adding glossary terms...' + console_colors.ENDC)
-                process_file.add_tooltips_for_terms(glossary)
+                    print(console_colors.OKBLUE + f'Adding glossary terms...' + console_colors.ENDC)
+                    process_file.add_tooltips_for_terms(glossary)
 
-                print(console_colors.OKBLUE + f'Replacing local links with absolute...' + console_colors.ENDC)
-                process_file.prefix_relative_links()
+                    print(console_colors.OKBLUE + f'Replacing local links with absolute...' + console_colors.ENDC)
+                    process_file.prefix_relative_links()
 
-                print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
-                process_file.minimize()
+                    print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
+                    process_file.minimize()
 
-                print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
-                process_file.save()
-            # except:
-            #     print(console_colors.WARNING +
-            #           f'Something went wrong processing {file}' + console_colors.ENDC)
+                    print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
+                    process_file.save()
+            except:
+                print(console_colors.WARNING + f'Something went wrong processing {file}' + console_colors.ENDC)
 
 
 def _load_glossary(file_path):
@@ -97,7 +100,7 @@ def _load_glossary(file_path):
     """
     dict = {}
 
-    with open(file_path) as json_file:
+    with open(file_path, encoding='utf-8') as json_file:
         data = json.load(json_file)
 
         for key in data.keys():
@@ -107,35 +110,6 @@ def _load_glossary(file_path):
             }
 
     return dict
-
-
-def _load_references(file_path):
-    """Given a filepath loads all references and converts it to a dict.
-
-    Args:
-        file_path (str): The file path of a glossary in the form:
-        {
-            '[reference id]': {
-                'full': '[The full reference]',
-                'doi_url': '[The url of the doi i.e., https://10....]',
-                'title': '[The title of the reference, used for display]'
-        }
-
-    Returns:
-        dict: The glossary in the form:
-        {
-            '[reference id]': {
-                'full': '[The full reference]',
-                'doi_url': '[The url of the doi i.e., https://10....]',
-                'title': '[The title of the reference, used for display]'
-        }
-    """
-    dict = {}
-    with open(file_path) as json_file:
-        dict = json.loads(json_file.read())
-
-    return dict
-
 
 class iGEM_File(ABC):
     @abstractmethod
@@ -176,7 +150,7 @@ class iGEM_CSS(iGEM_File):
 class iGEM_HTML(iGEM_File):
     def __init__(self, path):
         super().__init__(path)
-        self._soup = BeautifulSoup(open(self._path).read(), features='lxml')
+        self._soup = BeautifulSoup(open(self._path, encoding='utf-8').read(), features='lxml')
 
     def minimize(self):
         self._soup = BeautifulSoup(htmlmin.minify(
@@ -221,11 +195,9 @@ class iGEM_HTML(iGEM_File):
         for a in self._soup.findAll('a'):
             if a.has_attr('href') and re.match(pattern, a['href']):
                 if not any(url in a['href'] for url in whitelist):
-                    span = self._soup.new_tag('span')
-                    span['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
-                    span['class'] = ['tooltip', 'link'] + a.get('class', [])
-                    span.contents = a.contents
-                    a.replace_with(span)
+                    a.name = 'span'
+                    a['title'] = f'<a href="{a["href"]}" target="#blank">This will open on an external site in a new tab!</a>'
+                    a['class'] = ['tooltip', 'link'] + a.get('class', [])
                 else:
                     a['target'] = "#blank"
 
@@ -241,13 +213,16 @@ class iGEM_HTML(iGEM_File):
                     'definition': [definition]
             }
         """
-        keys = "|".join(glossary.keys())
+        if not glossary.keys():
+            return
 
-        paragraphs = self._soup.find_all(text=re.compile(keys, re.IGNORECASE))
+        keys_pattern = "|".join(glossary.keys())
+
+        paragraphs = self._soup.find_all(text=re.compile(keys_pattern, re.IGNORECASE))
         for paragraph in paragraphs:
             replaced_text = paragraph
             found_keys = set(re.compile(
-                keys, re.IGNORECASE).findall(str(paragraph)))
+                keys_pattern, re.IGNORECASE).findall(str(paragraph)))
                 
             for key in found_keys:
                 title = f'<i><b>{glossary[key.lower()]["name"]}</b></i> - {glossary[key.lower()]["definition"]}'
@@ -309,11 +284,14 @@ class iGEM_HTML(iGEM_File):
                 p = self._soup.new_tag('p')
                 div.append(p)
 
-                a['href'] = references[ordered_refs[index]]["doi_url"]
-                a['target'] = '#blank'
-                a.string = '(External DOI Link)'
+                reference = references[ordered_refs[index]]
 
-                p.string = f'{index} {references[ordered_refs[index]]["full"]} '
+                if 'url' in reference and reference["url"]:
+                    a['href'] = reference["url"]
+                    a['target'] = '#blank'
+                    a.string = f'({reference["url"]})'
+
+                p.string = f'{index}. {reference["full"]} '
 
                 p.append(a)
 
@@ -321,6 +299,6 @@ class iGEM_HTML(iGEM_File):
             bib.replace_with(div)
 
     def save(self):
-        textfile = open(self._path, 'w')
-        textfile.write(str(self._soup))
+        textfile = open(self._path, 'wb')
+        textfile.write(str(self._soup).encode('utf8'))
         textfile.close()
