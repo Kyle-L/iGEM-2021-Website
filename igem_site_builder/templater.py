@@ -2,7 +2,7 @@ import argparse
 import os
 from pathlib import Path
 from staticjinja import Site
-from converter import convert_md_to_html, convert_docx_to_html
+from converter import convert_md_to_html
 
 class console_colors:
     HEADER = '\033[95m'
@@ -32,7 +32,7 @@ def template(build_path, src_path):
         site = Site.make_site(
             searchpath=os.path.abspath(src_path),
             outpath=os.path.abspath(build_path),
-            contexts=[(".*\.html", _html_context), (".*\.md", _md_context), (".*\.docx", _docx_context)],
+            contexts=[(".*\.html", _html_context), (".*\.md", _md_context)],
             rules=[(".*\.html", _render), (".*\.md", _render), (".*\.docx", _render)],
             staticpaths=["assets"],
             encoding='utf-8'
@@ -67,19 +67,6 @@ def _md_context(template):
         str: The templated html page.
     """
     page_content = f'{convert_md_to_html(template.filename)}'
-    return {"body": page_content}
-
-
-def _docx_context(template):
-    """Reads the content of a page and places it into the body context.
-
-    Args:
-        template (str): The file path of the template file.
-
-    Returns:
-        str: The templated html page.
-    """
-    page_content = convert_docx_to_html(template.filename)
     return {"body": page_content}
 
 
