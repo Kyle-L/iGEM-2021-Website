@@ -58,5 +58,15 @@
         "full": "Streptomycin. PubChem.",
         "title": "Streptomycin",
         "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Streptomycin"
+    },
+    "13": {
+        "full": "Agriculture. Genome.gov.",
+        "title": "Agriculture",
+        "url": "https://www.genome.gov/dna-day/15-ways/agriculture"
+    },
+    "14": {
+        "full": "Norris, Megan. 2015. Will GMOs Hurt My Body? The Public’s Concerns and How Scientists Have Addressed Them. Science in the News.",
+        "title": "Will GMOs Hurt My Body? The Public’s Concerns and How Scientists Have Addressed Them",
+        "url": "https://sitn.hms.harvard.edu/flash/2015/will-gmos-hurt-my-body/"
     }
 }
