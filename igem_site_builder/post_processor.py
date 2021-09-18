@@ -253,8 +253,8 @@ class iGEM_HTML(iGEM_File):
             # The entire tooltip content is built here.
             # Adds the doi if one is present, if not, we don't want to include since the users can't go there.
             span['title'] = f'<b>{references[ref_id]["title"]}</b> '
-            if 'doi_url' in references[ref_id] and references[ref_id]["doi_url"]:
-                span['title'] += f'<a href="{references[ref_id]["doi_url"]}" target="#blank">(External DOI Link)</a>'
+            if 'url' in references[ref_id] and references[ref_id]["url"]:
+                span['title'] += f'<a href="{references[ref_id]["url"]}" target="#blank">(External DOI Link)</a>'
 
             # A break to create contrast from the rest of the tooltip content.
             span['title'] += f'<br />'
