@@ -1852,6 +1852,9 @@ input[type="radio"] + label:before {
 .image.fit img {
   width: 100%;
 }
+.image.half {
+  width: 50%;
+}
 .image.main {
   display: block;
   margin: 0 0 3em 0;
@@ -3790,4 +3793,9 @@ Main Components
     -o-transform: translateX(0%);
     transform: translateX(0%);
   }
+}
+.credit {
+  font-size: 75%;
+  opacity: 60%;
+  font-style: italic;
 }
