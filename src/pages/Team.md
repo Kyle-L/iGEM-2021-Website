@@ -183,6 +183,27 @@ advisors from a range of different STEM subject domains! Take a moment to learn 
     </p>
   </div>
   <div class="col-6 col-12-small">
+    <h3 class="inline">Max Brenner</h3>
+    <p class="inline">| Microbiology</p>
+    <ul class="icons inline right">
+      <li>
+        <a href="mailto:brennemb@miamioh.edu" class="icon solid fa-envelope"><span class="label">Email</span></a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/max-brenner-065345205/" class="icon brands fa-linkedin"
+         ><span class="label">LinkedIn</span></a
+       >
+      </li>
+    </ul>
+    <span class="image fit"
+     ><img src="assets/images/team/max-brenner.png" alt="Portrait of Max Brenner"
+    /></span>
+    <blockquote><b>Fun fact:</b> I sunburn really easily.</blockquote>
+    <p>
+      Max is a junior microbiology major at Miami University. He is involved in independent research and is a member of the school's boxing club. Max is deeply interested in genetics and metabolomics and enjoys looking at different systems that play roles in biology. He joined Miami's iGEM team because it aligned with his interests and he is excited about earning experience in the lab and working with a great team.
+    </p>
+  </div>
+  <div class="col-6 col-12-small">
     <h3 class="inline">Nicholas Nocevski</h3>
     <p class="inline">| Biomedical Engineering</p>
     <ul class="icons inline right">
