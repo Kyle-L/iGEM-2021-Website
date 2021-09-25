@@ -77,11 +77,11 @@ $ cd iGEM-2021-Website/
 ```
 2. Call the `template-site` command. This will take the body of each page in `iGEM-2021-Website/src/pages` and insert it into the template at `iGEM-2021-Website/src/.template.html`
 ```shell
-$ python site_builder template-site 'temp\\build' 'src'
+$ python igem_site_builder template-site 'temp\\build' 'src'
 ```
-3. Call the `post-process` command. Post processing applies some nice quality of life changes to the templated site. To see more on what those specific changes are, checkout section on post-process in documentation for [iGEM Site Builder](igem_site_builder/README.md).
+3. Call the `post-process` command. Post processing applies some nice quality of life changes to the templated site. To see more on what those specific changes are, checkout section on post-process in documentation for [iGEM Site Builder](igem_igem_site_builder/README.md).
 ```shell
-$ python site_builder post-process 'temp\\build' 'src'
+$ python igem_site_builder post-process 'temp\\build' 'src'
 ```
 
 You can now view the full website under `iGEM-2021-Website/temp/build`.
@@ -98,7 +98,7 @@ When the site is built, that placeholder text will be placed into the layout def
 
 <a name="wikisync-setup"/></a>
 ## How Sync Site with the Team Wiki (Remote)
-This repository is setup to make use of GitHub Actions and [iGEM Site Builder](igem_site_builder/) to sync the site on a push to the `master` and `dev` branch.
+This repository is setup to make use of GitHub Actions and [iGEM Site Builder](igem_igem_site_builder/) to sync the site on a push to the `master` and `dev` branch.
 On any push to the master or `dev` branch, GitHub Actions will run the workflow in `.github/workflows/main.yaml` and sync the repository with the iGEM MediaWiki server.
 
 Specifically, the entire CI/CD pipeline looks like the following:
@@ -121,9 +121,9 @@ IGEM_USERNAME=Your_username
 IGEM_PASSWORD=Your_password
 ```
 
-3. Run `python site_builder sync-site`. *Note: please ensure that you have properly built the site.*
+3. Run `python igem_site_builder sync-site`. *Note: please ensure that you have properly built the site.*
 ```shell
-$ python site_builder sync-site 'temp\\build' 'temp\\sync' 'MiamiU_OH'
+$ python igem_site_builder sync-site 'temp\\build' 'temp\\sync' 'MiamiU_OH'
 ```
 
 
