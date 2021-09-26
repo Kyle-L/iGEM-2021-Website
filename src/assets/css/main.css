@@ -3799,3 +3799,6 @@ Main Components
   opacity: 60%;
   font-style: italic;
 }
+.center-vertical {
+  margin: auto;
+}
