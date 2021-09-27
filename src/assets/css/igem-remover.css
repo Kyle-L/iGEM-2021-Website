@@ -12,6 +12,7 @@
   margin-bottom: -4rem;
   margin-left: 0;
   border: none;
+  line-height: revert;
 }
 body,
 html {
@@ -45,11 +46,9 @@ html {
 #content {
     color: unset;
 }
-
 #HQ_page h1, h2, h3, h4, h5 {
   font-family: revert;
 }
-
 #HQ_page p {
   font-family: revert;
   font-size: revert;
