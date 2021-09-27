@@ -37,6 +37,7 @@ def apply_post_processes(build_path, process_path):
     try:
         process_links_whitelist = json.load(open(PurePath(process_path, '.external-link-whitelist.json'), encoding='utf-8'))
         references = json.load(open(PurePath(process_path, '.references.json'), encoding='utf-8'))
+        page_metadata = json.load(open(PurePath(process_path, '.page-metadata.json'), encoding='utf-8'))
         glossary = _load_glossary(PurePath(process_path, '.glossary.json'))
     except:
         print(console_colors.WARNING + f'Something went wrong loading source files.' + console_colors.ENDC)
@@ -45,40 +46,43 @@ def apply_post_processes(build_path, process_path):
     for root, directories, files in os.walk(build_path):
         for file in files:
             process_file = None
-            try:
-                if '.css' in file:
-                    print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
-                    process_file = iGEM_CSS(os.path.join(root, file))
+            #try:
+            if '.css' in file:
+                print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
+                process_file = iGEM_CSS(os.path.join(root, file))
 
-                    print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
-                    process_file.minimize()
+                print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
+                process_file.minimize()
 
-                    print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
-                    process_file.save()
+                print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
+                process_file.save()
 
-                if '.html' in file:
-                    print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
-                    process_file = iGEM_HTML(os.path.join(root, file))
+            if '.html' in file:
+                print(console_colors.HEADER + f'Processing {file}' + console_colors.ENDC)
+                process_file = iGEM_HTML(os.path.join(root, file))
 
-                    print(console_colors.OKBLUE + f'Adding references...' + console_colors.ENDC)
-                    process_file.insert_references(references)
+                print(console_colors.OKBLUE + f'Adding references...' + console_colors.ENDC)
+                process_file.insert_references(references)
 
-                    print(console_colors.OKBLUE + f'Setting link targets...' + console_colors.ENDC)
-                    process_file.set_page_link_targets_automatically(whitelist=process_links_whitelist)
+                print(console_colors.OKBLUE + f'Setting link targets...' + console_colors.ENDC)
+                process_file.set_page_link_targets_automatically(whitelist=process_links_whitelist)
 
-                    print(console_colors.OKBLUE + f'Adding glossary terms...' + console_colors.ENDC)
-                    process_file.add_tooltips_for_terms(glossary)
+                print(console_colors.OKBLUE + f'Adding glossary terms...' + console_colors.ENDC)
+                process_file.add_tooltips_for_terms(glossary)
 
-                    print(console_colors.OKBLUE + f'Replacing local links with absolute...' + console_colors.ENDC)
-                    process_file.prefix_relative_links()
+                print(console_colors.OKBLUE + f'Inserting explore sections...' + console_colors.ENDC)
+                process_file.insert_explore_sections(page_metadata)
 
-                    print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
-                    process_file.minimize()
+                print(console_colors.OKBLUE + f'Replacing local links with absolute...' + console_colors.ENDC)
+                process_file.prefix_relative_links()
 
-                    print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
-                    process_file.save()
-            except:
-                print(console_colors.WARNING + f'Something went wrong processing {file}' + console_colors.ENDC)
+                print(console_colors.OKBLUE + f'Minimizing...' + console_colors.ENDC)
+                process_file.minimize()
+
+                print(console_colors.OKGREEN + f'Done!' + console_colors.ENDC)
+                process_file.save()
+            #except:
+            #    print(console_colors.WARNING + f'Something went wrong processing {file}' + console_colors.ENDC)
 
 
 def _load_glossary(file_path):
@@ -297,6 +301,64 @@ class iGEM_HTML(iGEM_File):
 
                 div['id'] = 'references'
             bib.replace_with(div)
+
+
+    def insert_explore_sections(self, page_metadata):
+        for explore in self._soup.findAll('explore'):
+            ref_ids = explore['pages'].split(',')
+            
+            div_outer = self._soup.new_tag('div')
+            header = self._soup.new_tag('header')
+            header['class'] = ['major']
+
+            h2 = self._soup.new_tag('h2')
+            h2.string = "Explore Pages"
+            header.append(h2)
+            div_outer.append(header)
+
+            div_inner = self._soup.new_tag('div')
+
+            if len(ref_ids) > 2:
+                div_inner['class'] = ['posts']
+            else:
+                div_inner['class'] = ['explore-posts']
+
+            for ref_id in ref_ids:
+                article = self._soup.new_tag('article')
+
+                a_img = self._soup.new_tag('a')
+                a_img['href'] = f'/{ref_id}'
+                a_img['class'] = ['image']
+                img = self._soup.new_tag('img')
+                img['src'] = page_metadata[ref_id]['image']
+                a_img.append(img)
+                article.append(a_img)
+
+                h3 = self._soup.new_tag('h3')
+                h3.string = page_metadata[ref_id]['name']
+                article.append(h3)
+
+                p = self._soup.new_tag('p')
+                p.string = page_metadata[ref_id]['description']
+                article.append(p)
+
+                ul = self._soup.new_tag('ul')
+                ul['class'] = ['actions']
+
+                li = self._soup.new_tag('li')
+                a_li = self._soup.new_tag('a')
+                a_li['href'] = f'/{ref_id}'
+                a_li['class'] = ['customButton'] 
+                a_li.string = 'More'
+                li.append(a_li)
+                ul.append(li)
+                article.append(ul)
+
+                div_inner.append(article)
+            
+            div_outer.append(div_inner)
+            explore.replace_with(div_outer)
+
 
     def save(self):
         textfile = open(self._path, 'wb')
