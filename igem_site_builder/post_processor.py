@@ -304,6 +304,12 @@ class iGEM_HTML(iGEM_File):
 
 
     def insert_explore_sections(self, page_metadata):
+        """Replaces <explore pages="page_id" /> with explore sections.
+
+        Args:
+            page_metadata (dict): A dict in the format "{ page_id: { name: some_name, description: some_description, image: some_image_path} }"
+        """        
+
         for explore in self._soup.findAll('explore'):
             ref_ids = explore['pages'].split(',')
             
@@ -312,7 +318,9 @@ class iGEM_HTML(iGEM_File):
             header['class'] = ['major']
 
             h2 = self._soup.new_tag('h2')
-            h2.string = "Explore Pages"
+
+            h2.string = explore.get('title', 'Explore Next')
+            
             header.append(h2)
             div_outer.append(header)
 
