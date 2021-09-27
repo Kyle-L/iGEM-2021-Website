@@ -1556,7 +1556,7 @@ header p {
   text-transform: uppercase;
 }
 
-header.major > :last-child {
+.major > :last-child {
   border-bottom: solid 3px var(--accent-color);
   display: inline-block;
   margin: 0 0 2em 0;
