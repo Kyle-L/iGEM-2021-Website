@@ -23,7 +23,6 @@ For instance, say we wanted to cite the paper _Global food demand and the sustai
 In addition to the above, all references will be accessible at the bottom a page in the following format:
 
 <div class="box">
-  <h3>References</h3>
   <bibliography />
 </div>
 

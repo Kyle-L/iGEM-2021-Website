@@ -57,4 +57,4 @@ Kyle Lierer served as the script writer and video editor.
 ### Presentation
 
 ---
-<explore pages="index,About_The_Wiki"/>
+<explore pages="Collaborations,Contribution"/>

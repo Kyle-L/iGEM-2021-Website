@@ -28,3 +28,6 @@ Waiting for findings
 ## Science Symposium: Hosted by Wright State University 
 <span class="image right"><img src="assets/images/pic01.jpg" alt="" /></span>
 The Wright State University iGEM team (WrightState) hosted a virtual 2021 Science Symposium on August 12th, which was attended by iGEM teams from the host team, The Ohio State University (OhioState), University of Virginia (Virginia), and Miami University. Each team gave a short presentation on their project. This event provided an opportunity for engagement as well as collaboration by allowing team members to ask questions and give advice on navigating the challenges of an iGEM project. The veteran teams gave excellent advice on time management, organization of wiki content creation, and adapting supply delays and lab limitations due to the COVID-19 pandemic. The event was an excellent opportunity to learn about other projects and make connections with other iGEM teams, especially with the COVID-19 pandemic limiting opportunities for in-person interaction. 
+
+---
+<explore pages="Education,Communication" />

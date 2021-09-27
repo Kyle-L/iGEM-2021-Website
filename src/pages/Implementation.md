@@ -32,5 +32,7 @@ Additionally, the random insertion of introduced DNA into the plant genome may l
 Numerous unknowns may also affect future experimentation in plants, and we shall rely on ever-expanding scientific knowledge to unravel them. Despite these challenges, we are still confident that our research can support growth in plant genetics. 
 
 ---
-### References
 <bibliography />
+
+---
+<explore pages="Proof_Of_Concept,Sustainable" />
