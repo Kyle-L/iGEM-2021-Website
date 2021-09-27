@@ -283,6 +283,15 @@ class iGEM_HTML(iGEM_File):
         for bib in self._soup.findAll('bibliography'):
             div = self._soup.new_tag('div')
             div['class'] = bib.get('class', [])
+
+            # Adds the reference header.
+            header = self._soup.new_tag('header')
+            header['class'] = ['major']
+            h2 = self._soup.new_tag('h2')
+            h2.string = 'References'
+            header.append(h2)
+            div.append(header)
+
             for index in ordered_refs.keys():
                 a = self._soup.new_tag('a')
                 p = self._soup.new_tag('p')
@@ -317,10 +326,9 @@ class iGEM_HTML(iGEM_File):
             header = self._soup.new_tag('header')
             header['class'] = ['major']
 
+            # Adds the header with text.
             h2 = self._soup.new_tag('h2')
-
             h2.string = explore.get('title', 'Explore Next')
-            
             header.append(h2)
             div_outer.append(header)
 
