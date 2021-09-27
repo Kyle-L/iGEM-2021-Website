@@ -75,13 +75,17 @@ To cut down on down on code and make the site more maintainable, the Python pack
 ```shell
 $ cd iGEM-2021-Website/
 ```
-2. Call the `template-site` command. This will take the body of each page in `iGEM-2021-Website/src/pages` and insert it into the template at `iGEM-2021-Website/src/.template.html`
+2. (Optional) Call the `template` command. This will take the body of each page in `iGEM-2021-Website/src/pages` and insert it into the template at `iGEM-2021-Website/src/.template.html`
 ```shell
 $ python igem_site_builder template-site 'temp\\build' 'src'
 ```
-3. Call the `post-process` command. Post processing applies some nice quality of life changes to the templated site. To see more on what those specific changes are, checkout section on post-process in documentation for [iGEM Site Builder](igem_igem_site_builder/README.md).
+3. (Optional) Call the `post-process` command. Post processing applies some nice quality of life changes to the templated site. To see more on what those specific changes are, checkout section on post-process in documentation for [iGEM Site Builder](igem_igem_site_builder/README.md).
 ```shell
 $ python igem_site_builder post-process 'temp\\build' 'src'
+```
+4. Alternatively to 2 & 3, you can call `build` which will combine both into one nice command.
+```shell
+$ python igem_site_builder build 'temp\\build' 'src'
 ```
 
 You can now view the full website under `iGEM-2021-Website/temp/build`.
@@ -123,7 +127,7 @@ IGEM_PASSWORD=Your_password
 
 3. Run `python igem_site_builder sync-site`. *Note: please ensure that you have properly built the site.*
 ```shell
-$ python igem_site_builder sync-site 'temp\\build' 'temp\\sync' 'MiamiU_OH'
+$ python igem_site_builder sync 'temp\\build' 'temp\\sync' 'MiamiU_OH'
 ```
 
 
