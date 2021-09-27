@@ -25,8 +25,9 @@ def apply_post_processes(build_path, process_path):
     - Converting local links to absolute. ('iGEM server does not support local.')
     - Sets non-local links to open in a new browser.
     - Minimize html and css files to speed up load time.
-    - Replaces with '<references id="1" /> with citations based on a process file.'
-    - Replaces with '<bibliography /> with bibliographies based on reference tags on a page.'
+    - Replaces '<references id="1" />' with citations based on a process file.
+    - Replaces '<bibliography />' with bibliographies based on reference tags on a page.
+    - Replaces '<explore pages="page_id" />' with explore sections to certain pages. 
 
     Args:
         build_path (str): The output directory of the built wiki.
@@ -321,46 +322,46 @@ class iGEM_HTML(iGEM_File):
 
         for explore in self._soup.findAll('explore'):
             ref_ids = explore['pages'].split(',')
-            
-            div_outer = self._soup.new_tag('div')
-            header = self._soup.new_tag('header')
-            header['class'] = ['major']
+
+            div_whole = self._soup.new_tag('div')
 
             # Adds the header with text.
+            div_header = self._soup.new_tag('div')
+            div_header['class'] = ['major']
             h2 = self._soup.new_tag('h2')
             h2.string = explore.get('title', 'Explore Next')
-            header.append(h2)
-            div_outer.append(header)
+            div_header.append(h2)
 
-            div_inner = self._soup.new_tag('div')
+            div_pages = self._soup.new_tag('div')
 
+            # Changes the format if there is more than 2 entries.
             if len(ref_ids) > 2:
-                div_inner['class'] = ['posts']
+                div_pages['class'] = ['posts']
             else:
-                div_inner['class'] = ['explore-posts']
+                div_pages['class'] = ['explore-posts']
 
             for ref_id in ref_ids:
                 article = self._soup.new_tag('article')
 
+                # Adds the image link so the user can easily click the image.
                 a_img = self._soup.new_tag('a')
                 a_img['href'] = f'/{ref_id}'
                 a_img['class'] = ['image']
                 img = self._soup.new_tag('img')
                 img['src'] = page_metadata[ref_id]['image']
                 a_img.append(img)
-                article.append(a_img)
 
+                # Adds the heading text so the user knows what the page is.
                 h3 = self._soup.new_tag('h3')
                 h3.string = page_metadata[ref_id]['name']
-                article.append(h3)
 
+                # Adds the description of the page so the users can assume the page content.
                 p = self._soup.new_tag('p')
                 p.string = page_metadata[ref_id]['description']
-                article.append(p)
 
+                # Creates the button to the page so that it can be tab accessed.
                 ul = self._soup.new_tag('ul')
                 ul['class'] = ['actions']
-
                 li = self._soup.new_tag('li')
                 a_li = self._soup.new_tag('a')
                 a_li['href'] = f'/{ref_id}'
@@ -368,12 +369,19 @@ class iGEM_HTML(iGEM_File):
                 a_li.string = 'More'
                 li.append(a_li)
                 ul.append(li)
+
+                # Appends all elements to the current article in the order img > heading text > description > button.
+                article.append(a_img)
+                article.append(h3)
+                article.append(p)
                 article.append(ul)
 
-                div_inner.append(article)
+                # Adds the article to the page div so user will see it.
+                div_pages.append(article)
             
-            div_outer.append(div_inner)
-            explore.replace_with(div_outer)
+            div_whole.append(div_header)
+            div_whole.append(div_pages)
+            explore.replace_with(div_whole)
 
 
     def save(self):
