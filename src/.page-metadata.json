@@ -1,0 +1,112 @@
+{
+    "index": {
+        "name": "Home",
+        "description": "Lorem ipsum",
+        "image": "assets/images/pic01.jpg"
+    },
+    "About_The_Wiki": {
+        "name": "About the Wiki",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic02.jpg"
+    },
+    "Attributions": {
+        "name": "Attributions",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic03.jpg"
+    },
+    "Collaborations": {
+        "name": "Collaborations",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic04.jpg"
+    },
+    "Communication": {
+        "name": "Communication",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic05.jpg"
+    },
+    "Contribution": {
+        "name": "Contributions",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic01.jpg"
+    },
+    "Description": {
+        "name": "Description",
+        "description": "The world depends on high agricultural productivity to provide food and resources to local and global communities. However, global demand for crop production is expected to increase dramatically. Learn how Miami University's CROP could increase the yields of crop plants.",
+        "image": "assets/images/pic02.jpg"
+    },
+    "Education": {
+        "name": "Education",
+        "description": "Not only did the Miami University iGEM team work to make a phenomenal project, we also spent an exceptional amount of time teaching others about plant synthetic biology! Take a moment to learn more about that on our education page!",
+        "image": "assets/images/pic03.jpg"
+    },
+    "Engineering": {
+        "name": "Engineering",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic04.jpg"
+    },
+    "Human_Practices": {
+        "name": "Human Practices",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic05.jpg"
+    },
+    "Implementation": {
+        "name": "Implementation",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic06.jpg"
+    },
+    "Improve": {
+        "name": "Improvements",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic07.jpg"
+    },
+    "Model": {
+        "name": "Computational Modeling",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic01.jpg"
+    },
+    "Notebook": {
+        "name": "Notebook",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic02.jpg"
+    },
+    "Part_Collection": {
+        "name": "Part Collection",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic03.jpg"
+    },
+    "Parts": {
+        "name": "Parts",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic04.jpg"
+    },
+    "Plant": {
+        "name": "Plant Synthetic Biology",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic05.jpg"
+    },
+    "Proof_Of_Concept": {
+        "name": "Proof of Concept",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic0.jpg"
+    },
+    "Results": {
+        "name": "Results",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic01.jpg"
+    },
+    "Safety": {
+        "name": "Safety",
+        "description": "With any project, thinking carefully about and managing any risks is a vital step. Between the inherit risks of our project as well as challenges created by the COVID-19 pandemic, our team had to be thoughtful. Learn how the Miami University team handled safety and risk here!",
+        "image": "assets/images/safety/daria-covid-19.png"
+    },
+    "Sustainable": {
+        "name": "Sustainable",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic01.jpg"
+    },
+    "Team": {
+        "name": "Team",
+        "description": "The work done by Miami University's iGEM team was made possible by a team of dedicate and passionate students and advisors from a range of different STEM subject domains! Take a moment to learn more about Miami University's committed team!",
+        "image": "assets/images/team/full-team-1.png"
+    }
+}

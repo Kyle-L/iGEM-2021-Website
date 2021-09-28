@@ -1,20 +1,17 @@
 name: Deploy to iGEM
 
 on:
-  # Trigger the workflow on push,
-  # but only for the main branch
   push:
     branches:
       - main
       - dev
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    environment: 'iGEM'
     strategy:
       matrix:
         python-version: [3.9]
-
     steps:
       - uses: actions/checkout@v2
 

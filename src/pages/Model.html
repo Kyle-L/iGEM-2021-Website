@@ -1,0 +1,670 @@
+<h1>Modeling</h1>
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+  occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+<a href="#" class="customButton icon brands fa-github">Checkout Source Code</a>
+
+<hr />
+
+<h2>General References</h2>
+<p>
+  The following references were used as the basis for much of the computational modeling:
+  <reference identifier="2" />, <reference identifier="3" />, <reference identifier="5" />,
+  <reference identifier="6" />, <reference identifier="19" />.
+</p>
+
+<h2>Computational Models for Biological Analysis</h2>
+<p>
+  <span class="image left"><img src="assets/images/pic01.jpg" alt="" /></span>
+  MATLAB and Python are powerful programs that can be used to manipulate matrices and perform complicated numerical
+  analysis. In the case of synthetic biology, these environments are often used to set up models for biological action,
+  or mathematical representations of complex systems. These mathematical representations can extend to systems with
+  multiple enzymes and interconnected reactions, like the metabolism within the cell. Therefore, through MATLAB and
+  Python, we can generate a complex system of inputs and outputs that interact with each other to generate a projection
+  modeling the activity of a system within a cell or a cell in its entirety. The origin for this method of thinking can
+  be traced back to Boolean circuits, a common mathematical method for combining logic circuits in digital electronic
+  circuits. While these Boolean circuits are useful for projecting basic biological loops, they are not effective to
+  model something as complex as an entire cell through virtual circuits. Instead, a model based on a more complex system
+  of mathematical equations must be used.
+</p>
+<p>
+  Our goal was to project the productivity and robustness of photosynthesis with modifications of the Calvin Cycle. Dry
+  lab tests using these models allow the team to test designed pathways prior to commitment of physical and temporal
+  resources in the wet lab. To enable our team to test the impacts of these proposed alternative metabolic on both
+  metabolic reaction fluxes, or rates, and growth of the cells in a dry lab setting, an open-source, constraint-based
+  model, COBRA Toolbox, was selected. A constraint-based model for biochemical networks has a wide range of uses. In our
+  case, we can input a set of metabolites, reactions, enzymes, and stoichiometric coefficients into matrices that are
+  readable by the COBRA Toolbox. Then we input specific constraints to how these inputs can interact that reflect
+  biological limits or desired conditions. From this common set of inputs and constraints, the COBRA Toolbox can present
+  a field of permissible outcomes, in our case fluxes of the different reactions, that allow optimized biomass
+  formation, or growth. This means our team could utilize the toolbox in both MATLAB and Python to generate a host of
+  flux outcomes for any system, or cell with clarified available reaction pathways, the team wanted to test. In short, a
+  constraints-based provides an ability to assess the impact of proposed modifications to the Calvin cycle on a cellular
+  system in MATLAB or Python. This analysis simplifies the temporal and informational demands for design team as well as
+  provides valuable insight into the feasibility and wet lab parameters for proposed pathways.
+</p>
+
+<h2>Constraint-based Modeling</h2>
+<p>
+  The cell operates via the action of a myriad of enzymatic systems and interactions. From a simple material balance
+  standpoint, mass must be conserved. Our overall system is the cell, and the agents of action are reaction cascades.
+  Within this cell/system, the reaction cascades are observed, and the operators of those cascades are individual
+  enzymatic reactions <reference identifier="4" />. For these reactions, we have multiple considerations to potentially
+  consider, including thermodynamics, metabolites, enzyme kinetics, mass balances, and enzymatic capacity. All of these
+  are <em>constraints</em>, and a model could be defined from a combination of these constraints.
+</p>
+<p>
+  Reactions are primarily limited by enzymatic kinetics (“speed”) and flux (turnovers of metabolites). Therefore, most
+  models are based on either of these two constraints. Kinetics based models are based on differential equations
+  relating the rates of reactions, taking both kinetics and genetic-based regulation into account. Unfortunately, this
+  model requires enzymatic kinetic data specific to the organism of interest, most of which is unavailable and therefore
+  must be estimated; this guesswork introduces significant source for potential error. Conversely, flux-based models use
+  stoichiometric information of all reactions as their constraints, and therefore circumvent the need for kinetic data.
+  This model, however, does not take kinetics or genetic regulation into account and therefore is not as robust in
+  analysis as kinetics-based models. Still, it finds the fluxes of metabolites through the defined metabolic network,
+  allowing calculations of growth and productions of metabolites of interest. Due to the availability of a significantly
+  validated flux-based model for our strain of interest, we chose to work with a flux-based model.
+</p>
+
+<h2>Mathematical Justification of a Flux-based Model</h2>
+<p>
+  Let’s go through a simple flux-based model simulating a cell, or metabolic network, with three metabolites: A, B, and
+  C connected by the reaction
+  <math><mi>A</mi><mo>→</mo><mi>B</mi><mo>+</mo><mi>C</mi></math> <reference identifier="4" />.
+</p>
+<p>
+  We can represent the flux of
+  <math><mi>A</mi><mo>→</mo><mi>B</mi></math> and <math><mi>A</mi><mo>→</mo><mi>C</mi></math> with the flux values,
+  <math
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mn>1</mn></mrow></msub
+    ></math
+  >
+  for A,
+  <math
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mn>2</mn></mrow></msub
+    ></math
+  >
+  for B, and
+  <math
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mn>3</mn></mrow></msub
+    ></math
+  >
+  for C. If we go further and state that the relationship includes assigned stoichiometric coefficients,
+  <math
+    ><msub
+      ><mrow><mi>c</mi></mrow
+      ><mrow><mn>1</mn></mrow></msub
+    ></math
+  >,
+  <math
+    ><msub
+      ><mrow><mi>c</mi></mrow
+      ><mrow><mn>2</mn></mrow></msub
+    ></math
+  >, and
+  <math
+    ><msub
+      ><mrow><mi>c</mi></mrow
+      ><mrow><mn>3</mn></mrow></msub
+    ></math
+  >
+  for metabolites A, B, and C respectively, we get the following expression:
+  <math
+    ><mi>Ψ</mi><mo>(</mo><mi>v</mi><mo>)</mo><mo>=</mo
+    ><msub
+      ><mrow><mi>c</mi></mrow
+      ><mrow><mn>1</mn></mrow></msub
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mn>1</mn></mrow></msub
+    ><mo>+</mo
+    ><msub
+      ><mrow
+        ><msub
+          ><mrow><mi>c</mi></mrow
+          ><mrow><mn>2</mn></mrow></msub
+        ><mi>v</mi></mrow
+      ><mrow><mn>2</mn></mrow></msub
+    ><mo>+</mo
+    ><msub
+      ><mrow><mi>c</mi></mrow
+      ><mrow><mn>3</mn></mrow></msub
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mn>3</mn></mrow></msub
+    ></math
+  >
+</p>
+<p>
+  This is a valid statement so long as conservation of mass holds true, where the input flux and output flux are
+  represented by
+  <math
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mi>i</mi></mrow></msub
+    ></math
+  >
+  and
+  <math
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mi>o</mi></mrow></msub
+    ></math
+  >:
+  <math
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mi>i</mi></mrow></msub
+    ><mo>=</mo
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mi>o</mi></mrow></msub
+    ></math
+  >
+</p>
+<p>
+  While mass needs to be conserved, the direction of the reaction is not fixed unless we specify it as such. Holding
+  <math><mi>Ψ</mi></math>
+  positive makes the reaction progress forward and making
+  <math><mi>Ψ</mi></math> negative reverses the reaction. We can use a stoichiometric matrix for the reaction to define
+  the flux relationship such that:
+</p>
+<p>
+  <math
+    ><mfenced separators="|"
+      ><mrow
+        ><mtable
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><mtable
+                  ><mtr
+                    ><mtd
+                      ><mrow
+                        ><maligngroup /><msub
+                          ><mrow><mi>c</mi></mrow
+                          ><mrow><mn>1</mn></mrow></msub
+                        ></mrow
+                      ></mtd
+                    ></mtr
+                  ><mtr
+                    ><mtd
+                      ><mrow
+                        ><maligngroup /><msub
+                          ><mrow><mi>c</mi></mrow
+                          ><mrow><mn>2</mn></mrow></msub
+                        ></mrow
+                      ></mtd
+                    ></mtr
+                  ></mtable
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>3</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ></mtable
+        ></mrow
+      ></mfenced
+    ><mi> </mi><mi>x</mi><mi> </mi
+    ><mfenced separators="|"
+      ><mrow
+        ><mtable
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><mtable
+                  ><mtr
+                    ><mtd
+                      ><mrow
+                        ><maligngroup /><msub
+                          ><mrow><mi>v</mi></mrow
+                          ><mrow><mn>1</mn></mrow></msub
+                        ></mrow
+                      ></mtd
+                    ></mtr
+                  ><mtr
+                    ><mtd
+                      ><mrow
+                        ><maligngroup /><msub
+                          ><mrow><mi>v</mi></mrow
+                          ><mrow><mn>2</mn></mrow></msub
+                        ></mrow
+                      ></mtd
+                    ></mtr
+                  ></mtable
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>v</mi></mrow
+                  ><mrow><mn>3</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ></mtable
+        ></mrow
+      ></mfenced
+    ><mo>=</mo><mi> </mi><mi>Ψ</mi><mo>(</mo><mi>v</mi><mo>)</mo><mo>=</mo
+    ><mfenced separators="|"
+      ><mrow
+        ><mtable
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><mtable
+                  ><mtr
+                    ><mtd
+                      ><mrow><maligngroup /><mn>0</mn></mrow></mtd
+                    ></mtr
+                  ><mtr
+                    ><mtd
+                      ><mrow><maligngroup /><mn>0</mn></mrow></mtd
+                    ></mtr
+                  ></mtable
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mn>0</mn></mrow></mtd
+            ></mtr
+          ></mtable
+        ></mrow
+      ></mfenced
+    ></math
+  >
+</p>
+<p>
+  Each row corresponds to the assigned metabolite, A, B, and C.
+  <math><mi>Ψ</mi></math> is expressed as equaling 0 because the primary assumption on which flux-based analysis is made
+  is a steady state condition. Steady state describes a system that is not experiencing internal change even if the
+  inputs and outputs are different from each other. In other words, the net concentration of a metabolite is constant),
+  or the net flux of the reaction is 0, based on the overall processes (or reactions), inputting and outputting the
+  species balancing each other out. It’s important to clarify that the fluxes of the individual reactions involved with
+  this metabolite are not necessarily 0, but instead the combination of all these reactions allows the net flux of this
+  metabolite to be 0. This equation summarizes the objective function for one reaction, but we can now expand on this to
+  represent multiple reactions. To model an entire cell, that will be necessary. The matrix with coefficients is
+  referred to as the S-matrix, and this S-matrix can hold more columns that correspond to infinitely many reactions.
+</p>
+<p>
+  <math
+    ><mi>Ψ</mi><mo>(</mo><mi>v</mi><mo>)</mo><mo>=</mo
+    ><msub
+      ><mrow><mi>c</mi></mrow
+      ><mrow><mn>1</mn></mrow></msub
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mn>1</mn></mrow></msub
+    ><mo>+</mo
+    ><msub
+      ><mrow
+        ><msub
+          ><mrow><mi>c</mi></mrow
+          ><mrow><mn>2</mn></mrow></msub
+        ><mi>v</mi></mrow
+      ><mrow><mn>2</mn></mrow></msub
+    ><mo>+</mo
+    ><mfenced separators="|"
+      ><mrow><mo>…</mo></mrow></mfenced
+    ><mo>+</mo
+    ><msub
+      ><mrow><mi>c</mi></mrow
+      ><mrow><mi>n</mi></mrow></msub
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mi>n</mi></mrow></msub
+    ></math
+  >
+</p>
+<p>
+  <math
+    ><mfenced separators="|"
+      ><mrow
+        ><mtable
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>11</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>12</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>13</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>14</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mo>…</mo></mrow></mtd
+            ></mtr
+          ></mtable
+        ><mtable
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>21</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>22</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>23</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>24</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mo>…</mo></mrow></mtd
+            ></mtr
+          ></mtable
+        ><mtable
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>31</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>32</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>33</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>34</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mo>…</mo></mrow></mtd
+            ></mtr
+          ></mtable
+        ><mtable
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>41</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>42</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>43</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>c</mi></mrow
+                  ><mrow><mn>44</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mo>…</mo></mrow></mtd
+            ></mtr
+          ></mtable
+        ><mo>…</mo><mi> </mi></mrow
+      ></mfenced
+    ><mi> </mi><mi>x</mi><mi> </mi
+    ><mfenced separators="|"
+      ><mrow
+        ><mtable
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>v</mi></mrow
+                  ><mrow><mn>1</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>v</mi></mrow
+                  ><mrow><mn>2</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>v</mi></mrow
+                  ><mrow><mn>3</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow
+                ><maligngroup /><msub
+                  ><mrow><mi>v</mi></mrow
+                  ><mrow><mn>4</mn></mrow></msub
+                ></mrow
+              ></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mo>…</mo></mrow></mtd
+            ></mtr
+          ></mtable
+        ></mrow
+      ></mfenced
+    ><mo>=</mo><mi> </mi><mi>Ψ</mi><mo>(</mo><mi>v</mi><mo>)</mo><mo>=</mo
+    ><mfenced separators="|"
+      ><mrow
+        ><mtable
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mn>0</mn></mrow></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mn>0</mn></mrow></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mn>0</mn></mrow></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mn>0</mn></mrow></mtd
+            ></mtr
+          ><mtr
+            ><mtd
+              ><mrow><maligngroup /><mo>…</mo></mrow></mtd
+            ></mtr
+          ></mtable
+        ></mrow
+      ></mfenced
+    ></math
+  >
+</p>
+<p>
+  The number of terms in the flux equation is determined by the number of reactions occurring in the model. Now, we can
+  specify a reaction to each column of the S-matrix given the relationship between upper and lower bounds, or limits, of
+  the reaction set:
+</p>
+<p>
+  <math
+    ><mi>l</mi
+    ><msub
+      ><mrow><mi>b</mi></mrow
+      ><mrow><mi>n</mi></mrow></msub
+    ><mo>&lt;</mo
+    ><msub
+      ><mrow><mi>v</mi></mrow
+      ><mrow><mi>n</mi></mrow></msub
+    ><mo>&lt;</mo><mi>u</mi
+    ><msub
+      ><mrow><mi>b</mi></mrow
+      ><mrow><mi>n</mi></mrow></msub
+    ></math
+  >
+</p>
+<p>
+  Using linear programming based on all these metabolic constraints as well as any additional desired constraints,
+  <math
+    ><mi>Ψ</mi
+    ><mfenced separators="|"
+      ><mrow><mi>v</mi></mrow></mfenced
+    ></math>
+  can be optimized. With defined c values, constricted ranges for v, or fluxes, the steady state assumption, and any
+  other provided constraints, the fluxes of the reactions that allow the optimized solution can be solved. Computational
+  linear programming algorithms such as the COBRA Toolbox are used to solve these equations.
+</p>
+
+<h2>Our Use of a Flux-based Model</h2>
+<p>
+  We edited an open-source constraint-based model available from BiGG Model Data already created and validated for
+  <em>Synechococcus elongatus</em> PCC 7942 by Jared Broddrick in Susan Golden’s lab at University of California-San
+  Diego. More information about the model, including download links and documentation, can be found
+  <a href="https://doi.org/10.1073/pnas.1613446113">here</a> <reference identifier="20" />. We also edited a MATLAB
+  script formed by this same group that measured growth of the cells in BG11 media based on graphing accumulated biomass
+  from biomass-based optimization of the model. This script used phosphate levels as the limiting source for biomass
+  accumulation and photon uptake as an additional limiting source for photosynthetic activity.
+</p>
+<p>
+  First, we edited this original, wildtype (WT), model for <em>S. elongatus </em>PCC 7942 to remove or add reactions
+  based on inclusion or removal of certain pathways of interest to us or created by us. A total of
+  <strong>3 models </strong>were therefore developed using COBRA-Py: one with SBPase flux bound to 0, one with SBPase
+  flux bound to 0 but with the transaldolase reaction overexpressed, and a model with our created glycolaldehyde
+  pathway. Exact details on model creation can be found in the supplemental material under model creation.
+</p>
+<p>
+  Then, the growth curve script by Broddrick and his group was edited to collect the appropriate flux data for later
+  analysis.
+  <strong
+    >Additional scripts in MATLAB were written to analyze the impacts of these pathways on the metabolic fluxes of
+    specific reactions of these cells.</strong
+  >
+  Ultimately, these analyses reflect the viability of these pathways for cellular growth, to assess if the pathways
+  achieve the ultimate goals of more robust biomass increase and carbon fixation and lower protein costs. Finally,
+  Escher run through Jupyter Notebook was used to visualize some of these fluxes on metabolic maps.
+</p>
+
+<h2>A Brief Summary of Our Results</h2>
+<p>
+  <span class="image right"><img src="assets/images/pic01.jpg" alt="" /></span>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent placerat vulputate nisl et hendrerit. Phasellus vel
+  tristique leo. Aenean nec libero tincidunt, egestas mauris ac, bibendum arcu. Donec molestie, quam vitae venenatis
+  tempor, velit lectus laoreet orci, nec placerat ex massa et mi. Aenean ipsum quam, mollis nec laoreet ut, faucibus
+  sodales lacus. Nunc ultrices convallis est, quis lobortis enim. Nam ut turpis dictum, pulvinar nibh id, ultrices odio.
+  Suspendisse commodo mollis arcu id pharetra. Quisque posuere libero nunc, consectetur mollis orci sollicitudin in. Ut
+  suscipit, nibh eget molestie dictum, tellus risus malesuada tellus, quis ultrices enim justo sed arcu. Etiam sodales
+  dolor non luctus luctus. Suspendisse vulputate tempor consectetur. Duis sollicitudin ac ex id mattis. Nam eu massa
+  nisl.
+</p>
+
+<hr />
+<bibliography />
+
+<hr />
+<explore pages="Notebook,Results" />

@@ -1,7 +1,5 @@
 # Project Description
 
-<!-- Abstract -->
-
 ## Abstract
 
 <div class="box">
@@ -59,6 +57,7 @@ Our work could be integrated into the similar systems of crop plants to increase
 sustainability for the growing population.
 
 ---
-
-### References
 <bibliography />
+
+---
+<explore pages="Safety,Team" />

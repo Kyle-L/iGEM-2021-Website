@@ -15,17 +15,16 @@
   - [HTML Converter](#html-converter)
 - [iGEM Wiki General Information](#igem-wiki-general-information)
   - [Deliverables / Requirements](#deliverables--requirements)
+  - [Sitemap](#sitemap)
   - [Default Wiki CSS](#default-wiki-css)
   - [Making Manual Changes](#making-manual-changes)
 
-<a name="overview"/></a>
 ## Overview
 The website for [Miami University's](https://miamioh.edu/) Team Website for the [iGEM 2021 Competition](https://2021.igem.org/Main_Page).
 
 *Important note: There are a lot of strange and sloppily looking design decisions that were made (For instance, a CSS file to undo CSS). These decisions were made to take into account how iGEM's MediaWiki server handles file uploads.*
 
 
-<a name="reqs"/></a>
 ## Requirements
 - [ ] [Git bash](https://git-scm.com/downloads)
 - [ ] [Python (version >= 3.0.0)](https://www.python.org/)
@@ -33,7 +32,6 @@ The website for [Miami University's](https://miamioh.edu/) Team Website for the 
 - [ ] [An iGEM account](igem.org)
 - [ ] An IDE of your choice ([VSCode](https://code.visualstudio.com/) recommended)
 
-<a name="download"/></a>
 ## How to Download and Setup the Site
 
 1. Download the site.
@@ -67,7 +65,6 @@ $ pip install -r requirements.txt
 Now you are ready to start editing the site!
 
 
-<a name="build"/></a>
 ## How to Build the Site (Local)
 To cut down on down on code and make the site more maintainable, the Python package `iGEM Site Builder` has been setup to use as a utility package to aid in the process of building a site for the iGEM competition. What does this mean? In the directory `iGEM-2021-Website/src`, a template layout for all the pages is definined in `iGEM-2021-Website/src/.template.html`. When built, the body of each page which is defined in `iGEM-2021-Website/src/pages` is inserted into this template. So, how do we build the site?
 
@@ -75,19 +72,22 @@ To cut down on down on code and make the site more maintainable, the Python pack
 ```shell
 $ cd iGEM-2021-Website/
 ```
-2. Call the `template-site` command. This will take the body of each page in `iGEM-2021-Website/src/pages` and insert it into the template at `iGEM-2021-Website/src/.template.html`
+2. (Optional) Call the `template` command. This will take the body of each page in `iGEM-2021-Website/src/pages` and insert it into the template at `iGEM-2021-Website/src/.template.html`
 ```shell
-$ python site_builder template-site 'temp\\build' 'src'
+$ python igem_site_builder template-site 'temp\\build' 'src'
 ```
-3. Call the `post-process` command. Post processing applies some nice quality of life changes to the templated site. To see more on what those specific changes are, checkout section on post-process in documentation for [iGEM Site Builder](igem_site_builder/README.md).
+3. (Optional) Call the `post-process` command. Post processing applies some nice quality of life changes to the templated site. To see more on what those specific changes are, checkout section on post-process in documentation for [iGEM Site Builder](igem_igem_site_builder/README.md).
 ```shell
-$ python site_builder post-process 'temp\\build' 'src'
+$ python igem_site_builder post-process 'temp\\build' 'src'
+```
+4. Alternatively to 2 & 3, you can call `build` which will combine both into one nice command.
+```shell
+$ python igem_site_builder build 'temp\\build' 'src'
 ```
 
 You can now view the full website under `iGEM-2021-Website/temp/build`.
 
 
-<a name="edit"/></a>
 ## How to Edit Pages (Remote / Local)
 To edit pages on the wiki, navigate to [`iGEM-2021-Website/src/pages`](/src/pages). These are the html files which will be present when the site is built. For instance, if you create an html file called `test.html` and insert the following.
 ```html
@@ -96,16 +96,14 @@ To edit pages on the wiki, navigate to [`iGEM-2021-Website/src/pages`](/src/page
 When the site is built, that placeholder text will be placed into the layout defined in `.template.html`.
 
 
-<a name="wikisync-setup"/></a>
 ## How Sync Site with the Team Wiki (Remote)
-This repository is setup to make use of GitHub Actions and [iGEM Site Builder](igem_site_builder/) to sync the site on a push to the `master` and `dev` branch.
+This repository is setup to make use of GitHub Actions and [iGEM Site Builder](igem_igem_site_builder/) to sync the site on a push to the `master` and `dev` branch.
 On any push to the master or `dev` branch, GitHub Actions will run the workflow in `.github/workflows/main.yaml` and sync the repository with the iGEM MediaWiki server.
 
 Specifically, the entire CI/CD pipeline looks like the following:
 ![A visualization of the entire CI/CD pipeline](docs/pipeline.svg)
 
 
-<a name="wikisync-local-setup"/></a>
 ## How to Sync Site with the Team Wiki (Local)
 If you need to sync the site with you local wiki, you can use the following instructions.
 *Note: This repository is setup to make use of GitHub Actions to sync the site on a push to the master branch. Thus, these instructions should only be used if needed.*
@@ -121,13 +119,12 @@ IGEM_USERNAME=Your_username
 IGEM_PASSWORD=Your_password
 ```
 
-3. Run `python site_builder sync-site`. *Note: please ensure that you have properly built the site.*
+3. Run `python igem_site_builder sync-site`. *Note: please ensure that you have properly built the site.*
 ```shell
-$ python site_builder sync-site 'temp\\build' 'temp\\sync' 'MiamiU_OH'
+$ python igem_site_builder sync 'temp\\build' 'temp\\sync' 'MiamiU_OH'
 ```
 
 
-<a name="helpful"/></a>
 ## Helpful
 ### HTML Converter
 The utility `python site-builder convert-file` has been supplied to help convert files for web use by converting a `.docx`, `.doc`, or `.md` file to `.html`.
@@ -138,11 +135,13 @@ $ python site-builder convert-file <some .docx, .doc or .md path> <some .html pa
 ```
 
 
-<a name="igem"/></a>
 ## iGEM Wiki General Information
 
 ### Deliverables / Requirements
 Please be conscientious of the requirements for the wiki and the expected deliverables. Failure to take this into account might result in potential disqualification. Carefully read through https://2021.igem.org/Competition/Deliverables/Wiki to ensure that the wiki meeting all requirements.
+
+### Sitemap
+![Sitemap of the Miami University 2021 iGEM wiki](docs/navigation.png)
 
 ### Default Wiki CSS
 The iGEM wiki already has a fair amount of CSS applied to each of the pages. If you would like to remove that CSS, add the following CSS to a page between the `style` tags.

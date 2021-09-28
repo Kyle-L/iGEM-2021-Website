@@ -35,7 +35,7 @@ def convert_md_to_html(input_filename):
 
     with open(input_filename, 'r') as file:
         text = file.read()
-        html = markdown.markdown(text, extensions=['tables'])
+        html = markdown.markdown(text, extensions=['tables', 'meta'])
         return html
 
 def convert_and_save_md_to_html(input_filename, output_filename):
@@ -47,8 +47,8 @@ def convert_and_save_md_to_html(input_filename, output_filename):
     """    
 
     html = convert_docx_to_html(input_filename)
-    with open("test.html", "w", encoding="utf-8") as f:
-        f.write(output_filename)
+    with open(output_filename, "w", encoding="utf-8") as f:
+        f.write(html)
 
 
 def convert_docx_to_md(input_filename):

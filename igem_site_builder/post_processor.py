@@ -25,8 +25,9 @@ def apply_post_processes(build_path, process_path):
     - Converting local links to absolute. ('iGEM server does not support local.')
     - Sets non-local links to open in a new browser.
     - Minimize html and css files to speed up load time.
-    - Replaces with '<references id="1" /> with citations based on a process file.'
-    - Replaces with '<bibliography /> with bibliographies based on reference tags on a page.'
+    - Replaces '<references id="1" />' with citations based on a process file.
+    - Replaces '<bibliography />' with bibliographies based on reference tags on a page.
+    - Replaces '<explore pages="page_id" />' with explore sections to certain pages. 
 
     Args:
         build_path (str): The output directory of the built wiki.
@@ -37,6 +38,7 @@ def apply_post_processes(build_path, process_path):
     try:
         process_links_whitelist = json.load(open(PurePath(process_path, '.external-link-whitelist.json'), encoding='utf-8'))
         references = json.load(open(PurePath(process_path, '.references.json'), encoding='utf-8'))
+        page_metadata = json.load(open(PurePath(process_path, '.page-metadata.json'), encoding='utf-8'))
         glossary = _load_glossary(PurePath(process_path, '.glossary.json'))
     except:
         print(console_colors.WARNING + f'Something went wrong loading source files.' + console_colors.ENDC)
@@ -68,6 +70,9 @@ def apply_post_processes(build_path, process_path):
 
                     print(console_colors.OKBLUE + f'Adding glossary terms...' + console_colors.ENDC)
                     process_file.add_tooltips_for_terms(glossary)
+
+                    print(console_colors.OKBLUE + f'Inserting explore sections...' + console_colors.ENDC)
+                    process_file.insert_explore_sections(page_metadata)
 
                     print(console_colors.OKBLUE + f'Replacing local links with absolute...' + console_colors.ENDC)
                     process_file.prefix_relative_links()
@@ -253,8 +258,8 @@ class iGEM_HTML(iGEM_File):
             # The entire tooltip content is built here.
             # Adds the doi if one is present, if not, we don't want to include since the users can't go there.
             span['title'] = f'<b>{references[ref_id]["title"]}</b> '
-            if 'doi_url' in references[ref_id] and references[ref_id]["doi_url"]:
-                span['title'] += f'<a href="{references[ref_id]["doi_url"]}" target="#blank">(External DOI Link)</a>'
+            if 'url' in references[ref_id] and references[ref_id]["url"]:
+                span['title'] += f'<a href="{references[ref_id]["url"]}" target="#blank">(External DOI Link)</a>'
 
             # A break to create contrast from the rest of the tooltip content.
             span['title'] += f'<br />'
@@ -279,6 +284,15 @@ class iGEM_HTML(iGEM_File):
         for bib in self._soup.findAll('bibliography'):
             div = self._soup.new_tag('div')
             div['class'] = bib.get('class', [])
+
+            # Adds the reference header.
+            header = self._soup.new_tag('header')
+            header['class'] = ['major']
+            h2 = self._soup.new_tag('h2')
+            h2.string = 'References'
+            header.append(h2)
+            div.append(header)
+
             for index in ordered_refs.keys():
                 a = self._soup.new_tag('a')
                 p = self._soup.new_tag('p')
@@ -297,6 +311,78 @@ class iGEM_HTML(iGEM_File):
 
                 div['id'] = 'references'
             bib.replace_with(div)
+
+
+    def insert_explore_sections(self, page_metadata):
+        """Replaces <explore pages="page_id" /> with explore sections.
+
+        Args:
+            page_metadata (dict): A dict in the format "{ page_id: { name: some_name, description: some_description, image: some_image_path} }"
+        """        
+
+        for explore in self._soup.findAll('explore'):
+            ref_ids = explore['pages'].split(',')
+
+            div_whole = self._soup.new_tag('div')
+
+            # Adds the header with text.
+            div_header = self._soup.new_tag('div')
+            div_header['class'] = ['major']
+            h2 = self._soup.new_tag('h2')
+            h2.string = explore.get('title', 'Explore Next')
+            div_header.append(h2)
+
+            div_pages = self._soup.new_tag('div')
+
+            # Changes the format if there is more than 2 entries.
+            if len(ref_ids) > 2:
+                div_pages['class'] = ['posts']
+            else:
+                div_pages['class'] = ['explore-posts']
+
+            for ref_id in ref_ids:
+                article = self._soup.new_tag('article')
+
+                # Adds the image link so the user can easily click the image.
+                a_img = self._soup.new_tag('a')
+                a_img['href'] = f'/{ref_id}'
+                a_img['class'] = ['image']
+                img = self._soup.new_tag('img')
+                img['src'] = page_metadata[ref_id]['image']
+                a_img.append(img)
+
+                # Adds the heading text so the user knows what the page is.
+                h3 = self._soup.new_tag('h3')
+                h3.string = page_metadata[ref_id]['name']
+
+                # Adds the description of the page so the users can assume the page content.
+                p = self._soup.new_tag('p')
+                p.string = page_metadata[ref_id]['description']
+
+                # Creates the button to the page so that it can be tab accessed.
+                ul = self._soup.new_tag('ul')
+                ul['class'] = ['actions']
+                li = self._soup.new_tag('li')
+                a_li = self._soup.new_tag('a')
+                a_li['href'] = f'/{ref_id}'
+                a_li['class'] = ['customButton'] 
+                a_li.string = 'More'
+                li.append(a_li)
+                ul.append(li)
+
+                # Appends all elements to the current article in the order img > heading text > description > button.
+                article.append(a_img)
+                article.append(h3)
+                article.append(p)
+                article.append(ul)
+
+                # Adds the article to the page div so user will see it.
+                div_pages.append(article)
+            
+            div_whole.append(div_header)
+            div_whole.append(div_pages)
+            explore.replace_with(div_whole)
+
 
     def save(self):
         textfile = open(self._path, 'wb')

@@ -28,5 +28,105 @@
         "full": "Klemenčič M, Nielsen AZ, Sakuragi Y, Frigaard N-U, Čelešnik H, Jensen PE, Dolinar M. 2017. 13 - Synthetic biology of cyanobacteria for production of biofuels and high-value products, p. 305–325. In Gonzalez-Fernandez, C, Muñoz, R (eds.), Microalgae-Based Biofuels and Bioproducts. Woodhead Publishing.",
         "title": "Synthetic biology of cyanobacteria for production of biofuels and high-value products",
         "url": "https://doi.org/10.1016/B978-0-08-101023-5.00013-3"
+    },
+    "7": {
+        "full": "de Paula ACL, Medeiros JD, de Azevedo AC, Chagas JM de A, da Silva VL, Diniz CG. 2018. Antibiotic Resistance Genetic Markers and Integrons in White Soft Cheese: Aspects of Clinical Resistome and Potentiality of Horizontal Gene Transfer. Genes (Basel) 9:106.",
+        "title": "Antibiotic Resistance Genetic Markers and Integrons in White Soft Cheese: Aspects of Clinical Resistome and Potentiality of Horizontal Gene Transfer",
+        "url": "https://doi.org/10.3390/genes9020106"
+    },
+    "8": {
+        "full": "Liang A, Riaz H, Dong F, Luo X, Yu X, Han Y, Chong Z, Han L, Guo A, Yang L. 2014. Evaluation of efficacy, biodistribution and safety of antibiotic-free plasmid encoding somatostatin genes delivered by attenuated Salmonella enterica serovar Choleraesuis. Vaccine 32:1368–1374.",
+        "title": "Evaluation of efficacy, biodistribution and safety of antibiotic-free plasmid encoding somatostatin genes delivered by attenuated Salmonella enterica serovar Choleraesuis",
+        "url": "https://doi.org/10.1016/j.vaccine.2014.01.026"
+    },
+    "9": {
+        "full": " Multum, Cerner. Gentamicin. Drugs.com.",
+        "title": "Gentamicin",
+        "url": "https://www.drugs.com/mtm/gentamicin.html"
+    },
+    "10": {
+        "full": "Kanamycin. DrunkBank Online.",
+        "title": "Kanamycin",
+        "url": "https://go.drugbank.com/drugs/DB01172"
+    },
+    "11": {
+        "full": "Spectinomycin. DrunkBank Online.",
+        "title": "Spectinomycin",
+        "url": "https://go.drugbank.com/drugs/DB00919"
+    },
+    "12": {
+        "full": "Streptomycin. PubChem.",
+        "title": "Streptomycin",
+        "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Streptomycin"
+    },
+    "13": {
+        "full": "Agriculture. Genome.gov.",
+        "title": "Agriculture",
+        "url": "https://www.genome.gov/dna-day/15-ways/agriculture"
+    },
+    "14": {
+        "full": "Norris, Megan. 2015. Will GMOs Hurt My Body? The Public’s Concerns and How Scientists Have Addressed Them. Science in the News.",
+        "title": "Will GMOs Hurt My Body? The Public’s Concerns and How Scientists Have Addressed Them",
+        "url": "https://sitn.hms.harvard.edu/flash/2015/will-gmos-hurt-my-body/"
+    },
+    "15": {
+        "full": "Becker SA, Feist AM, Mo ML, Hannum G, Palsson BØ, Herrgard MJ. 2007. Quantitative prediction of cellular metabolism with constraint-based models: the COBRA Toolbox. Nat Protoc 2:727–738.",
+        "title": "Quantitative prediction of cellular metabolism with constraint-based models: the COBRA Toolbox",
+        "url": "https://doi.org/10.1038/nprot.2007.99"
+    },
+    "16": {
+        "full": "Kaushik AC, Sahi S. 2015. Boolean network model for GPR142 against Type 2 diabetes and relative dynamic change ratio analysis using systems and biological circuits approach. Syst Synth Biol 9:45–54.",
+        "title": "Boolean network model for GPR142 against Type 2 diabetes and relative dynamic change ratio analysis using systems and biological circuits approach",
+        "url": "https://doi.org/10.1007/s11693-015-9163-0"
+    },
+    "17": {
+        "full": "Covert MW, Famili I, Palsson BO. 2003. Identifying constraints that govern cell behavior: a key to converting conceptual to computational models in biology? Biotechnology and Bioengineering 84:763–772.",
+        "title": "Identifying constraints that govern cell behavior: a key to converting conceptual to computational models in biology?",
+        "url": "https://doi.org/10.1002/bit.10849"
+    },
+    "18": {
+        "full": "Heirendt L, Arreckx S, Pfau T, Mendoza SN, Richelle A, Heinken A, Haraldsdóttir HS, Wachowiak J, Keating SM, Vlasov V, Magnusdóttir S, Ng CY, Preciat G, Žagare A, Chan SHJ, Aurich MK, Clancy CM, Modamio J, Sauls JT, Noronha A, Bordbar A, Cousins B, El Assal DC, Valcarcel LV, Apaolaza I, Ghaderi S, Ahookhosh M, Ben Guebila M, Kostromins A, Sompairac N, Le HM, Ma D, Sun Y, Wang L, Yurkovich JT, Oliveira MAP, Vuong PT, El Assal LP, Kuperstein I, Zinovyev A, Hinton HS, Bryant WA, Aragón Artacho FJ, Planes FJ, Stalidzans E, Maass A, Vempala S, Hucka M, Saunders MA, Maranas CD, Lewis NE, Sauter T, Palsson BØ, Thiele I, Fleming RMT. 2019. Creation and analysis of biochemical constraint-based models using the COBRA Toolbox v.3.0. Nat Protoc 14:639–702.",
+        "title": "Creation and analysis of biochemical constraint-based models using the COBRA Toolbox v.3.0",
+        "url": "https://doi.org/10.1038/s41596-018-0098-2"
+    },
+    "19": {
+        "full": "Orth JD, Thiele I, Palsson BØ. 2010. What is flux balance analysis? Nat Biotechnol 28:245–248.",
+        "title": "What is flux balance analysis?",
+        "url": "https://doi.org/10.1038/nbt.1614"
+    },
+    "20": {
+        "full": "Broddrick JT, Rubin BE, Welkie DG, Du N, Mih N, Diamond S, Lee JJ, Golden SS, Palsson BO. 2016. Unique attributes of cyanobacterial metabolism revealed by improved genome-scale metabolic modeling and essential gene analysis. PNAS 113:E8344–E8353.",
+        "title": "Unique attributes of cyanobacterial metabolism revealed by improved genome-scale metabolic modeling and essential gene analysis",
+        "url": "https://doi.org/10.1073/pnas.1613446113"
+    },
+    "21": {
+        "full": "Bakhsh A, Anayol E, Özcan SF, Hussain T, Aasim M, Khawar KM, Özcan S. 2015. An insight into cotton genetic engineering (Gossypium hirsutum L.): current endeavors and prospects. Acta Physiol Plant 37:171.",
+        "title": "An insight into cotton genetic engineering (Gossypium hirsutum L.): current endeavors and prospects",
+        "url": "https://doi.org/10.1007/s11738-015-1930-8"
+    },
+    "22": {
+        "full": "Conner AJ, Jacobs JM. 1999. Genetic engineering of crops as potential source of genetic hazard in the human diet. Mutat Res 443:223–234.",
+        "title": "Genetic engineering of crops as potential source of genetic hazard in the human diet",
+        "url": "https://doi.org/10.1016/s1383-5742(99)00020-4"
+    },
+    "23": {
+        "full": "Dean C, Jones J, Favreau M, Dunsmuir P, Bedbrook J. 1988. Influence of flanking sequences on variability in expression levels of an introduced gene in transgenic tobacco plants. Nucleic Acids Res 16:9267–9283.",
+        "title": "Influence of flanking sequences on variability in expression levels of an introduced gene in transgenic tobacco plants.",
+        "url": "https://doi.org/10.1093/nar/16.19.9267"
+    },
+    "24": {
+        "full": "New facilities support photosynthesis studies. RIPE.",
+        "title": "New facilities support photosynthesis studies",
+        "url": "https://ripe.illinois.edu/news/new-facilities-support-photosynthesis-studies"
+    },
+    "25": {
+        "full": "Kahl G, Winter P. 1995. Plant genetic engineering for crop improvement. World J Microbiol Biotechnol 11:449–460.",
+        "title": "Plant genetic engineering for crop improvement",
+        "url": "https://doi.org/10.1007/BF00364620"
+    },
+    "26": {
+        "full": "López-Calcagno PE, Brown KL, Simkin AJ, Fisk SJ, Vialet-Chabrand S, Lawson T, Raines CA. 2020. Stimulating photosynthetic processes increases productivity and water-use efficiency in the field. Nat Plants 6:1054–1063.",
+        "title": "Stimulating photosynthetic processes increases productivity and water-use efficiency in the field",
+        "url": "https://doi.org/10.1038/s41477-020-0740-1"
     }
 }
