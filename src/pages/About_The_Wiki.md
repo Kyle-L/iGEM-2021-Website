@@ -32,5 +32,12 @@ Sometimes academic jargon can be hard to understand even when you are familiar w
 
 For instance, the following term is clickable and provides the description without needing to search for it: <span class="note tooltip" title="&lt;i&gt;&lt;b&gt;Example Term&lt;/b&gt;&lt;/i&gt; - This is a description about the example term.">Example Term</span>
 
+## A Guided Tour
+
+Navigating a large website with daunting amounts of information can be hard. Don't worry, we thought about that with our wiki! If you do not know where to go once your are finished with a page fret not! At the bottom of every page we have included an "Explore Next" section which will recommended where to go in our wiki next. Depending on what you want, multiple options will be recommended that logical carry forward from the page you left off!
+
+So, when you are ready, start exploring! We hope you enjoy Miami University's first iGEM wiki!
+
 ---
-<explore pages="Team,Description" />
+
+<explore pages="Description,Team" />
