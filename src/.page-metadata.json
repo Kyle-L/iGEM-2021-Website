@@ -6,12 +6,12 @@
     },
     "About_The_Wiki": {
         "name": "About the Wiki",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "The wiki you see now is the product of months of design, iteration, and dedication. Take a moment to learn about what makes it so special!",
         "image": "assets/images/pic02.jpg"
     },
     "Attributions": {
         "name": "Attributions",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "Every member of the Miami University iGEM contributed in a meaningful and impactful way. See how and what each person attributed to that made our project what it is!",
         "image": "assets/images/pic03.jpg"
     },
     "Collaborations": {
