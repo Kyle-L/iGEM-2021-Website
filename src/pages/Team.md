@@ -309,8 +309,8 @@ advisors from a range of different STEM subject domains! Take a moment to learn 
     <p>
       Xin Wang is an assistant professor of microbiology and serves as the primary principal investigator on Miami
       Universitys iGEM team. Dr. Wang has been with Miami University since 2017 after completing a post-doctoral
-      fellowship at Texas A&amp;M University and receiving his doctorate from the University of Hawaii at Manoa in
-      1.    He is an expert in metabolic engineering, synthetic biology, and the metabolism of microbes. His research
+      fellowship at Texas A&amp;M University and receiving his doctorate from the University of Hawaii at Mānoa in
+      2013. He is an expert in metabolic engineering, synthetic biology, and the metabolism of microbes. His research
       investigates cyanobacterial metabolisms to eventually rewire the central metabolism to sustain cell growth and
       meet engineering goals such as biofuel production. Aside from his own lab research, he inspired the formation of
       this team.
