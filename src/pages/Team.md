@@ -148,7 +148,7 @@ advisors from a range of different STEM subject domains! Take a moment to learn 
        >
       </li>
     </ul>
-    <span class="image fit"><img src="assets/images/pic05.jpg" alt="Portrait of Kyle Lierer" /></span>
+    <span class="image fit"><img src="assets/images/team/kyle-lierer.png" alt="Portrait of Kyle Lierer" /></span>
     <blockquote><b>Fun Fact:</b> I am surprisingly good at making latte art!</blockquote>
     <p>
       Kyle Lierer is a senior computer science major. As a skilled computer scientist and software engineer, Kyle
