@@ -33,7 +33,7 @@ def convert_md_to_html(input_filename):
         input_filename (str): The file path of the input .docx file.
     """    
 
-    with open(input_filename, 'r') as file:
+    with open(input_filename, 'r', encoding="utf-8") as file:
         text = file.read()
         html = markdown.markdown(text, extensions=['tables', 'meta'])
         return html
