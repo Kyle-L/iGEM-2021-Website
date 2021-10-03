@@ -245,7 +245,7 @@ textarea {
     font-size: 10pt;
   }
 }
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 640px) {
   body,
   input,
   select,
@@ -1859,7 +1859,18 @@ input[type="radio"] + label:before {
   width: 100%;
 }
 .image.half {
+  min-width: 416px;
   width: 50%;
+}
+.image.half img {
+  width: 100%;
+}
+.image.third {
+  min-width: 416px;
+  width: 33%;
+}
+.image.third img {
+  width: 100%;
 }
 .image.main {
   display: block;
