@@ -4,11 +4,9 @@ One of the early goals we set out to accomplish was to develop an intuitive wiki
 
 ---
 
-## Mobile-First Design
+## Content-First Design
 
-A core philosophy we had early with the wiki's design is that it needed to be designed to be accessible on as many devices as possible. Consequently, if our wiki looks good on a mobile device, it will translate better to all devices. More importantly than that, with a mobile-first approach, this also becomes a content-first approach. Mobile has the most limitations such as small screen sizes and more; thus, designing within these parameters allows us to prioritize content.
-
-The mobile-first approach organically leads to a design that's more content-focused and user-focused. Users are here for the content. The heart of our site is the content.
+A core philosophy we had early with the wiki's design is that above all else, the core focus would be the content and the accessibility of that content on as many devices as possible. Given the complexity and wide variety of content that is on the wiki, this was certainly a challenge. To focus on the importance of our content, our wiki was designed to be as responsive and smooth as possible on everything from desktop devices to tablets to even mobile phones. Through extensive user-testing as well as trial and error, we believe that we meet that goal. 
 
 ## Navigation
 
