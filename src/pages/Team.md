@@ -79,6 +79,25 @@ advisors from a range of different STEM subject domains! Take a moment to learn 
       hopes to go to graduate school to earn her PhD.
     </p>
   </div>
+   <div class="col-6 col-12-small">
+    <h3 class="inline">Cameron Headlee</h3>
+    <p class="inline">| Full Stack Web Development</p>
+    <ul class="icons inline right">
+      <li>
+        <a href="mailto:camHcodes11@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/cameron-headlee-a20444215/" class="icon brands fa-linkedin"
+         ><span class="label">LinkedIn</span></a
+       >
+      </li>
+    </ul>
+    <span class="image fit"><img src="assets/images/team/cameron-headlee.png" alt="Cameron Headlee" /></span>
+    <blockquote><b>Fun fact:</b> I love snowboarding! My favorite resort is Seven Springs in Somerset County, Pennsylvania.</blockquote>
+    <p>
+      Cameron Headlee is a Full Stack Web Developer. Cameron joined the Miami University iGEM because of his passion for Web Development and he wanted to assist with the development of the iGEM site. By joining the team, Cameron hopes to continue learning new skills to add to his development stack. We developed the site using various languages, including python. Python is a new language for Cameron, so working with the iGEM team allows him to gain valuable experience he will use in both his future career and personal projects.
+    </p>
+  </div>
   <div class="col-6 col-12-small">
     <h3 class="inline">Daria Perminova</h3>
     <p class="inline">| Biology</p>
