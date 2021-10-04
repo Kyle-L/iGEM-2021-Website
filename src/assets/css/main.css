@@ -4025,10 +4025,10 @@ Main Components
 }
 
 .cover-animate {
-  animation: fade-out 2s /*infinite*/;
+  animation: fade-out 4s /*infinite*/;
 }
 .cover-animate #icon {
-  animation: zoom-in 2s /*infinite*/;
+  animation: zoom-in 4s /*infinite*/;
 }
 
 @keyframes zoom-in {
