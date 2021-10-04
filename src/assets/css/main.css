@@ -159,6 +159,11 @@ mark {
   color: inherit;
 }
 
+::selection {
+  background: var(--accent-color);
+  color: var(--background-color);
+}
+
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
