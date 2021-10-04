@@ -1,1 +1,1 @@
-$(document).ready(function () {$('.fadeMeInstantly').each(function (i) {$(this).animate({ 'opacity': '1' }, 1000, 'linear');});});
+$(document).ready(function () {$('.fadeMeInstantly').each(function (i) {$(this).delay(250).animate({ 'opacity': '1' }, 1000, 'linear');});});
