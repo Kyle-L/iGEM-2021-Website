@@ -80,6 +80,25 @@ advisors from a range of different STEM subject domains! Take a moment to learn 
     </p>
   </div>
   <div class="col-6 col-12-small">
+    <h3 class="inline">Cameron Headlee</h3>
+    <p class="inline">| Web Developer</p>
+    <ul class="icons inline right">
+      <li>
+        <a href="mailto:camHcodes11@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/cameron-headlee-a20444215/" class="icon brands fa-linkedin"
+         ><span class="label">LinkedIn</span></a
+       >
+      </li>
+    </ul>
+    <span class="image fit"><img src="assets/images/team/cameron-headlee.png" alt="Cameron Headlee" /></span>
+    <blockquote><b>Fun fact:</b> I love snowboarding! My favorite resort is Seven Springs in Somerset County, Pennsylvania.</blockquote>
+    <p>
+      Cameron Headlee is a full-stack web developer. Cameron joined the Miami University iGEM because of his passion for web development and he wanted to assist with the development of the iGEM wiki. By joining the team, Cameron hopes to continue learning new web development skills. Working with the iGEM team allows him to gain valuable experience he will use in both his future career and personal projects.
+    </p>
+  </div>
+  <div class="col-6 col-12-small">
     <h3 class="inline">Daria Perminova</h3>
     <p class="inline">| Biology</p>
     <ul class="icons inline right">
@@ -257,7 +276,7 @@ advisors from a range of different STEM subject domains! Take a moment to learn 
   </div>
   <div class="col-6 col-12-small">
     <h3 class="inline">Rhonda Krehbiel</h3>
-    <p class="inline">| International Studies & Professional Writing</p>
+    <p class="inline">| Professional Writing</p>
     <ul class="icons inline right">
       <li>
         <a href="mailto:krehbira@miamioh.edu" class="icon solid fa-envelope"><span class="label">Email</span></a>
@@ -286,7 +305,7 @@ advisors from a range of different STEM subject domains! Take a moment to learn 
 <div class="row">
   <div class="col-6 col-12-small">
     <h3 class="inline">Xin Wang</h3>
-    <p class="inline">| Assistant Professor of Microbiology</p>
+    <p class="inline">| Professor of Microbiology</p>
     <ul class="icons inline right">
       <li>
         <a href="mailto:wangx98@miamioh.edu" class="icon solid fa-envelope"><span class="label">Email</span></a>
@@ -310,7 +329,7 @@ advisors from a range of different STEM subject domains! Take a moment to learn 
       Xin Wang is an assistant professor of microbiology and serves as the primary principal investigator on Miami
       Universitys iGEM team. Dr. Wang has been with Miami University since 2017 after completing a post-doctoral
       fellowship at Texas A&amp;M University and receiving his doctorate from the University of Hawaii at Mānoa in
-      2013. He is an expert in metabolic engineering, synthetic biology, and the metabolism of microbes. His research
+      1.    He is an expert in metabolic engineering, synthetic biology, and the metabolism of microbes. His research
       investigates cyanobacterial metabolisms to eventually rewire the central metabolism to sustain cell growth and
       meet engineering goals such as biofuel production. Aside from his own lab research, he inspired the formation of
       this team.
