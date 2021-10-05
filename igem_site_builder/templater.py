@@ -33,7 +33,7 @@ def template(build_path, src_path):
             searchpath=os.path.abspath(src_path),
             outpath=os.path.abspath(build_path),
             contexts=[(".*\.html", _html_context), (".*\.md", _md_context)],
-            rules=[(".*\.html", _render), (".*\.md", _render), (".*\.docx", _render)],
+            rules=[(".*\.html", _render), (".*\.md", _render)],
             staticpaths=["assets"],
             encoding='utf-8'
         )
