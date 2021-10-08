@@ -6,6 +6,7 @@ on:
       - main
       - dev
       - dev-kyle
+      - dev-cam
 jobs:
   build:
     runs-on: ubuntu-latest
