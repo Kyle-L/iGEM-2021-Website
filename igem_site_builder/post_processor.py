@@ -223,12 +223,11 @@ class iGEM_HTML(iGEM_File):
 
         keys_pattern = "|".join(glossary.keys())
 
-        paragraphs = self._soup.find_all(text=re.compile(keys_pattern, re.IGNORECASE))
+        paragraphs = self._soup.find_all(name='p', text=re.compile(keys_pattern, re.IGNORECASE))
         for paragraph in paragraphs:
-            replaced_text = paragraph
+            replaced_text = str(paragraph)
             found_keys = set(re.compile(
                 keys_pattern, re.IGNORECASE).findall(str(paragraph)))
-                
             for key in found_keys:
                 title = f'<i><b>{glossary[key.lower()]["name"]}</b></i> - {glossary[key.lower()]["definition"]}'
                 replaced_text = replaced_text.replace(key, f'<span class="note tooltip" title="{title}">{key}</span>')
