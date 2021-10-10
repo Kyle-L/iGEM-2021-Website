@@ -1,14 +1,22 @@
 <h1>Collaborations</h1>
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent placerat vulputate nisl et hendrerit. Phasellus vel
-  tristique leo. Aenean nec libero tincidunt, egestas mauris ac, bibendum arcu. Donec molestie, quam vitae venenatis
-  tempor, velit lectus laoreet orci, nec placerat ex massa et mi. Aenean ipsum quam, mollis nec laoreet ut, faucibus
-  sodales lacus. Nunc ultrices convallis est, quis lobortis enim. Nam ut turpis dictum, pulvinar nibh id, ultrices odio.
-  Suspendisse commodo mollis arcu id pharetra. Quisque posuere libero nunc, consectetur mollis orci sollicitudin in. Ut
-  suscipit, nibh eget molestie dictum, tellus risus malesuada tellus, quis ultrices enim justo sed arcu. Etiam sodales
-  dolor non luctus luctus. Suspendisse vulputate tempor consectetur. Duis sollicitudin ac ex id mattis. Nam eu massa
-  nisl.
-</p>
+
+<hr />
+
+<section>
+  <h2>Collaboration with Phototroph Teams for a Phototroph Handbook</h2>
+  <p>
+    The <a href="https://igem-bielefeld.de/en/">Bielefeld</a> and
+    <a href="https://2021.igem.org/Team:Marburg">Marburg</a> teams initiated the collaborative writing of a handbook for
+    future iGEM teams working with phototrophs. Our team authored the Modeling section this handbook. This chapter
+    consists of the three subchapters. “Using computational models for biological analysis” covers the usage of models
+    in phototrophs, the Constraint-Based Reconstruction and Analysis Toolbox, the difference between Kinetics and Flux
+    based models, and the mathematical justification for flux-balanced model analysis. The second involves “Building a
+    Model,” where the reader is walked through how to add reactions and metabolites, create an objective, validate the
+    model, and create boundary reactions. Finally, the last subchapter discusses “Performing the Simulation.” This
+    subchapter describes four different types of analyses, data visualization, and integrating regulation into a model.
+    The full chapter can be found attached below, labeled Modeling_Chapter.
+  </p>
+</section>
 
 <hr />
 
@@ -16,7 +24,8 @@
   <h2>Collaboration with the Complutense University of Madrid</h2>
   <p>
     <span class="image half right"
-      ><img src="assets/images/collaboration/4c-full.png" alt="The 4C team standing in a lab with masks on." /><span class="credit"
+      ><img src="assets/images/collaboration/4c-full.png" alt="The 4C team standing in a lab with masks on." /><span
+        class="credit"
         >Photo from MADRID_UCM</span
       ></span
     >
@@ -25,31 +34,277 @@
   </p>
   <p>
     While our team tackled modeling photosynthesis improvements, the iGEM team from the Complutense University of Madrid
-    (<a href="https://2021.igem.org/Team:MADRID_UCM">Madrid_UCM</a>) addressed functioning in biofuel production in
-    their project 4C_Fuels; this team aimed to stimulate n-butinol production in cyanobacteria through synthetic
-    pathways suggested in previously published literature. Similarly to the techniques of our team, they planned to use
-    integrative plasmids to introduce a synthetic pathway, changing the metabolism of the host cyanobacteria to suit
-    their engineering goals. To enhance this butinol production, the team also planned to introduce a modified
-    malyl-CoA-glycerate (MCG) carbon fixation pathway; this pathway enhances production of acetyl-CoA to fuel butinol
-    production, but also impacts photosynthetic output. Miamis iGEM team applied Madrids modified pathway to our
-    computational model to assess metabolic flux levels and biomass formation.
+    (<a href="https://2021.igem.org/Team:MADRID_UCM">Madrid_UCM</a>) addressed biofuel production in their project
+    4C_Fuels; this team aimed to stimulate n-butanol production in cyanobacteria through synthetic pathways suggested in
+    previously published literature. Similar to the techniques of our team, they planned to use integrative plasmids to
+    introduce a synthetic pathway, changing the metabolism of the host cyanobacteria to suit their engineering goals. To
+    enhance this butanol production, the team also planned to introduce a modified malyl-CoA-glycerate (MCG) carbon
+    fixation pathway; this pathway enhances production of acetyl-CoA to fuel butanol production, but also could impact
+    photosynthetic output. Miami’s iGEM team applied Madrid’s modified pathways to our computational model to assess
+    metabolic flux levels and biomass formation. Scripts can be found at the MiamiOH iGEM Github repository.
   </p>
-  <h3>Details of Collaboration</h3>
-  <p>
-    Based on the potential advantage their modified MCG pathway may have on photosynthetic output, we applied their
-    modified pathway to the metabolism of PCC7942 based model to assess flux levels and biomass formation.
-  </p>
+  <h3>Summary of 4C_Fuel’s pathways</h3>
   <ul>
     <li>
-      We will include this pathway alone combined with our own synthetic pathways which potentially allow a more robust
-      regeneration of RuBP.
+      Both processes are more thoroughly explained on the team’s wiki:
+      <a href="https://2021.igem.org/Team:MADRID_UCM">Madrid_UCM</a>.
     </li>
     <li>
-      We will also assess the production of n-butinol with and without this modified MCG pathway to assess if its use
-      for acetyl-CoA production can potentially be linked to n-butinol production based on their combined pathways.
+      Ultimately, the goal of the C4 team is to engineer a more efficient microbe for butanol production. First, the
+      microbes can be engineered to synthesize butanol by adding the butanol biosynthesis pathway. This allows butanol
+      to be synthesized via the condensation of acetyl-CoA and malonyl-CoA.
+      <ul>
+        <li>
+          To increase the pools of acetyl-CoA and malonyl-CoA, the phosphoketolase bypass and MCG Carbon Fixation
+          pathway, can be engineered into cells. Both pathways have been independently previously tested in
+          <em>Synechococcus elongatus</em> PCC 7942. The phosphoketolase bypass uses phosphoketolase from
+          <em>Bacillus subtilis</em> to channel fructose-6-phosphate from the Calvin-Benson-Bassham (CBB) cycle to form
+          erythrose-4-phosphate and acetyl-phosphate, the latter of which can be fed into the butanol synthesis pathway
+          as acetyl-CoA. The MCG carbon fixation pathway increases the pools by providing adapted citric acid cycles
+          with pathways to malyl-CoA via glyoxylate and phosphoenolpyruvate.
+        </li>
+      </ul>
     </li>
   </ul>
-  <p>Waiting for findings</p>
+  <h3>Creation of Models</h3>
+  <p>
+    A total of 3 models were made. One model (BUT model) only includes the reactions allowing for butanol synthesis
+    while another model (MAL model) only includes the reactions for the phosphoketolase (PK) bypass and MCG carbon
+    fixation pathway. The last model combines all 3 pathways (butanol synthesis, PK bypass, MCG pathway) into one model
+    (BUTMAL model).
+  </p>
+  <ol>
+    <li>The BUT model should be able to synthesize butanol unlike wildtype (WT) cells</li>
+    <li>
+      The MAL model should not be able to synthesize butanol, but should allow higher pools of acetyl-CoA and malyl-CoA
+      compared to WT.
+    </li>
+    <li>
+      Finally, the MALBUT model combines all three pathways which should hypothetically increase butanol production
+      based on an increased pool of acetyl-CoA which could feed into the butanol synthesis pathway.
+    </li>
+  </ol>
+  <p>
+    First, based on a set of reactions sent to us by the C4_Madrid team, we created a sheet of all metabolites,
+    reactions, and an appropriate stoichiometric matrix of the appropriate pathways. Importantly, all reactions and
+    metabolites were first checked to not be in the model (Supplemental Data). Missing reactions or metabolites were
+    then added to the model. Although PCC 7942 has not been shown to perform butanol fermentation, one of its genes
+    shows close homology to tartronate semialdehyde reductase (TRSARyr), which converts 2-hydroxy-3-oxopropanoate to
+    glycerate through an intermediate of tartronate semialdehyde. Importantly, there is no known gene which allows the
+    biosynthesis of 2-hydroxy-3-oxopropanoate, therefore making the possible reaction futile unless the metabolite is
+    externally provided, however the authors of the model clarify that they still include the reaction in the model. The
+    reactions sent by the C4_Madrid team separated this reaction into two reactions where glyoxylate is used to produce
+    tartronate semialdehyde which is then converted to glycerate. However, due to the inclusion of TRSARyr in the model
+    and the lack of the combined malyl-CoA-glycerate artificial cycle and PK bypass in vivo analysis in our organism, we
+    included reactions that converted glyoxylate to the intermediate of 2-hydroxy-3-oxopropanoate rather than tartonate
+    semialdehyde to produce glycerate. All reactions and metabolites were confirmed according to the KEGG (Kyoto
+    Encyclopedia of Genes and Genomes) Reaction and Metabolites set (30). Ultimately, this change should not impact
+    analysis of the data as the same set of reactions is represented, simply with different intermediates being
+    specified fitting with our organism.
+  </p>
+  <p>
+    It is important to note that a sink reaction was also added for n-butanol in the BUT and MALBUT models. A sink
+    reaction is a reversible reaction that essentially allows the buildup of an intracellular metabolite. If this were
+    not added, there would be no available reaction to take up n-butanol, and therefore mass conservation would not be
+    able to be maintained. A similar sink reaction for acetyl-CoA was added to the MAL model only for verification of a
+    nonzero flux for all added reactions increasing acetyl-CoA production. For growth and subsequent analysis, this sink
+    reaction was removed.
+  </p>
+  <h3>Verification of Models</h3>
+  <p>
+    First, all models must be verified to allow proper growth and to perform their expected functions based on their
+    previously tested legitimacy <em>in vivo</em>. To determine that all added pathways were functional, we bounded the
+    n-butanol and acetyl-CoA production reactions for the BUT and MAL models, respectively, to have nonzero fluxes.
+    Then, biomass production was optimized for all models; a nonzero solved optimized value would indicate a nonzero
+    growth rate and therefore viable cells with active added pathways. 
+  </p>
+  <ul>
+    <li>The WT model had a growth rate of 0.054 mgDW/h.</li>
+    <li>
+      The BUT model had a growth rate of 0.0423 mgDW/h when the sink reaction for n-butanol, the target metabolite, had
+      a nonzero flux (lower bounds of 0.001). The nonzero fluxes of upstream added reactions were confirmed by printing
+      all flux values.
+    </li>
+    <li>
+      The MAL model had a growth rate of 0.0470 mgDW/h when the sink reaction for acetyl-CoA, the target metabolite, had
+      a nonzero flux (lower bounds of 0.001). The nonzero fluxes of upstream added reactions were confirmed by printing
+      all flux values.
+    </li>
+    <li>
+      The MALBUT model had a growth rate of 0.054 mgDW/h when the sink reaction for n-butanol, the target metabolite,
+      had a nonzero flux (lower bounds of 0.001). The nonzero fluxes of upstream added reactions were confirmed by
+      printing all flux values.
+      <ul>
+        <li>
+          <em
+            >Notably, this growth is comparable to WT, indicating that the phosphoketolase (PK) bypass and MCG carbon
+            fixation pathway allowed a production of n-butanol while maintaining a higher growth rate than without these
+            pathways.</em
+          >
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h3>Assessment of Models for Carbon Fixation</h3>
+  <p>
+    To assess if the reactions which allow increased pools of acetyl-CoA and malyl-CoA would allow an increase in
+    biomass production and carbon fixation, we optimized the models for both biomass production and the flux of the
+    carbon fixing enzyme Rubisco.
+  </p>
+  <p>
+    First, we assessed biomass production by optimizing the growth rate. Ultimately, with no added reaction constraints,
+    the MAL model maintained an identical maximum growth rate compared to WT, but interestingly also activated the
+    reactions to produce acetyl-CoA from malyl-coA. Therefore, it seems cells could reach the same maximum growth rate
+    using either pathway.
+  </p>
+  <p>
+    We then assessed the flux of the enzyme which performs carbon fixation, taking inorganic carbon and allowing it to
+    become fixed into the cell as organic carbon. The Rubisco flux for the MAL model was 492 mmol/mgDW/hr, but all added
+    reactions maintained fluxes of 0. In fact, when the fluxes of the reaction converting malyl-coA to acetyl-CoA or the
+    reaction producing acetyl-CoA from acetyl-phosphate were separately bound to nonzero fluxes (lower bound of 0.3),
+    although growth optimization was maintained, Rubisco flux decreased to 490 mmol/mgDW/hr. Therefore, these pathways
+    may actually inhibit optimization of direct carbon fixation.
+  </p>
+  <p>
+    <em
+        >Based on these preliminary results, it seems that the phosphoketolase (PK) bypass and MCG carbon fixation
+        pathway do not allow increased biomass production and instead might actually hinder direct carbon fixation.</em
+      >
+  </p>
+  <h3>Assessment of Models for butanol production</>
+  <p>
+    Next, we wanted to assess if the combined pathways allowed higher butanol production in two methods, both using
+    OptKnock and not.
+  </p>
+  <h3>Using OptKnock</h3>
+  <p>
+    If we were to optimize the model to solve for the highest possible flux of butanol production, this found solution
+    may not reflect a solution feasible for cellular growth. Media sources can vary to support microbes facing
+    deficiencies, therefore simulating growth using growth scripts can become a guessing game. Ideally, one would
+    simultaneously optimize biomass growth as well as the synthesis of our target metabolite. Therefore, we can use
+    OptKnock; this allows FBA to solve for the optimal flux distribution that simultaneously optimizes two objective
+    functions, biomass growth as well as the formation of n-butanol.
+  </p>
+  <ul>
+    <li>Optimized solutions were compared between the BUT model and the MALBUT model.</li>
+    <li>
+      We can then use this program to predict which genes can be deleted to enhance production of n-butanol while also
+      maintaining growth.
+    </li>
+    <li>
+      <a href="https://github.com/opencobra/COBRA.tutorials/blob/master/design/optKnock/tutorial_optKnock.m"
+        >Github Source</a
+      >
+    </li>
+  </ul>
+  <ol>
+    <li>
+      Constrain the model with biological assumptions
+      <ol>
+        <li>
+          Enable secretion routes for the molecules of interest with an upper bound of 1000 (max flux)
+          <ol>
+            <li>
+              Exchange={‘EX_nbut_e’; EX_accoa_e’};
+              <ol>
+                <li>
+                  <em>Specify the exchange reactions for your metabolites of interest</em>
+                </li>
+              </ol>
+            </li>
+            <li>Bounds=[1000; 1000]</li>
+            <li>model - changeRxnBounds(model, Exchange, Bounds, ‘u’)</li>
+          </ol>
+        </li>
+        <li>
+          Set reaction list of reactions to choose to possible delete
+          <ol>
+            <li>
+              selectedRxnList = {‘GND’; ‘etc’}
+              <ol>
+                <li>
+                  <em
+                      >Note: I would recommend performing multiple times if you want to speed up analysis (one with the
+                      central metabolism fluxes and with another set)</em
+                    >
+                </li>
+                <li>
+                  <em
+                      >These reaction lists must match the reactions listed in the model (pnas1613446113.sd02)</em
+                    >
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>
+      Generate growth rate and fluxes before optimization
+      <ol>
+        <li>
+          Determine growth rate
+          <ol>
+            <li>solution = optimizeCbModel(model);</li>
+          </ol>
+        </li>
+        <li>
+          Calculate the production of metabolites before running optKnock (before optimization)
+          <ol>
+            <li>nbutFlux = solution.x(strcmp(model.rxns, ‘EX_nbut_e’));</li>
+            <li>accoaFlux = solution.x(strcmp(model.rxns, ‘EX_accoa_e));</li>
+            <li>growthRate = solution.f</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>
+      Set up optKnock options
+      <ol>
+        <li>
+          Make the exchange of nbutanol the objective of the outer problem (overproduction)
+          <ol>
+            <li>
+              options = struct(‘targetRxn’, ‘EX_nbut_e’, ‘numDel’, #);
+              <ol>
+                <li>The numDel option indicates the optKnock set size upper limit</li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li>
+          IMpose that biomass must be at least 50% of the biomass of WT
+          <ol>
+            <li>constrOpt = struct(‘rxnList’, {{biomass}}, ‘values’, 0.5*solution.f, ‘sense’, ‘G’);</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>
+      Now try to find an optKnock sets (of a max length of 2 as limited earlier)
+      <ol>
+        <li>optKnockSol = OptKnock, model, selectedRxnList, options, constrOpt);</li>
+      </ol>
+    </li>
+    <li>
+      Generate n-butanol flux (production) and growth rate after optimization
+      <ol>
+        <li>nbutFluxO1 = optKnockSol.fluxes(strcmp(model.rxns, ‘EX_nbut_e’))</li>
+        <li>accoaFluxO1 = optKnockSol.fluxes(strcmp(model.rxns, ‘EX_accoa_e));</li>
+        <li>growthRateO1 = optKnockSol.fluxes(strcmp(model.rxns, biomass))</li>
+      </ol>
+    </li>
+  </ol>
+  <h3>Not Using OptKnock</h3>
+  <p>
+    If wanting to avoid the use of this program, one could also perform flux variability analysis on models regarding
+    the reactions producing the metabolites of interest. Briefly, flux variability analysis involves finding the
+    possible ranges of selected reactions given a certain percentage of optimized solution is maintained. We compared
+    the possible flux ranges of the reactions producing acetyl-CoA, malyl-CoA, and butanol, assuming 0.1% of maximum
+    biomass production is maintained for each model. Notably, since each model showed different optimized growth rates,
+    one should address this to match the appropriate standard value for growth. The maximum flux of the reaction should
+    indicate the highest possible level of production given maintained growth for each model.
+  </p>
 </section>
 
 <hr />
@@ -57,15 +312,17 @@
 <section>
   <h2>Science Symposium: Hosted by Wright State University</h2>
   <p>
-    <span class="image right"><img src="assets/images/pic01.jpg" alt="" /></span> The Wright State University iGEM team
-    (WrightState) hosted a virtual 2021 Science Symposium on August 12th, which was attended by iGEM teams from the host
-    team, The Ohio State University (OhioState), University of Virginia (Virginia), and Miami University. Each team gave
-    a short presentation on their project. This event provided an opportunity for engagement as well as collaboration by
-    allowing team members to ask questions and give advice on navigating the challenges of an iGEM project. The veteran
-    teams gave excellent advice on time management, organization of wiki content creation, and adapting supply delays
-    and lab limitations due to the COVID-19 pandemic. The event was an excellent opportunity to learn about other
-    projects and make connections with other iGEM teams, especially with the COVID-19 pandemic limiting opportunities
-    for in-person interaction.
+    The Wright State University iGEM team (<a href="https://2021.igem.org/Team:WrightState">WrightState</a>) hosted a
+    virtual 2021 Science Symposium on August 12th, which was attended by iGEM teams from the host team, The Ohio State
+    University (<a href="https://2021.igem.org/Team:OhioState">OhioState</a>), University of Virginia (<a
+      href="https://2021.igem.org/Team:Virginia"
+      >Virginia</a
+    >), and Miami University. Each team gave a short presentation on their project. This event provided an opportunity
+    for engagement as well as collaboration by allowing team members to ask questions and give advice on navigating the
+    challenges of an iGEM project. The veteran teams gave excellent advice on time management, organization of wiki
+    content creation, and adapting supply delays and lab limitations due to the COVID-19 pandemic. The event was an
+    excellent opportunity to learn about other projects and make connections with other iGEM teams, especially with the
+    COVID-19 pandemic limiting opportunities for in-person interaction.
   </p>
 </section>
 
