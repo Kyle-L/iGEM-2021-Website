@@ -1888,6 +1888,13 @@ input[type="radio"] + label:before {
 .image.half-full-width img {
   width: 50%;
 }
+.image.three-fourth-full-width {
+  min-width: 414px;
+  width: 100%;
+}
+.image.three-fourth-full-width img {
+  width: 75%;
+}
 .image.third {
   min-width: 414px;
   width: 33%;
