@@ -1875,14 +1875,21 @@ input[type="radio"] + label:before {
   width: 100%;
 }
 .image.half {
-  min-width: 416px;
+  min-width: 414px;
   width: 50%;
 }
 .image.half img {
   width: 100%;
 }
+.image.half-full-width {
+  min-width: 414px;
+  width: 100%;
+}
+.image.half-full-width img {
+  width: 50%;
+}
 .image.third {
-  min-width: 416px;
+  min-width: 414px;
   width: 33%;
 }
 .image.third img {
