@@ -46,8 +46,8 @@
     },
     "Human_Practices": {
         "name": "Human Practices",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic05.jpg"
+        "description": "The best way we can show respect to our community is to listen to them. GMOs are a controversial topic, and we do not want to ignore the fears of our community members. Learn more about that here and how we reached out to the community!",
+        "image": "assets/images/human-practices/knolls-1.png"
     },
     "Implementation": {
         "name": "Implementation",
