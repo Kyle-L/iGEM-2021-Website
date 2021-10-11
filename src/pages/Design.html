@@ -1,0 +1,204 @@
+<h1>Project Design</h1>
+
+<hr />
+
+<section>
+  <h2>Brief Description of the Problem</h2>
+  <p>
+    Major crop yield is globally declining while population growth is beginning to outpace global food production
+    <reference identifier="4" />. Agricultural productivity must increase by up to 120 percent to meet this rising
+    demand <reference identifier="3" />. Due to limits in cultivable land and clashes with global sustainability goals
+    to reduce agricultural land consumption, the ideal solution is to increase crop yield at the level of the individual
+    plant. Due to the rising urgency of this issue, and being from an agricultural area, our team was inspired to tackle
+    this problem through our iGEM project. The major barrier to increased crop yield is the metabolic inefficiency of
+    photosynthesis. The maximum observed photosynthetic efficiency in crops is less than 4 percent
+    <reference identifier="2" />. This limit can stem from either of 2 stages of photosynthesis: light reactions and
+    Calvin-Benson-Bassham (CBB) cycle.
+  </p>
+</section>
+
+<section>
+  <h2>Our Focus</h2>
+  <p>
+    <span class="image third right"
+    ><img src="assets/images/design/pathway.png" alt="Glycolaldehyde pathway." /><span
+      class="credit"
+      >The glycolaldehyde pathway.</span
+    ></span
+  >
+    Our team focused on the CBB cycle; compared to the light reactions whose optimizations are notoriously difficult,
+    this pathway provides the most direct target for metabolic engineering <reference identifier="35" />. We concluded
+    the most promising portion of this cycle is the regeneration of intermediate RuBP (ribulose1,5-bisphosphate). The
+    natural process for regeneration is often stalled due to the consumption of intermediates by other metabolic
+    pathways. Our proposed solution is to reduce the number of intermediates within the cycle. By replacing the current
+    pathway with one reliant on fewer intermediates and enzymes, we can create a more robust and continuous CBB cycle.
+    This approach not only lowers intermediate siphoning from the pathway but also decreases enzyme synthesis and
+    maintenance costs.
+  </p>
+  <p>
+    We created two novel pathways to accomplish this goal. In both cases, these redesigned pathways replace the native
+    pathway currently found in the cell, which is reliant on the enzyme sedoheptulose-bisphosphatase (SBPase)
+    (NativeCalvinCycle.png). 
+  </p>
+  <p>
+    One pathway utilizes the transaldolase enzyme, which already operates in the cell. By reversing its usual reaction,
+    however, we can skip the intermediate conversions from SBPase entirely (Altered Calvin Cycle-2.svg). This pathway
+    relies on fewer enzymes, and more importantly uses fewer intermediates.
+  </p>
+  <p>
+    Unlike the transaldolase pathway, the glycolaldehyde pathway skips the entire natural pathway and truncates the
+    8-enzyme native pathway to one reliant on only 3 enzymes. This
+    dramatically reduces the number of enzymes and skips over several intermediate steps. Instead, this pathway is
+    reliant on one native and two nonnative enzymes.
+  </p>
+</section>
+
+<section>
+  <h2>Our Alternative Regeneration Pathways</h2>
+  <section>
+    <h3>Glycolaldehyde pathway: synthetic novel pathway</h3>
+    <p>
+      Our redesigned glycolaldehyde pathway involves the regeneration of RuBP by combining glyceraldehyde-3-phosphate
+      (G3P) with glycolaldehyde to eventually form RuBP.
+    </p>
+    <p>
+      In the native CBB cycle, every 6 completions of the cycle yield 1 G3P for a net fixation of 3CO<sub>2</sub>
+      molecules, but the remaining 5 produced G3P molecules are used to regenerate RuBP. The glycolaldehyde pathway
+      instead converts 2 of the 5 G3P molecules into 3 glycolaldehyde. Fructose-6-phosphate aldolase, an enzyme in
+      <em>Escherichia coli</em>, can combine 3 glycolaldehydes with the remaining 3 G3P to form 3 5-carbon
+      arabinose-5-phosphates (ARA5P). ARA5P can then be directly converted to ribulose-5-phosphate, which reenters the
+      normal regeneration cycle to become RuBP. This redesigned cycle has a major obstacle; the conversion of G3P to
+      glycolaldehyde has no known enzyme recorded in the KEGG database. This does not, however, discredit the pathway;
+      this enzyme could exist in uncharacterized cellular metabolisms, or be generated though accelerated evolution
+      experiments. This factor means we would not have been able to easily analyze this pathway in vivo. However, the
+      fact that this cycle can be analyzed in silico further illustrates the advantages computational modeling can have
+      for metabolic analyses.
+    </p>
+  </section>
+  <section>
+    <h3>Transaldolase pathway: redesigned native pathway</h3>
+    <p>
+      The transaldolase pathway we designed skips a step of the native pathway by utilizing the reverse reaction of
+      transaldolase, an enzyme already found in the cell. The current native pathway, also called the wildtype pathway,
+      relies on ATP hydrolysis and the enzyme SBPase to convert sedulose-1,7-bisphosphate (SBP). SBP is produced by the
+      combination of two intermediates, erythrose-4-phosphate (E4P) and dihydroxyacetone phosphate (DHAP). Our proposed
+      transaldolase pathway circumvents the dependence on these intermediates as well as the energy investment for the
+      conversion to SBP. Instead of SBPase producing sedulose-7-phosphate from sedulose-1,7-bisphosphate, transaldolase
+      can directly produce G3P and S7P from fructose-6-phosphate (F6P) and E4P if operating in reverse. This reverse
+      reaction is typically performed in the oxidative portion of the pentose phosphate pathway and may be present at
+      low levels for photosynthetic reactions in the wildtype cells. Additionally, the native pathway relies on the use
+      of G3P twice, while our transaldolase pathway only uses this triose phosphate (3-carbon phosphate molecule) a
+      single time, instead replenishing this intermediate through the transaldolase reaction. Therefore, our
+      transaldolase cycle is most limited by F6P availability. Unlike pentose phosphates and triose phosphates on which
+      the SBP pathway is most reliant, hexose phosphates (6-carbon phosphate molecules) like F6P are more easily
+      accessible through pathways such as glycogen degradation. Ultimately, the transaldolase pathway provides a pathway
+      hypothetically less dependent on intermediates with lower enzymatic need.
+    </p>
+    <p>
+      Of our two proposed pathways, the transaldolase pathway is the most feasible to assess in vivo. Therefore, this
+      pathway was first analyzed in silico and has been the focus of all wet-lab efforts.
+    </p>
+  </section>
+</section>
+
+<section>
+  <h2>Computational Modeling</h2>
+  <p>
+    A more detailed description of computer modeling can be found under our
+    <a href="/Model">"Model"</a> page.
+  </p>
+  <p>
+    First, we set out to assess the implications our pathways may have on the growth and metabolism of the cells through
+    computer-based modeling. All our pathways were able to be replicated in silico using a model developed by Jared
+    Broddrick and his partners at UC-San Diego <reference identifier="20" />. Using multiple novel scripts, we then used
+    these models to assess the pathway impact on cellular growth and metabolism. This allowed insight into the wet lab
+    conditions that might optimize our pathways for biomass production, as well as clarify the expected and unexpected
+    impacts of our imposed reactions. Although the glycolaldehyde pathway has the most obvious advantages, due to time
+    and resource constraints of attempting to develop an enzyme that has not yet been characterized, the transaldolase
+    pathway was chosen to be tested in vivo.
+  </p>
+</section>
+
+<section>
+  <h2>Wet Lab</h2>
+  <p>
+    A more detailed description of wet lab efforts can be found under our
+    <a href="/Notebook">"Notebook"</a> page.
+  </p>
+
+  <section>
+    <h3>Aims of Wet Lab</h3>
+    <p>
+      We aimed to remove SBPase activity to disrupt the natural regeneration pathway, thereby forcing the cell to use a
+      redesigned regeneration pathway. SBPase is considered an essential enzyme in cyanobacteria, specifically due to
+      its involvement in two vital metabolic reactions, only one of which is directly involved in RuBP regeneration.
+      Therefore, we aimed to engineer cells without SBPase activity by first overexpressing suitable replacement
+      enzymes. The enzyme transaldolase can circumvent the SBPase RuBP regeneration reactions, however, another
+      challenge is that SBPase is a dual functional enzyme in cyanobacteria, also maintaining
+      fructose-1,6-bisphosphatase (FBPase) activity. Thus, to mitigate this vital reaction loss, we also overexpressed
+      an introduced FBPase. Thus, our lab efforts began by first introducing our overexpression target genes with the
+      goal of eventually deleting SBPase in these overexpression mutants.
+    </p>
+    <p>
+      We divided these genetic manipulations into 4 transformant lines. For overexpression, we created an overexpression
+      of transaldolase, an overexpression of fructose-1,6-bisphosphatase, and transformant overexpressing both
+      components. We were able to successfully develop all 3 of these overexpression mutants.
+    </p>
+    <p>
+      Although we did attempt to create SBPase deletion transformants, we expected these cells to be unviable due to the
+      vital reaction. As expected, we were unable to create a fully segregated mutant (a mutant with all genome copies
+      having the desired change) for complete deletion of SBPase.
+    </p>
+  </section>
+
+  <section>
+    <h3>Details of Plasmid Design, Mutant Generation and Growth Analysis</h3>
+    <p>
+      Wet lab began by designing plasmids to overexpress genes encoding transaldolase (<em>tal</em>) and
+      fructose-1,6-bisphosphatase (<em>fbp</em>) as well as delete sedoheptulose-1,7-bisphosphatase (<em>glpX</em>). In
+      total we created 4 plasmids for overexpression of <em>tal, fbp,</em> both, or the deletion of
+      <em>glpX,</em> respectively. These plasmids and their components are detailed on the
+      <a href="/Contribution">Contributions</a> page.
+    </p>
+    <p>
+      The overexpression plasmids work by integrating the new genes into neutral site I in the cyanobacterial genome.
+      This neutral site has no functional or coding DNA sequences, making it a safe site to insert new DNA without
+      disrupting other gene sequences important for cell life. In the plasmid, sequences corresponding to regions
+      flanking the neutral site region allow matching of the plasmid and genome to insert our target gene into the site.
+    </p>
+    <p>
+      The deletion plasmid instead inserts the antibiotic resistance marker kanamycin into the target
+      <em>glpX</em> gene, functionally deleting the gene by preventing functional mRNA transcription. Instead of the
+      flanking sequences corresponding to the neutral site, they correspond to regions within and surrounding
+      <em>glpX.</em> Cells in which this deletion is successful do not have SBPase enzymes, and instead expression
+      resistance to kanamycin, and thus can be selected for by growing cells on a plate containing kanamycin.
+    </p>
+    <p>
+      In order to replicate our plasmid constructs, we first transformed the plasmids into <em>E. coli</em>, as
+      <em>Synechococcus elongatus </em>PCC 7942 does not maintain or replicate plasmids. Once replicated in
+      <em>E. coli</em>, these plasmids could be used to transform <em>S. elongatus</em>, as this cyanobacterial strain
+      is readily transformable, meaning that it easily integrates and maintains the change in its genome.
+    </p>
+    <p>
+      We selected for successful cyanobacterial transformants using the antibiotic resistant genes encoded in the
+      plasmids, now stable within the genome. For the overexpression plasmids, this antibiotic was spectinomycin and
+      streptomycin, both found within successful overexpression mutants. The deletion plasmid contained both kanamycin
+      resistance and gentamicin resistance, with successful deletion mutants only containing kanamycin. This exact
+      process is detailed in the <a href="/Notebook">"Notebook"</a> page. Briefly, successful deletion mutants contain
+      only kanamycin resistance due to double crossover with the plasmid, whereas a single crossover results in both
+      kanamycin and gentamicin being in a cell retaining SBPase function. All transformant lines were then segregated to
+      achieve desired changes in all genome copies and verified with genetic sequencing.
+    </p>
+    <p>
+      Cell transformants were then used to generate growth curves. Based on results from the computational modeling, we
+      assessed growth under light conditions mimicking day and night cycles, as modeling predicted significant
+      variations between constant light and realistic cycles.
+    </p>
+  </section>
+</section>
+
+<hr />
+<bibliography />
+
+<hr />
+<explore pages="Description,Results" />
