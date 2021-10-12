@@ -54,3 +54,12 @@ html {
   font-size: revert;
   text-align: revert;
 }
+.mw-content-ltr ul, .mw-content-rtl .mw-content-ltr ul {
+  margin: revert;
+  padding: revert;
+}
+
+.mw-content-ltr ol, .mw-content-rtl .mw-content-ltr ol  {
+  margin: revert;
+  padding: revert;
+}
