@@ -2234,7 +2234,7 @@ button,
   -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  background-color: transparent;
+  background-color: transparent !important;
   border-radius: 0.375em;
   border: 0;
   box-shadow: inset 0 0 0 2px var(--accent-color);
@@ -2258,14 +2258,14 @@ input[type="reset"]:hover,
 input[type="button"]:hover,
 button:hover,
 .customButton:hover {
-  background-color: var(--highlight-color);
+  background-color: var(--highlight-color) !important;
 }
 input[type="submit"]:active,
 input[type="reset"]:active,
 input[type="button"]:active,
 button:active,
 .customButton:active {
-  background-color: var(--highlight-color);
+  background-color: var(--highlight-color) !important;
 }
 input[type="submit"].icon:before,
 input[type="reset"].icon:before,
@@ -2302,7 +2302,7 @@ input[type="reset"].primary,
 input[type="button"].primary,
 button.primary,
 .customButton.primary {
-  background-color: var(--accent-color);
+  background-color: var(--accent-color) !important;
   box-shadow: none;
   color: #ffffff !important;
 }
@@ -2311,14 +2311,14 @@ input[type="reset"].primary:hover,
 input[type="button"].primary:hover,
 button.primary:hover,
 .customButton.primary:hover {
-  background-color: var(--shade-color);
+  background-color: var(--shade-color) !important;
 }
 input[type="submit"].primary:active,
 input[type="reset"].primary:active,
 input[type="button"].primary:active,
 button.primary:active,
 .customButton.primary:active {
-  background-color: var(--shade-color);
+  background-color: var(--shade-color) !important; 
 }
 input[type="submit"].disabled,
 input[type="submit"]:disabled,

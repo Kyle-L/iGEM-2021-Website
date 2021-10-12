@@ -29,6 +29,7 @@ html {
 }
 #bodyContent a[href ^="https://"], .link-https
 {
+  background: initial;
   padding-right: 0;
 }
 #bodyContent a[href ^="mailto:"], .link-mailto {
