@@ -17,19 +17,10 @@
   <reference identifier="6" />, <reference identifier="19" />.
 </p>
 
-<h2>Computational Models for Biological Analysis</h2>
+<h2>Using computational models for Biological Analysis</h2>
 <p>
   <span class="image left"><img src="assets/images/pic01.jpg" alt="" /></span>
-  MATLAB and Python are powerful programs that can be used to manipulate matrices and perform complicated numerical
-  analysis. In the case of synthetic biology, these environments are often used to set up models for biological action,
-  or mathematical representations of complex systems. These mathematical representations can extend to systems with
-  multiple enzymes and interconnected reactions, like the metabolism within the cell. Therefore, through MATLAB and
-  Python, we can generate a complex system of inputs and outputs that interact with each other to generate a projection
-  modeling the activity of a system within a cell or a cell in its entirety. The origin for this method of thinking can
-  be traced back to Boolean circuits, a common mathematical method for combining logic circuits in digital electronic
-  circuits. While these Boolean circuits are useful for projecting basic biological loops, they are not effective to
-  model something as complex as an entire cell through virtual circuits. Instead, a model based on a more complex system
-  of mathematical equations must be used.
+  MATLAB and Python are powerful programs that can be used to manipulate matrices and perform complicated numerical analysis. In the case of synthetic biology, these environments are often used to set up models for biological action, or mathematical representations of complex systems. These mathematical representations can extend to systems with multiple enzymes and interconnected reactions, like the metabolism within the cell. Therefore, through MATLAB and Python, we can generate a complex system of inputs and outputs that interact with each other to generate a projection modeling the activity of a system within a cell or a cell in its entirety. The origin for this method of thinking can be traced back to Boolean circuits, a common mathematical method for combining logic circuits in digital electronic circuits. While these Boolean circuits are useful for projecting basic biological loops, they are not effective to model something as complex as an entire cell through virtual circuits. Instead, a model based on a more complex system of mathematical equations must be used. Dry lab tests using these models allow the team to assess proposed systems or predict outcomes prior to commitment of physical and temporal resources in the wet lab.
 </p>
 <p>
   Our goal was to project the productivity and robustness of photosynthesis with modifications of the Calvin Cycle. Dry
@@ -50,12 +41,12 @@
 
 <h2>Constraint-based Modeling</h2>
 <p>
-  The cell operates via the action of a myriad of enzymatic systems and interactions. From a simple material balance
-  standpoint, mass must be conserved. Our overall system is the cell, and the agents of action are reaction cascades.
-  Within this cell/system, the reaction cascades are observed, and the operators of those cascades are individual
-  enzymatic reactions <reference identifier="4" />. For these reactions, we have multiple considerations to potentially
-  consider, including thermodynamics, metabolites, enzyme kinetics, mass balances, and enzymatic capacity. All of these
-  are <em>constraints</em>, and a model could be defined from a combination of these constraints.
+  Although models can be applied to a host of scientific inquiries, our goal was to project the productivity and robustness of photosynthesis with modifications of the Calvin Cycle. Multiple software can be used to assess the impacts of these proposed conditions or added networks on both metabolic reaction fluxes, or rates, and growth of the cells in a dry lab setting. We used the <reference identifier="4" /> and a constraint-based model to perform our analyses. A constraint-based model for biochemical networks has a wide range of uses. In our case, we can input a set of metabolites, reactions, enzymes, and stoichiometric coefficients into matrices that are readable by the COBRA Toolbox. Then we input specific constraints to how these inputs can interact that reflect biological limits or desired conditions. From this common set of inputs and constraints, the COBRA Toolbox can present a field of permissible outcomes, in our case fluxes of the different reactions, that allow optimized biomass formation, or growth. This means our team could utilize the toolbox in both MATLAB and Python to generate a host of flux outcomes for any system, or cell with clarified available reaction pathways, the team wanted to test. In short, a constraints-based analysis provides an ability to assess the impact of proposed modifications to the Calvin cycle on a cellular system in MATLAB or Python. This analysis simplifies the temporal and informational demands for the design team as well as provides valuable insight into the feasibility and wet lab parameters for proposed pathways.
+</p>
+
+<h2>Kinetics vs Flux-based Models</h2>
+
+<p>The cell operates via the action of a myriad of enzymatic systems and interactions. From a simple material balance standpoint, mass must be conserved. Our overall system is the cell, and the agents of action are reaction cascades. Within this cell/system, the reaction cascades are observed, and the operators of those cascades are individual enzymatic reactions (4). For these reactions, we have multiple considerations to potentially consider, including thermodynamics, metabolites, enzyme kinetics, mass balances, and enzymatic capacity. All of these are constraints, and a model could be defined from a combination of these constraints (38).  
 </p>
 <p>
   Reactions are primarily limited by enzymatic kinetics (“speed”) and flux (turnovers of metabolites). Therefore, most
@@ -634,8 +625,8 @@
 <p>
   First, we edited this original, wildtype (WT), model for <em>S. elongatus </em>PCC 7942 to remove or add reactions
   based on inclusion or removal of certain pathways of interest to us or created by us. A total of
-  <strong>3 models </strong>were therefore developed using COBRA-Py: one with SBPase flux bound to 0, one with SBPase
-  flux bound to 0 but with the transaldolase reaction overexpressed, and a model with our created glycolaldehyde
+  <strong>2 models </strong>were therefore developed using COBRA-Py: one with SBPase flux bound to 0 but with or 
+  without the transaldolase reaction overexpressed, and a model with SBPase flux bound to 0 but with our created glycolaldehyde
   pathway. Exact details on model creation can be found in the supplemental material under model creation.
 </p>
 <p>
@@ -645,7 +636,7 @@
     >Additional scripts in MATLAB were written to analyze the impacts of these pathways on the metabolic fluxes of
     specific reactions of these cells.</strong
   >
-  Ultimately, these analyses reflect the viability of these pathways for cellular growth, to assess if the pathways
+  Ultimately, these analyses reflect the viability of these pathways for cellular growth and the associated costs regarding enzymatic activity, to assess if the pathways
   achieve the ultimate goals of more robust biomass increase and carbon fixation and lower protein costs. Finally,
   Escher run through Jupyter Notebook was used to visualize some of these fluxes on metabolic maps.
 </p>
