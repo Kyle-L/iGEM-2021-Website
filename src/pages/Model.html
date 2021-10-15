@@ -1,66 +1,42 @@
 <h1>Modeling</h1>
 
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-  occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</p>
 <a href="#" class="customButton icon brands fa-github">Checkout Source Code</a>
 
 <hr />
 
+<section>
 <h2>General References</h2>
 <p>
   The following references were used as the basis for much of the computational modeling:
-  <reference identifier="2" />, <reference identifier="3" />, <reference identifier="5" />,
-  <reference identifier="6" />, <reference identifier="19" />.
+  <reference identifier="4" />, <reference identifier="20" />, <reference identifier="38" />, <reference identifier="39" />, <reference identifier="40" />.
 </p>
+</section>
 
+<section>
 <h2>Using computational models for Biological Analysis</h2>
 <p>
-  <span class="image left"><img src="assets/images/pic01.jpg" alt="" /></span>
+  <span class="image left"><img src="assets/images/Model/Figure4.png" alt="" /></span>
   MATLAB and Python are powerful programs that can be used to manipulate matrices and perform complicated numerical analysis. In the case of synthetic biology, these environments are often used to set up models for biological action, or mathematical representations of complex systems. These mathematical representations can extend to systems with multiple enzymes and interconnected reactions, like the metabolism within the cell. Therefore, through MATLAB and Python, we can generate a complex system of inputs and outputs that interact with each other to generate a projection modeling the activity of a system within a cell or a cell in its entirety. The origin for this method of thinking can be traced back to Boolean circuits, a common mathematical method for combining logic circuits in digital electronic circuits. While these Boolean circuits are useful for projecting basic biological loops, they are not effective to model something as complex as an entire cell through virtual circuits. Instead, a model based on a more complex system of mathematical equations must be used. Dry lab tests using these models allow the team to assess proposed systems or predict outcomes prior to commitment of physical and temporal resources in the wet lab.
 </p>
-<p>
-  Our goal was to project the productivity and robustness of photosynthesis with modifications of the Calvin Cycle. Dry
-  lab tests using these models allow the team to test designed pathways prior to commitment of physical and temporal
-  resources in the wet lab. To enable our team to test the impacts of these proposed alternative metabolic on both
-  metabolic reaction fluxes, or rates, and growth of the cells in a dry lab setting, an open-source, constraint-based
-  model, COBRA Toolbox, was selected. A constraint-based model for biochemical networks has a wide range of uses. In our
-  case, we can input a set of metabolites, reactions, enzymes, and stoichiometric coefficients into matrices that are
-  readable by the COBRA Toolbox. Then we input specific constraints to how these inputs can interact that reflect
-  biological limits or desired conditions. From this common set of inputs and constraints, the COBRA Toolbox can present
-  a field of permissible outcomes, in our case fluxes of the different reactions, that allow optimized biomass
-  formation, or growth. This means our team could utilize the toolbox in both MATLAB and Python to generate a host of
-  flux outcomes for any system, or cell with clarified available reaction pathways, the team wanted to test. In short, a
-  constraints-based provides an ability to assess the impact of proposed modifications to the Calvin cycle on a cellular
-  system in MATLAB or Python. This analysis simplifies the temporal and informational demands for design team as well as
-  provides valuable insight into the feasibility and wet lab parameters for proposed pathways.
-</p>
+</section>
 
+<section>
 <h2>Constraint-based Modeling</h2>
 <p>
   Although models can be applied to a host of scientific inquiries, our goal was to project the productivity and robustness of photosynthesis with modifications of the Calvin Cycle. Multiple software can be used to assess the impacts of these proposed conditions or added networks on both metabolic reaction fluxes, or rates, and growth of the cells in a dry lab setting. We used the <reference identifier="4" /> and a constraint-based model to perform our analyses. A constraint-based model for biochemical networks has a wide range of uses. In our case, we can input a set of metabolites, reactions, enzymes, and stoichiometric coefficients into matrices that are readable by the COBRA Toolbox. Then we input specific constraints to how these inputs can interact that reflect biological limits or desired conditions. From this common set of inputs and constraints, the COBRA Toolbox can present a field of permissible outcomes, in our case fluxes of the different reactions, that allow optimized biomass formation, or growth. This means our team could utilize the toolbox in both MATLAB and Python to generate a host of flux outcomes for any system, or cell with clarified available reaction pathways, the team wanted to test. In short, a constraints-based analysis provides an ability to assess the impact of proposed modifications to the Calvin cycle on a cellular system in MATLAB or Python. This analysis simplifies the temporal and informational demands for the design team as well as provides valuable insight into the feasibility and wet lab parameters for proposed pathways.
 </p>
+</section>
 
+<section>
 <h2>Kinetics vs Flux-based Models</h2>
-
-<p>The cell operates via the action of a myriad of enzymatic systems and interactions. From a simple material balance standpoint, mass must be conserved. Our overall system is the cell, and the agents of action are reaction cascades. Within this cell/system, the reaction cascades are observed, and the operators of those cascades are individual enzymatic reactions (4). For these reactions, we have multiple considerations to potentially consider, including thermodynamics, metabolites, enzyme kinetics, mass balances, and enzymatic capacity. All of these are constraints, and a model could be defined from a combination of these constraints (38).  
+<p>The cell operates via the action of a myriad of enzymatic systems and interactions. From a simple material balance standpoint, mass must be conserved. Our overall system is the cell, and the agents of action are reaction cascades. Within this cell/system, the reaction cascades are observed, and the operators of those cascades are individual enzymatic reactions<reference identifier="4" />. For these reactions, we have multiple considerations to potentially consider, including thermodynamics, metabolites, enzyme kinetics, mass balances, and enzymatic capacity. All of these are constraints, and a model could be defined from a combination of these constraints <reference identifier="38" />.  
 </p>
 <p>
-  Reactions are primarily limited by enzymatic kinetics (“speed”) and flux (turnovers of metabolites). Therefore, most
-  models are based on either of these two constraints. Kinetics based models are based on differential equations
-  relating the rates of reactions, taking both kinetics and genetic-based regulation into account. Unfortunately, this
-  model requires enzymatic kinetic data specific to the organism of interest, most of which is unavailable and therefore
-  must be estimated; this guesswork introduces significant source for potential error. Conversely, flux-based models use
-  stoichiometric information of all reactions as their constraints, and therefore circumvent the need for kinetic data.
-  This model, however, does not take kinetics or genetic regulation into account and therefore is not as robust in
-  analysis as kinetics-based models. Still, it finds the fluxes of metabolites through the defined metabolic network,
-  allowing calculations of growth and productions of metabolites of interest. Due to the availability of a significantly
-  validated flux-based model for our strain of interest, we chose to work with a flux-based model.
+  Reactions are primarily limited by enzymatic kinetics (“speed”) and flux (turnovers of metabolites). Therefore, most models are based on either of these two constraints. Kinetics based models are based on differential equations relating the rates of reactions, taking both kinetics and genetic-based regulation into account. Unfortunately, this model requires enzymatic kinetic data specific to the organism of interest, most of which is unavailable and therefore must be estimated; this guesswork introduces a significant source for potential error <reference identifier="39" />. Conversely, flux-based models use stoichiometric information of all reactions as their constraints, and therefore circumvent the need for kinetic data. This model, however, does not take kinetics or genetic regulation into account and therefore is not as robust in analysis as kinetics-based models. Still, it finds the fluxes of metabolites through the defined metabolic network, allowing calculations of growth and productions of metabolites of interest <reference identifier="40" />. Due to the availability of a significantly validated flux-based model for our strain of interest, we chose to work with a flux-based model. 
 </p>
+</section>
 
+<section>
 <h2>Mathematical Justification of a Flux-based Model</h2>
 <p>
   Let’s go through a simple flux-based model simulating a cell, or metabolic network, with three metabolites: A, B, and
@@ -611,7 +587,9 @@
   other provided constraints, the fluxes of the reactions that allow the optimized solution can be solved. Computational
   linear programming algorithms such as the COBRA Toolbox are used to solve these equations.
 </p>
+</section>
 
+<section>
 <h2>Our Use of a Flux-based Model</h2>
 <p>
   We edited an open-source constraint-based model available from BiGG Model Data already created and validated for
@@ -640,19 +618,34 @@
   achieve the ultimate goals of more robust biomass increase and carbon fixation and lower protein costs. Finally,
   Escher run through Jupyter Notebook was used to visualize some of these fluxes on metabolic maps.
 </p>
+</section>
 
+<section>
 <h2>A Brief Summary of Our Results</h2>
 <p>
-  <span class="image right"><img src="assets/images/pic01.jpg" alt="" /></span>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent placerat vulputate nisl et hendrerit. Phasellus vel
-  tristique leo. Aenean nec libero tincidunt, egestas mauris ac, bibendum arcu. Donec molestie, quam vitae venenatis
-  tempor, velit lectus laoreet orci, nec placerat ex massa et mi. Aenean ipsum quam, mollis nec laoreet ut, faucibus
-  sodales lacus. Nunc ultrices convallis est, quis lobortis enim. Nam ut turpis dictum, pulvinar nibh id, ultrices odio.
-  Suspendisse commodo mollis arcu id pharetra. Quisque posuere libero nunc, consectetur mollis orci sollicitudin in. Ut
-  suscipit, nibh eget molestie dictum, tellus risus malesuada tellus, quis ultrices enim justo sed arcu. Etiam sodales
-  dolor non luctus luctus. Suspendisse vulputate tempor consectetur. Duis sollicitudin ac ex id mattis. Nam eu massa
-  nisl.
+  The results of the computational modeling showed that both suggested pathways are capable of successfully replacing the native SBPase dependent regeneration with no impacts on growth nor negative impacts on carbon fixation (Figure 1) Instead, our glycolaldehyde model was actually shown to allow increased carbon fixation under certain conditions (Figure 2). 
+  <span class="image"
+          ><img src="assets/images/Model/Figure1.png" alt="Displaying that both suggested pathways are capable of successfully replacing the native SBPase dependent regeneration with no impacts on growth nor negative impacts on carbon fixation. " /><span
+            class="credit"
+            >
+            </span
+          ></span>
+
+          <span class="image"
+          ><img src="assets/images/Model/Figure2.png" alt="Displaying that both suggested pathways are capable of successfully replacing the native SBPase dependent regeneration with no impacts on growth nor negative impacts on carbon fixation. " /><span
+            class="credit"
+            >Figure 1. Optimized biomass measured in mgDW modeled over a 240 h growth period for A) a S. elongatus PCC 7942 model with the SBPase reaction constrained to 0 flux and with(reversible) and without(irreversible) our transaldolase pathway or B) and a S. elongatus PCC 7942 model without SBPase constrained (TALA: irreversible) vs a model with SBPase constrained but our proposed glycolaldehyde pathway (gly pathway). Figures were created on Matlab 2020a.
+            </span
+          ></span>
+
+          <span class="image"
+          ><img src="assets/images/Model/Figure3.png" alt="Model with our added glycolaldehyde pathway" /><span
+            class="credit"
+            >Figure 2. Flux values of the Rubisco reaction over the growth period of A) 140-185h when biomass is optimized for WT S. elongatus PCC 7942 model with the transaldolase reaction being constrained to the forward reaction (TALA: irreversible) and a model with our added glycolaldehyde pathway, the SBPase reaction constrained to 0 flux and transaldolase reaction constrained to the forward direction. Figure was created on Matlab 2020a.
+            </span
+          ></span>
 </p>
+</section>
 
 <hr />
 <bibliography />
