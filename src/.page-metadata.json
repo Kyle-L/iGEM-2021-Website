@@ -67,7 +67,7 @@
     "Notebook": {
         "name": "Notebook",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic02.jpg"
+        "image": "assets/images/Model/Notebook.png"
     },
     "Part_Collection": {
         "name": "Part Collection",
@@ -92,7 +92,7 @@
     "Results": {
         "name": "Results",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic01.jpg"
+        "image": "assets/images/Model/Results.png"
     },
     "Safety": {
         "name": "Safety",
