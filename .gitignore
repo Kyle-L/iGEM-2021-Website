@@ -5,3 +5,5 @@ upload_map.yml
 temp
 __pycache__
 env
+*.docx
+*.doc
