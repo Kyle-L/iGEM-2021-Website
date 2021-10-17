@@ -41,6 +41,12 @@
         "image": "assets/images/description/farm-equipment.png",
         "image-alt": ""
     },
+    "Design": {
+        "name": "Design",
+        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "image": "assets/images/pic05.jpg",
+        "image-alt": ""
+    },
     "Education": {
         "name": "Education",
         "description": "Not only did the Miami University iGEM team work to make a phenomenal project, we also spent an exceptional amount of time teaching others about plant synthetic biology! Take a moment to learn more about that on our education page!",
@@ -65,12 +71,6 @@
         "image": "assets/images/implementation/golden-rice.png",
         "image-alt": "A field of golden rice during sunset."
     },
-    "Improve": {
-        "name": "Improvements",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic07.jpg",
-        "image-alt": ""
-    },
     "Model": {
         "name": "Computational Modeling",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
@@ -82,12 +82,6 @@
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
         "image": "assets/images/notebook/wheat.png",
         "image-alt": "A closeup of a grain of wheat."
-    },
-    "Part_Collection": {
-        "name": "Part Collection",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic03.jpg",
-        "image-alt": ""
     },
     "Parts": {
         "name": "Parts",
@@ -118,12 +112,6 @@
         "description": "With any project, thinking carefully about and managing any risks is a vital step. Between the inherit risks of our project as well as challenges created by the COVID-19 pandemic, our team had to be thoughtful. Learn how the Miami University team handled safety and risk here!",
         "image": "assets/images/safety/daria-covid-19.png",
         "image-alt": "Daria sitting in lab with a black mask on."
-    },
-    "Sustainable": {
-        "name": "Sustainable",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic01.jpg",
-        "image-alt": ""
     },
     "Team": {
         "name": "Team",

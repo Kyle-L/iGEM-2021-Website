@@ -340,6 +340,9 @@ class iGEM_HTML(iGEM_File):
                 div_pages['class'] = ['explore-posts']
 
             for ref_id in ref_ids:
+                # Cleans the ref_id in case there are spaces.
+                ref_id = ref_id.strip()
+
                 article = self._soup.new_tag('article')
 
                 # Adds the image link so the user can easily click the image.
