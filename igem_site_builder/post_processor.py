@@ -246,6 +246,13 @@ class iGEM_HTML(iGEM_File):
         self._insert_bibliography_from_citations(references, page_references)
 
     def _insert_reference_citations(self, references):
+        """
+        Replaces <reference identifier="??" /> with citations in the format (some_number).
+
+        Returns:
+            [dict]: The references keys in the format { order_on_page: reference_key }
+        """
+
         page_reference_order = {}
 
         for ref in self._soup.findAll('reference'):
@@ -286,6 +293,11 @@ class iGEM_HTML(iGEM_File):
         return page_reference_order
 
     def _insert_bibliography_from_citations(self, references, page_reference_order):
+        """
+        Replaces <bibliography /> tags with filled a filled in bibliography generated from the 
+        citations on the page.
+        """
+
         ordered_refs = dict((v, k) for k, v in page_reference_order.items())
         for bib in self._soup.findAll('bibliography'):
             div = self._soup.new_tag('div')
