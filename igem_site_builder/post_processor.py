@@ -348,6 +348,7 @@ class iGEM_HTML(iGEM_File):
                 a_img['class'] = ['image']
                 img = self._soup.new_tag('img')
                 img['src'] = page_metadata[ref_id]['image']
+                img['alt'] = page_metadata[ref_id]['image-alt']
                 a_img.append(img)
 
                 # Adds the heading text so the user knows what the page is.
