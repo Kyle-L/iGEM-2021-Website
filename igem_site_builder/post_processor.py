@@ -226,11 +226,18 @@ class iGEM_HTML(iGEM_File):
         paragraphs = self._soup.find_all(name=['p'], text=re.compile(keys_pattern, re.IGNORECASE))
         for paragraph in paragraphs:
             replaced_text = str(paragraph)
-            found_keys = set(re.compile(
-                keys_pattern, re.IGNORECASE).findall(str(paragraph)))
-            for key in found_keys:
+
+            # Get all keys so that we can replace them.
+            found_keys = set(re.compile(keys_pattern, re.IGNORECASE).findall(str(paragraph)))
+
+            # We do a temporary replacement to avoid replacing words inside the replacement span below.
+            for index, key in enumerate(found_keys):
+                replaced_text = replaced_text.replace(key, f'$${index}$$')
+            
+            # Replace the temporary replacement with the real replacement- this process avoids replacing words inside the tooltip.
+            for index, key in enumerate(found_keys):
                 title = f'<i><b>{glossary[key.lower()]["name"]}</b></i> - {glossary[key.lower()]["definition"]}'
-                replaced_text = replaced_text.replace(key, f'<span class="note tooltip" title="{title}">{key}</span>')
+                replaced_text = replaced_text.replace(f'$${index}$$', f'<span class="note tooltip" title="{title}">{key}</span>')
 
             paragraph.replace_with(BeautifulSoup(replaced_text, features="html.parser"))
 
