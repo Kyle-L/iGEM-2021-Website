@@ -21,11 +21,11 @@
   <h2>Our Focus</h2>
   <p>
     <span class="image half right"
-    ><img src="assets/images/design/native-calvin-cycle.png" alt="The Native Calvin Cycle pathway." /><span
-      class="credit"
-      >The Native Calvin Cycle pathway.</span
-    ></span
-  >
+      ><img
+        src="assets/images/design/native-calvin-cycle.png"
+        alt="The native CBB cycle for the regeneration of RuBP."
+      /><span class="credit">The native CBB cycle for the regeneration of RuBP.</span></span
+    >
     Our team focused on the CBB cycle; compared to the light reactions whose optimizations are notoriously difficult,
     this pathway provides the most direct target for metabolic engineering <reference identifier="35" />. We concluded
     the most promising portion of this cycle is the regeneration of intermediate RuBP (ribulose1,5-bisphosphate). The
@@ -37,22 +37,17 @@
   </p>
   <p>
     We created two novel pathways to accomplish this goal. In both cases, these redesigned pathways replace the native
-    pathway currently found in the cell, which is reliant on the enzyme sedoheptulose-bisphosphatase (SBPase)
+    pathway currently found in the cell, which is reliant on the enzyme sedoheptulose-bisphosphatase (SBPase).
   </p>
   <p>
     One pathway utilizes the transaldolase enzyme, which already operates in the cell. By reversing its usual reaction,
-    however, we can skip the intermediate conversions from SBPase entirely (Altered Calvin Cycle-2.svg). This pathway
-    relies on fewer enzymes, and more importantly uses fewer intermediates.
+    however, we can skip the intermediate conversions from SBPase entirely. This pathway relies on fewer enzymes, and
+    more importantly uses fewer intermediates.
   </p>
   <p>
     Unlike the transaldolase pathway, the glycolaldehyde pathway skips the entire natural pathway and truncates the
     8-enzyme native pathway to one reliant on only 3 enzymes. This dramatically reduces the number of enzymes and skips
     over several intermediate steps. Instead, this pathway is reliant on one native and two nonnative enzymes.
-    <span class="image three-fourth-full-width right"
-    ><img src="assets/images/design/pathway.png" alt="Glycolaldehyde pathway." /><span class="credit"
-      >The glycolaldehyde pathway.</span
-    ></span
-  >
   </p>
 </section>
 
@@ -65,6 +60,11 @@
       (G3P) with glycolaldehyde to eventually form RuBP.
     </p>
     <p>
+      <span class="image three-fourth-full-width right"
+        ><img src="assets/images/design/pathway.png" alt="Glycolaldehyde pathway." /><span class="credit"
+          >The glycolaldehyde pathway.</span
+        ></span
+      >
       In the native CBB cycle, every 6 completions of the cycle yield 1 G3P for a net fixation of 3CO<sub>2</sub>
       molecules, but the remaining 5 produced G3P molecules are used to regenerate RuBP. The glycolaldehyde pathway
       instead converts 2 of the 5 G3P molecules into 3 glycolaldehyde. Fructose-6-phosphate aldolase, an enzyme in
@@ -81,21 +81,27 @@
   <section>
     <h3>Transaldolase pathway: redesigned native pathway</h3>
     <p>
+      <span class="image half right"
+        ><img
+          src="assets/images/design/transaldolase.png"
+          alt="The redesigned transaldolase pathway for the regeneration of RuBP."
+        /><span class="credit">The redesigned transaldolase pathway for the regeneration of RuBP.</span></span
+      >
       The transaldolase pathway we designed skips a step of the native pathway by utilizing the reverse reaction of
       transaldolase, an enzyme already found in the cell. The current native pathway, also called the wildtype pathway,
-      relies on ATP hydrolysis and the enzyme SBPase to convert sedoheptulose-1,7-bisphosphate (SBP). SBP is produced by the
-      combination of two intermediates, erythrose-4-phosphate (E4P) and dihydroxyacetone phosphate (DHAP). Our proposed
-      transaldolase pathway circumvents the dependence on these intermediates as well as the energy investment for the
-      conversion to SBP. Instead of SBPase producing sedoheptulose-7-phosphate from sedoheptulose-1,7-bisphosphate, transaldolase
-      can directly produce G3P and S7P from fructose-6-phosphate (F6P) and E4P if operating in reverse. This reverse
-      reaction is typically performed in the oxidative portion of the pentose phosphate pathway and may be present at
-      low levels for photosynthetic reactions in the wildtype cells. Additionally, the native pathway relies on the use
-      of G3P twice, while our transaldolase pathway only uses this triose phosphate (3-carbon phosphate molecule) a
-      single time, instead replenishing this intermediate through the transaldolase reaction. Therefore, our
-      transaldolase cycle is most limited by F6P availability. Unlike pentose phosphates and triose phosphates on which
-      the SBP pathway is most reliant, hexose phosphates (6-carbon phosphate molecules) like F6P are more easily
-      accessible through pathways such as glycogen degradation. Ultimately, the transaldolase pathway provides a pathway
-      hypothetically less dependent on intermediates with lower enzymatic need.
+      relies on ATP hydrolysis and the enzyme SBPase to convert sedoheptulose-1,7-bisphosphate (SBP). SBP is produced by
+      the combination of two intermediates, erythrose-4-phosphate (E4P) and dihydroxyacetone phosphate (DHAP). Our
+      proposed transaldolase pathway circumvents the dependence on these intermediates as well as the energy investment
+      for the conversion to SBP. Instead of SBPase producing sedoheptulose-7-phosphate from
+      sedoheptulose-1,7-bisphosphate, transaldolase can directly produce G3P and S7P from fructose-6-phosphate (F6P) and
+      E4P if operating in reverse. This reverse reaction is typically performed in the oxidative portion of the pentose
+      phosphate pathway and may be present at low levels for photosynthetic reactions in the wildtype cells.
+      Additionally, the native pathway relies on the use of G3P twice, while our transaldolase pathway only uses this
+      triose phosphate (3-carbon phosphate molecule) a single time, instead replenishing this intermediate through the
+      transaldolase reaction. Therefore, our transaldolase cycle is most limited by F6P availability. Unlike pentose
+      phosphates and triose phosphates on which the SBP pathway is most reliant, hexose phosphates (6-carbon phosphate
+      molecules) like F6P are more easily accessible through pathways such as glycogen degradation. Ultimately, the
+      transaldolase pathway provides a pathway hypothetically less dependent on intermediates with lower enzymatic need.
     </p>
     <p>
       Of our two proposed pathways, the transaldolase pathway is the most feasible to assess in vivo. Therefore, this
