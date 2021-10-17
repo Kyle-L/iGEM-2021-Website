@@ -19,19 +19,19 @@
     },
     "Collaborations": {
         "name": "Collaborations",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "In order to help out other teams we joined up to share information and create tools for future teams. Explore more below.",
         "image": "assets/images/pic04.jpg",
         "image-alt": ""
     },
     "Communication": {
         "name": "Communication",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "We wanted to share our project with others and have an open discussion. Learn how we shared with other communities and what we learned!",
         "image": "assets/images/pic05.jpg",
         "image-alt": ""
     },
     "Contribution": {
         "name": "Contributions",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "Through our work we were able to add parts of our project to the registry to aid future teams in their research. See how we were able to aid in the iGEM registry.",
         "image": "assets/images/contributions/contribution.png",
         "image-alt": ""
     },
@@ -43,7 +43,7 @@
     },
     "Design": {
         "name": "Design",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "",
         "image": "assets/images/pic05.jpg",
         "image-alt": ""
     },
@@ -55,7 +55,7 @@
     },
     "Engineering": {
         "name": "Engineering",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "In order to find a way to improve crop yield we designed, built, and tested a way to enhance photosynthesis. See our success and what we learned!",
         "image": "assets/images/pic04.jpg",
         "image-alt": ""
     },
@@ -73,37 +73,37 @@
     },
     "Model": {
         "name": "Computational Modeling",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "Using programming we were able to test out theories on different pathways in order to help out the wet lab work. Explore the different pathways.",
         "image": "assets/images/pic01.jpg",
         "image-alt": ""
     },
     "Notebook": {
         "name": "Notebook",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "Our lab team kept an exceptional record of everything throughout the project. See how everything was performed through our timeline.",
         "image": "assets/images/notebook/wheat.png",
         "image-alt": "A closeup of a grain of wheat."
     },
     "Parts": {
         "name": "Parts",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "",
         "image": "assets/images/pic04.jpg",
         "image-alt": ""
     },
     "Plant": {
         "name": "Plant Synthetic Biology",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "In our project we aimed to achieve the plant special award. Explore how we meet these requirements over the course of our project.",
         "image": "assets/images/pic05.jpg",
         "image-alt": ""
     },
     "Proof_Of_Concept": {
         "name": "Proof of Concept",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "Explore the research and experiments that inspired us to formulate our project of increasing crop yield.",
         "image": "assets/images/pic01.jpg",
         "image-alt": ""
     },
     "Results": {
         "name": "Results",
-        "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
+        "description": "After many months of dedication from all of the team members we were excited with our results. See what all the hard work led to!",
         "image": "assets/images/results/road.png",
         "image-alt": "An overhead photo of a curvey road."
     },
