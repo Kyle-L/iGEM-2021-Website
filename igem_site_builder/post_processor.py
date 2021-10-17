@@ -208,7 +208,7 @@ class iGEM_HTML(iGEM_File):
 
     def add_tooltips_for_terms(self, glossary):
         """Adds tooltips to a particular page adding a tooltip span to words from the glossary.
-
+        
         Args:
             html (str): A single page's html as a string.
             glossary (dict): The glossary in the form:
@@ -223,7 +223,7 @@ class iGEM_HTML(iGEM_File):
 
         keys_pattern = "|".join(glossary.keys())
 
-        paragraphs = self._soup.find_all(name='p', text=re.compile(keys_pattern, re.IGNORECASE))
+        paragraphs = self._soup.find_all(name=['p'], text=re.compile(keys_pattern, re.IGNORECASE))
         for paragraph in paragraphs:
             replaced_text = str(paragraph)
             found_keys = set(re.compile(
@@ -346,7 +346,7 @@ class iGEM_HTML(iGEM_File):
                 article = self._soup.new_tag('article')
 
                 # Adds the image link so the user can easily click the image.
-                a_img = self._soup.new_tag('a')
+                a_img = self._soup.new_tag('div')
                 a_img['href'] = f'/{ref_id}'
                 a_img['class'] = ['image']
                 img = self._soup.new_tag('img')

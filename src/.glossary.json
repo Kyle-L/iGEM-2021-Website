@@ -1,10 +1,9 @@
 {
-  "RuBP": "Ribulose 1,5-bisphosphate (RuBP) is an organic substance that is involved in photosynthesis, notably as the principal CO. 2 acceptor in plants.",
-  "BSL-1": "Biosafety level 1 (BSL-1) is the lowest level of biosafety, a level that applies to agents that do not ordinarily cause human disease.",
-  "RG1": "Risk Group 1 (RG1) are agents that are not associated with disease in healthy adult humans. This group includes a list of animal viral etiologic agents in common use. These agents represent no or little risk to an individual and no or little risk to the community.",
+  "RuBP": "Ribulose 1,5-bisphosphate is an organic substance that is involved in photosynthesis, notably as the principal CO. 2 acceptor in plants.",
+  "BSL-1": "Biosafety level 1 is the lowest level of biosafety, a level that applies to agents that do not ordinarily cause human disease.",
+  "RG1": "Risk Group 1 are agents that are not associated with disease in healthy adult humans. This group includes a list of animal viral etiologic agents in common use. These agents represent no or little risk to an individual and no or little risk to the community.",
   "Ethidium Bromide": "Ethidium bromide is a DNA intercalator, inserting itself between the base pairs in the double helix.",
   "Gel Electrophoresis": "Gel electrophoresis is a laboratory method used to separate mixtures of DNA, RNA, or proteins according to molecular size.",
-  "CBB Cycle": "The Calvin-Benson-Bassham (CBB) Cycle is the metabolic pathway photosynthetic organisms use to fix carbon. It involves three stages: carbin fixation, reduction, and RuBP regeneration.",
   "Transaldolase": "Transaldolase (tal) is an enzyme active in the pentose phsophate metabolic pathway. It catalyzes the reaction of sedoheptulose-7-phosphate (S7P) and glyceraldehyde-3-phosphate (G3P) to fructose-6-phosphate (F6P) and erythrose-4-phosphate (E4P).",
   "Cyanobacteria": "Cyanobacteria are photosynthetic bacteria also known as blue-green algae.",
   "Cloning": "Cloning is the process of making copies of genetic material from an organism.",
