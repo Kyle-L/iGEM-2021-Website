@@ -2,9 +2,26 @@
 
 @font-face {
   font-family: "Open Sans";
-  src: url();
-  src: local("../webfonts/OpenSans-Regular.eot"), url() format("embedded-opentype"),
+  font-weight: normal;
+  font-style: normal;
+  src: local("../webfonts/OpenSans-Regular.eot"), url("../webfonts/OpenSans-Regular.otf") format("embedded-opentype"),
     url("../webfonts/OpenSans-Regular.woff") format("woff"), url("../webfonts/OpenSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-style: normal;
+  src: local("../webfonts/OpenSans-Medium.eot"), url("../webfonts/OpenSans-Medium.otf") format("embedded-opentype"),
+    url("../webfonts/OpenSans-Medium.woff") format("woff"), url("../webfonts/OpenSans-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-weight: bold;
+  font-style: normal;
+  src: local("../webfonts/OpenSans-Bold.eot"), url("../webfonts/OpenSans-Bold.otf") format("embedded-opentype"),
+    url("../webfonts/OpenSans-Bold.woff") format("woff"), url("../webfonts/OpenSans-Bold.ttf") format("truetype");
 }
 
 :root {
@@ -15,7 +32,7 @@
   --heading-font: Helvetica, sans-serif;
   --body-font: "Open Sans", sans-serif;
 
-  --primary-color: #4E5155;
+  --primary-color: #4e5155;
   --secondary-color: #030303;
 
   --background-color: #fff;
@@ -301,7 +318,7 @@ a:active {
 strong,
 b {
   color: var(--secondary-color);
-  font-weight: 600;
+  font-weight: bold;
 }
 
 em,
@@ -2227,7 +2244,6 @@ ul.pagination li:last-child {
 .table-wrapper {
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
-  
 }
 
 table {
@@ -2378,7 +2394,7 @@ input[type="reset"].primary:active,
 input[type="button"].primary:active,
 button.primary:active,
 .customButton.primary:active {
-  background-color: var(--shade-color) !important; 
+  background-color: var(--shade-color) !important;
 }
 input[type="submit"].disabled,
 input[type="submit"]:disabled,
