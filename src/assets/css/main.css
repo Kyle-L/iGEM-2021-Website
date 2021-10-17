@@ -15,7 +15,7 @@
   --heading-font: Helvetica, sans-serif;
   --body-font: "Open Sans", sans-serif;
 
-  --primary-color: #9fa3a6;
+  --primary-color: #4E5155;
   --secondary-color: #030303;
 
   --background-color: #fff;
@@ -228,7 +228,7 @@ body,
 input,
 select,
 textarea {
-  color: #7f888f;
+  color: var(--primary-color);
   font-family: var(--body-font);
   font-size: 13pt;
   font-weight: 400;
@@ -1691,7 +1691,7 @@ input[type="radio"] {
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   text-decoration: none;
-  color: #7f888f;
+  color: var(--primary-color);
   cursor: pointer;
   display: inline-block;
   font-size: 1em;
@@ -2933,7 +2933,7 @@ button:disabled,
   -webkit-transform: scaleX(-1);
   -ms-transform: scaleX(-1);
   transform: scaleX(-1);
-  color: #7f888f;
+  color: var(--primary-color);
   content: "\f002";
   cursor: default;
   display: block;
@@ -3119,14 +3119,14 @@ button:disabled,
     width: 7.25em;
   }
   #sidebar .customToggle:before {
-    color: #7f888f;
+    color: var(--primary-color);
     margin-left: -0.0625em;
     margin-top: -0.25em;
     font-size: 1.1rem;
     z-index: 1;
   }
   #sidebar .customToggle:after {
-    background: rgba(222, 225, 226, 0.75);
+    background: var(--primary-color);
     border-radius: 0.375em;
     content: "";
     height: 3.5em;

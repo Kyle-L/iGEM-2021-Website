@@ -2,111 +2,133 @@
     "index": {
         "name": "Home",
         "description": "Lorem ipsum",
-        "image": "assets/images/pic01.jpg"
+        "image": "assets/images/pic01.jpg",
+        "image-alt": ""
     },
     "About_The_Wiki": {
         "name": "About the Wiki",
         "description": "The wiki you see now is the product of months of design, iteration, and dedication. Take a moment to learn about what makes it so special!",
-        "image": "assets/images/about/html.png"
+        "image": "assets/images/about/html.png",
+        "image-alt": ""
     },
     "Attributions": {
         "name": "Attributions",
         "description": "Every member of the Miami University iGEM contributed in a meaningful and impactful way. See how and what each person attributed to that made our project what it is!",
-        "image": "assets/images/pic03.jpg"
+        "image": "assets/images/pic03.jpg",
+        "image-alt": ""
     },
     "Collaborations": {
         "name": "Collaborations",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic04.jpg"
+        "image": "assets/images/pic04.jpg",
+        "image-alt": ""
     },
     "Communication": {
         "name": "Communication",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic05.jpg"
+        "image": "assets/images/pic05.jpg",
+        "image-alt": ""
     },
     "Contribution": {
         "name": "Contributions",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/contributions/contribution.png"
+        "image": "assets/images/contributions/contribution.png",
+        "image-alt": ""
     },
     "Description": {
         "name": "Description",
         "description": "The world depends on high agricultural productivity to provide food and resources to local and global communities. However, global demand for crop production is expected to increase dramatically. Learn how Miami University's CROP could increase the yields of crop plants.",
-        "image": "assets/images/description/farm-equipment.png"
+        "image": "assets/images/description/farm-equipment.png",
+        "image-alt": ""
     },
     "Education": {
         "name": "Education",
         "description": "Not only did the Miami University iGEM team work to make a phenomenal project, we also spent an exceptional amount of time teaching others about plant synthetic biology! Take a moment to learn more about that on our education page!",
-        "image": "assets/images/education/education.png"
+        "image": "assets/images/education/education.png",
+        "image-alt": ""
     },
     "Engineering": {
         "name": "Engineering",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic04.jpg"
+        "image": "assets/images/pic04.jpg",
+        "image-alt": ""
     },
     "Human_Practices": {
         "name": "Human Practices",
         "description": "The best way we can show respect to our community is to listen to them. GMOs are a controversial topic, and we do not want to ignore the fears of our community members. Learn more about that here and how we reached out to the community!",
-        "image": "assets/images/human-practices/knolls-1.png"
+        "image": "assets/images/human-practices/knolls-1.png",
+        "image-alt": ""
     },
     "Implementation": {
         "name": "Implementation",
         "description": "Communities throughout the world struggle to meet daily nutritional needs. One solution is to improve crop yield by optimizing the process of photosynthesis, the use of light energy to form sugar molecules. Learn more about that here!",
-        "image": "assets/images/implementation/golden-rice.png"
+        "image": "assets/images/implementation/golden-rice.png",
+        "image-alt": ""
     },
     "Improve": {
         "name": "Improvements",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic07.jpg"
+        "image": "assets/images/pic07.jpg",
+        "image-alt": ""
     },
     "Model": {
         "name": "Computational Modeling",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic01.jpg"
+        "image": "assets/images/pic01.jpg",
+        "image-alt": ""
     },
     "Notebook": {
         "name": "Notebook",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/Model/Notebook.png"
+        "image": "assets/images/Model/Notebook.png",
+        "image-alt": ""
     },
     "Part_Collection": {
         "name": "Part Collection",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic03.jpg"
+        "image": "assets/images/pic03.jpg",
+        "image-alt": ""
     },
     "Parts": {
         "name": "Parts",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic04.jpg"
+        "image": "assets/images/pic04.jpg",
+        "image-alt": ""
     },
     "Plant": {
         "name": "Plant Synthetic Biology",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic05.jpg"
+        "image": "assets/images/pic05.jpg",
+        "image-alt": ""
     },
     "Proof_Of_Concept": {
         "name": "Proof of Concept",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic01.jpg"
+        "image": "assets/images/pic01.jpg",
+        "image-alt": ""
     },
     "Results": {
         "name": "Results",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/Model/Results.png"
+        "image": "assets/images/Model/Results.png",
+        "image-alt": ""
     },
     "Safety": {
         "name": "Safety",
         "description": "With any project, thinking carefully about and managing any risks is a vital step. Between the inherit risks of our project as well as challenges created by the COVID-19 pandemic, our team had to be thoughtful. Learn how the Miami University team handled safety and risk here!",
-        "image": "assets/images/safety/daria-covid-19.png"
+        "image": "assets/images/safety/daria-covid-19.png",
+        "image-alt": ""
     },
     "Sustainable": {
         "name": "Sustainable",
         "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sednulla amet lorem feugiat tempus aliquam.",
-        "image": "assets/images/pic01.jpg"
+        "image": "assets/images/pic01.jpg",
+        "image-alt": ""
     },
     "Team": {
         "name": "Team",
         "description": "The work done by Miami University's iGEM team was made possible by a team of dedicate and passionate students and advisors from a range of different STEM subject domains! Take a moment to learn more about Miami University's committed team!",
-        "image": "assets/images/team/full-team-1.png"
+        "image": "assets/images/team/full-team-1.png",
+        "image-alt": ""
     }
 }

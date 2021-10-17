@@ -365,7 +365,7 @@ class iGEM_HTML(iGEM_File):
                 a_li = self._soup.new_tag('a')
                 a_li['href'] = f'/{ref_id}'
                 a_li['class'] = ['customButton'] 
-                a_li.string = 'More'
+                a_li.string = 'Learn More'
                 li.append(a_li)
                 ul.append(li)
 
