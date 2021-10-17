@@ -353,7 +353,7 @@ class iGEM_HTML(iGEM_File):
                 article = self._soup.new_tag('article')
 
                 # Adds the image link so the user can easily click the image.
-                a_img = self._soup.new_tag('div')
+                a_img = self._soup.new_tag('a')
                 a_img['href'] = f'/{ref_id}'
                 a_img['class'] = ['image']
                 img = self._soup.new_tag('img')
