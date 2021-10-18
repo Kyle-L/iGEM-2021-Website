@@ -5,91 +5,206 @@
 <section>
   <h2>Our Approach</h2>
   <p>
-    Miami University irregularly offers synthetic biology as the subject focus for an advanced Topics in Microbiology
-    course, but the subject matter of this course varies. Due to the variable nature of this course, its materials are
-    not available online. Recently, the course focused on synthetic biology when taught by our team PI, Dr. Xin Wang,
-    but the course had no direct connection to iGEM (write some stuff about this course material serving as an
-    inspiration to start the iGEM project? Hope help). Although none of our team members were enrolled in the course
-    during the iGEM competition, this competition did inspire several of us to embrace an interest in synthetic biology.
-  </p>
-  <p>
     The team began brainstorming and recruiting in April, with the first full team meeting taking place on May 4th. Work
-    on the project began immediately after, with a clear focus on photosynthesis improvement by targeting the Calvin
-    cycle. Initially, the majority of project work focused on metabolic research and computational modeling to determine
-    the most feasible redesign for RuBP regeneration. Labwork began July 28.
+    on the project began immediately after, with a clear focus on photosynthesis improvement by targeting the
+    Calvin-Benson-Bassham (CBB) cycle. Initially, the majority of project work focused on metabolic research and
+    computational modeling to determine the most feasible redesign for RuBP regeneration. Labwork began July 28 and
+    continued throughout fall.
   </p>
   <p>
-    Our team is extremely thankful for the guidance and generosity of the Wang Microbiology Lab, who not only allowed
-    our team to use their lab space, cyanobacteria strains, and lab materials, but consistently provided their advice,
-    skills, and time. We would also like to acknowledge Dr. Luis Actis, who provided project support and advice.
+    Thanks to the contributions of our team members and members of the Wang lab, we were able to thoroughly explore in
+    silico modeling of alternative RuBP regeneration pathways and begin significant lab work. Due to the difficulties of
+    achieving complete genetic modification of all genome copies in cyanobacteria, this work is ongoing up to and
+    through the wiki freeze deadline.
   </p>
   <p>
-    [some statement about how thanks to the contributions of our team members and the members of the lab, we were able
-    to accomplish xyz. Also perhaps emphasize that all of our work was internally accomplished.]
+    All work was internally accomplished by the team, excluding lab work preparations completed by Shrameeta Shinde.
   </p>
 </section>
 
 <section>
   <h2>Team Attributions</h2>
-  <h3>Computational Modeling</h3>
-  <p>
-    Nhu edited all models used in our project. These models were based off of Jared Broderick's model for PCC 7942
-    (2016, do link to this).
-  </p>
-  <p>Hope edited and created the scripts to run flux analysis and growth analysis.</p>
-  <h3>Project Design</h3>
-  <p>N/A</p>
-  <h3>Wet Lab</h3>
-  <p>Daria Perminova, Avery Imes and Hope Townsend all contributed to laboratory work.</p>
-  <p>
-    All three contributed to the initial work creating the genetically altered cyanobacterial strains. Hope and Avery
-    oversaw the initial Gibson assembly, amplification of plasmids in <em>E. coli</em> and isolation of the vectors.
-    Daria and Avery then finished the transformation into cyanobacteria lines, using segregation and antibiotic
-    selection techniques to push the multi-copy genome toward complete transformation.
-  </p>
-  <p>Daria handled the sequencing analysis and verification of transformant cell lines.</p>
-  <p>
-    These efforts were greatly assisted by the graduate students of the Wang Lab, Shrameeta Shinde and Shaun Jiang.
-    Shrameeta taught our team members relevant skills such as making media or purifying plasmids from gels, as well as
-    providing some of the background work such as making the initial antibiotic plates used for transformant selection.
-    Shaun supervised much of the lab work.
-  </p>
-  <h3>Wiki</h3>
-  <p>
-    As the primary deliverable, the wiki was consequently a joint effort between the entire Miami University iGEM team.
-  </p>
-  <p>
-    Kyle Lierer served as the lead developer and designer of the wiki. He was responsible for the following: designing
-    the wiki's overall appearance and interactable content; developing a continuous integration and continuous
-    deployment pipeline to simplify wiki updates; developing tools to convert Word documents and Markdown files to
-    individual wiki pages; developing tools to automatically add references and definition tooltips to the wiki;
-    designed and edited all of the wiki specific graphics including the logo; finalized and made edits to all page
-    content; helped coordinate wiki deliverable due dates and goals.
-  </p>
-  <p>
-    Rhonda Krehbiel served as the wiki's lead editor. Everything on the wiki was extensively proofread and edited by
-    her.
-  </p>
-  <p>
-    Avery Imes served as the wiki's lead coordinator. She was responsible for making sure that all content needed for
-    the wiki was finished and appropriately formatted so that Kyle and Rhonda had time to edit and finalize the wiki
-    pages.
-  </p>
-  <p>...Individual page attributions will go here...</p>
-  <p>Hope and Nicholas wrote the computational modeling page content.</p>
-  <h3>Collaboration &amp; Outreach</h3>
-  <p>Hope Townsend was the link between our team and the Madrid_UCM iGEM team.</p>
-  <p>Daria Perminova presented our project progress at the Wright State Science Symposium.</p>
-  <h3>Promotional Video</h3>
-  <p>
-    Avery Imes and Kyle Lierer served as the primary contributors to the project's promotional video. Working together,
-    they crafted our two-minute promotional video featured on the wiki's homepage.
-  </p>
-  <p>Avery Imes is responsible for the voiceover as well as providing key points brought up in the video.</p>
-  <p>Kyle Lierer served as the script writer and video editor.</p>
-  <h3>Presentation Video</h3>
-  <h3>Presentation</h3>
+
+  <section>
+    <h3>Administrative</h3>
+    <p>
+      Hope Townsend recruited and assembled the team, tracked competition requirements, delegated and assigned projects,
+      designing a timeline and framework of communication for remote and in-person parties.
+    </p>
+    <p>Avery Imes assisted in team recruitment.</p>
+    <p>Daria Perminova significantly contributed to the completion of the safety form.</p>
+    <p>Annie Nguyen completed our parts registration.</p>
+  </section>
+
+  <section>
+    <h3>Computational Modeling</h3>
+    <p>
+      Tra Yen Nhu Phan edited all models used in our project. These models were based off of Jared Broderick’s model for
+      <em>Synechococcus elongatus </em>PCC 7942 <reference identifier="20" />. Nhu utilized Jupyter Notebook to create Escher maps to visualize
+      the models.
+    </p>
+    <p>
+      Hope Townsend edited and created the scripts to run flux analysis and growth analysis. She also analyzed and
+      interpreted all data with some guidance from Dr. Xin Wang and Zhenxiong &quot;Shaun&quot; Jiang.
+    </p>
+    <p>
+      Assistance should also be noted from James Broddrick, the original author of the model and scripts from which our
+      scripts were based <reference identifier="20" /> from Susan Golden’s lab at UC-San Diego.
+    </p>
+  </section>
+
+  <section>
+    <h3>Project Design</h3>
+    <p>
+      Dr. Xin Wang oversaw all project design, guiding student member ideas and verifying products before allowing team
+      progression to the wet lab.
+    </p>
+    <p>Avery Imes and Hope Townsend designed the transaldolase alternative pathway with the guidance of Dr. Wang.</p>
+    <p>Daria Perminova inspired the initial glycolaldehyde pathway which was then edited by Dr. Wang.</p>
+    <p>Avery designed the primers for fragment extension and plasmid assembly used in web lab experiments.</p>
+    <p>
+      Annie Nguyen, Daria, and Avery organized metabolite and enzymatic information for the computer modeling team to
+      begin their work.
+    </p>
+  </section>
+
+  <section>
+    <h3>Wet Lab</h3>
+    <p>Daria Perminova, Avery Imes, Max Brenner, and Hope Townsend all contributed to laboratory work.</p>
+    <p>
+      Hope, Avery and Daria contributed to the initial work creating the genetically altered cyanobacterial strains.
+    </p>
+    <p>
+      Hope and Avery oversaw the initial Gibson Assembly, amplification of plasmids in <em>Esherichia coli</em> and
+      isolation of the vectors.
+    </p>
+    <p>
+      Daria and Avery then finished the transformation into cyanobacteria lines, using segregation and antibiotic
+      selection techniques to push the multi-copy genome toward complete transformation.
+    </p>
+    <p>Daria handled the sequencing analysis and verification of transformant cell lines.</p>
+    <p>
+      Daria led all lab efforts once the semester began with Max providing significant assistance as needed to finalize
+      segregation and begin growth experiments. This included more transformations, colony maintenance, and growth
+      experiments.
+    </p>
+    <p>
+      All work was completed within Dr. Xin Wang’s lab under his direction and supervision. These efforts were greatly
+      assisted by the graduate students of the Wang Lab, Shrameeta Shinde and Zhenxiong “Shaun” Jiang. Shrameeta,
+      although not a member of our team, taught our team members relevant skills such as making media or purifying
+      plasmids from gels, as well as providing some of the background work such as making the initial antibiotic plates
+      used for transformant selection. Shaun supervised much of the lab work and served as our team instructor.
+    </p>
+  </section>
+
+  <section>
+    <h3>Wiki</h3>
+    <p>
+      As the primary deliverable, the wiki was consequently a joint effort between the entire Miami University iGEM
+      team.
+    </p>
+    <p>
+      Kyle Lierer served as the lead developer and designer of the wiki. He was responsible for the following: designing
+      the wiki’s overall appearance from the ground up; developing a continuous integration and continuous deployment
+      pipeline to simplify wiki updates; developing tools to convert Word documents and Markdown files to individual
+      wiki pages; developing tools to automatically add references and definition tooltips to the wiki; built a system
+      to keep track of references and ensure consistency across all pages; designed and edited all of the wiki specific
+      graphics including the logo; edited all pages to ensure they are finalized and consistent in tone and format;
+      helped coordinate wiki deliverable due dates and goals; was the final reviewer for all wiki pages.
+    </p>
+    <p>
+      Rhonda Krehbiel served as the wiki’s lead editor, focusing on effective communication. Everything on the wiki was
+      extensively proofread and edited by her.
+    </p>
+    <p>
+      Avery Imes served as the wiki’s lead coordinator. She was responsible for making sure that all content for the
+      wiki was finished and appropriately formatted so that Kyle and Rhonda had time to edit and finalize the wiki
+      pages. She was a significant author on several pages and the final editor for all pages.
+    </p>
+    <p>Individual page attributions:</p>
+    <ul>
+      <li>
+        Nicholas Nocevski helped write the front page summary for the modeling page. Hope Townsend wrote the multipage
+        analysis and significantly edited and added to the front page summary.
+      </li>
+      <li>
+        Daria Perminova was an author on the Safety and Security, Contributions, Lab Notebook, Engineering Success, and
+        Proof of Concept pages.
+      </li>
+      <li>
+        Hope edited the drafts for Proposed Implementation, Project Description, Education/Outreach, Integrative Human
+        Practices and Engineering Success. She also described the pathways in Project Design.
+      </li>
+      <li>
+        Avery served as an author or editor for Safety and Security, Proposed Implementation, Human Practices, Project
+        Description, Proof of Concept, Contributions, Plant Synthetic Biology, and Project Design.
+      </li>
+      <li>
+        Mackenzie Britton was the author of the Education/Outreach page and wrote the short descriptions of each
+        section.
+      </li>
+      <li>Rhonda was the author of the Human Practices page.</li>
+      <li>Max Brenner was the author of the plant synthesis page and helped with formatting the lab notebook.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Collaboration &amp; Outreach (includes Education &amp; Integrative Human Practices)</h3>
+    <p>
+      Hope Townsend was the link between our team and the Madrid_UCM iGEM team, guiding them through how to use
+      computational modeling for their pathway analysis.
+    </p>
+    <p>
+      Hope wrote the Modeling section of the iGEM Phototroph Handbook in collaboration with the Bielefeld and Marburg
+      teams.
+    </p>
+    <p>Daria Perminova presented our project progress at the Wright State Science Symposium.</p>
+    <p>
+      Hope initiated the general curriculum and framework of the educational outreach and integrative human practices
+      plans that the rest of the team brought to life. She also created the plasmid cutting activity for the educational
+      video.
+    </p>
+    <p>Mackenzie Britton created the Chutes and Ladders activity and helped create the Education video.</p>
+    <p>
+      Avery Imes presented and helped create the presentation at The Knoll’s community. She also created the children’s
+      educational video with Mackenzie.
+    </p>
+    <p>
+      Rhonda helped create the introductory slides for both presentations and assisted in contacting the community for
+      outreach efforts. She also led the team discussion and reflection on Integrated Human Practices.
+    </p>
+    <p>Camaryn Bennett reached out to possible communities for education linkages.</p>
+    <p>
+      Hope and Avery wrote the Frontiers article with the guidance of Dr. Wang. Hope wrote the base draft and created
+      the Biorender figures. Avery edited the base draft and wrote the Lasting Applications portion.
+    </p>
+  </section>
+
+  <section>
+    <h3>Promotional Video</h3>
+    <p>
+      Avery Imes and Kyle Lierer served as the primary contributors to the project’s promotional video. Working
+      together, they crafted our two-minute promotional video featured on the wiki’s homepage.
+    </p>
+    <p>Avery is responsible for the voiceover as well as providing key points brought up in the video.</p>
+    <p>Kyle served as the lead script writer, video editor, and coordinator.</p>
+  </section>
+
+  <section>
+    <h3>Presentation Video</h3>
+    <p>
+      All team members excluding Camaryn Bennet, Cameron Headlee, Nicholas Nocevski, and Annie Nguyen helped write the
+      script for the Presentation Video.
+    </p>
+    <p>Kyle Lierer and Hope Townsend served as the lead script editors.</p>
+    <p>Kyle Lierer served as the lead video editor, coordinator, and graphic designer.</p>
+    <p>Avery Imes, Daria Perminova, and Max Brenner served as the presenters.</p>
+    <p>Hope Townsend and Daria Perminova created all used Biorender figures.</p>
+  </section>
 </section>
+
+<hr />
+<bibliography />
 
 <hr />
 <explore pages="Collaborations,Contribution" />
