@@ -92,8 +92,8 @@
     "Plant": {
         "name": "Plant Synthetic Biology",
         "description": "In our project we aimed to achieve the plant special award. Explore how we meet these requirements over the course of our project.",
-        "image": "assets/images/pic05.jpg",
-        "image-alt": ""
+        "image": "assets/images/implementation/wheat-grain.png",
+        "image-alt": "A close up of a grain of wheat."
     },
     "Proof_Of_Concept": {
         "name": "Proof of Concept",
