@@ -86,8 +86,8 @@
     "Parts": {
         "name": "Parts",
         "description": "",
-        "image": "assets/images/pic04.jpg",
-        "image-alt": ""
+        "image": "assets/images/parts/gears.png",
+        "image-alt": "A close up of gears."
     },
     "Plant": {
         "name": "Plant Synthetic Biology",
