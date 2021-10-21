@@ -45,12 +45,12 @@
         "url": "https://www.drugs.com/mtm/gentamicin.html"
     },
     "10": {
-        "full": "Kanamycin. DrunkBank Online.",
+        "full": "Kanamycin. DrugBank Online.",
         "title": "Kanamycin",
         "url": "https://go.drugbank.com/drugs/DB01172"
     },
     "11": {
-        "full": "Spectinomycin. DrunkBank Online.",
+        "full": "Spectinomycin. DrugBank Online.",
         "title": "Spectinomycin",
         "url": "https://go.drugbank.com/drugs/DB00919"
     },
@@ -175,7 +175,7 @@
         "url": "https://doi.org/10.1038/s41586-019-1679-0"
     },
     "36": {
-        "full": "Bailey-Serres J, Parker JE, Ainsworth EA, Oldroyd GED, Schroeder JI. 2019. Genetic strategies for improving crop yields. Nature 575:109–118.",
+        "full": "Brody JE. 2018. Are G.M.O. Foods Safe? The New York Times.",
         "title": "Are G.M.O. Foods Safe?",
         "url": "https://www.nytimes.com/2018/04/23/well/eat/are-gmo-foods-safe.html"
     },
@@ -260,7 +260,7 @@
         "url": "https://doi.org/10.1093/oxfordjournals.pcp.a029536"
     },
     "54": {
-        "full": "1.  Modeling Photosynthesis. RIPE.",
+        "full": "Modeling Photosynthesis. RIPE.",
         "title": "Modeling Photosynthesis",
         "url": "https://ripe.illinois.edu/objectives/modeling-photosynthesis"
     },
