@@ -1963,28 +1963,24 @@ input[type="radio"] + label:before {
   width: 100%;
 }
 .image.half {
-  min-width: 414px;
   width: 50%;
 }
 .image.half img {
   width: 100%;
 }
 .image.half-full-width {
-  min-width: 414px;
   width: 100%;
 }
 .image.half-full-width img {
   width: 50%;
 }
 .image.three-fourth-full-width {
-  min-width: 414px;
   width: 100%;
 }
 .image.three-fourth-full-width img {
   width: 75%;
 }
 .image.third {
-  min-width: 414px;
   width: 33%;
 }
 .image.third img {
@@ -1997,6 +1993,12 @@ input[type="radio"] + label:before {
 }
 .image.main img {
   width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .image {
+    min-width: 100% !important;
+  }
 }
 
 a.image {
