@@ -56,8 +56,8 @@
     "Engineering": {
         "name": "Engineering",
         "description": "In order to find a way to improve crop yield we designed, built, and tested a way to enhance photosynthesis. See our success and what we learned!",
-        "image": "assets/images/pic04.jpg",
-        "image-alt": ""
+        "image": "assets/images/engineering/man-cutting.png",
+        "image-alt": "A man cutting a grassy plant."
     },
     "Human_Practices": {
         "name": "Human Practices",

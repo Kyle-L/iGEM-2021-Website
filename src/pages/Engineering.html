@@ -1,216 +1,260 @@
+<h1>Engineering Success</h1>
+
+<hr />
+
 <section>
-  <h1>Engineering Success</h1>
- 
-  <p>Our goal here at CROP is to revolutionize the future of food production to meet the demands of a growing human
-      population. Through successful use of the engineering cycle, we…</p>
+  <p>
+    Our goal here at CROP is to revolutionize the future of food production to meet the demands of a growing human
+    population. Through successful use of the engineering cycle, we…
+  </p>
   <ul>
-      <li><strong>Designed </strong>synthetic pathways that enable a more robust carbon regeneration process during carbon
-          fixation</li>
-      <li><strong>Built </strong>and integrated our system into the model cyanobacteria <em>Synechococcus elongatus</em>
-          PCC 7942</li>
-      <li><strong>Tested </strong>our pathway(s) in vitro through computer modeling and in vivo through growth experiments
-      </li>
-      <li><strong>Learned</strong> about experimental mistakes, repeated testing, and were able to learn about the effect
-          of our synthetic pathways on cyanobacterial growth. We also researched and discussed the possible reasons behind
-          our results, and proposed future experiments to further optimize our design</li>
-      <li><strong>Success</strong>: we were able to generate successful transformants with all of our plasmids, with
-          varying degrees of segregation, producing noticeable cell activity change detailed on our <a
-              href="/Proof_Of_Concept">Proof of Concept</a> page. This demonstrates
-          the viability of our parts, detailed on the <a
-              href="/Contribution">Contributions</a> page. </li>
+    <li>
+      <strong>Designed </strong>synthetic pathways that enable a more robust carbon regeneration process during carbon
+      fixation
+    </li>
+    <li>
+      <strong>Built </strong>and integrated our system into the model cyanobacteria <em>Synechococcus elongatus</em> PCC
+      7942
+    </li>
+    <li>
+      <strong>Tested </strong>our pathway(s) in vitro through computer modeling and in vivo through growth experiments
+    </li>
+    <li>
+      <strong>Learned</strong> about experimental mistakes, repeated testing, and were able to learn about the effect of
+      our synthetic pathways on cyanobacterial growth. We also researched and discussed the possible reasons behind our
+      results, and proposed future experiments to further optimize our design
+    </li>
+    <li>
+      <strong>Success</strong>: we were able to generate successful transformants with all of our plasmids, with varying
+      degrees of segregation, producing noticeable cell activity change detailed on our
+      <a href="/Proof_Of_Concept">Proof of Concept</a> page. This demonstrates the viability of our parts, detailed on
+      the <a href="/Contribution">Contributions</a> page.
+    </li>
   </ul>
-  </section>
-  
-  <section>
+</section>
+
+<section>
   <h2>Design</h2>
   <h3>Pathway Design</h3>
-  <p>We began our summer by researching the limitations of photosynthesis to narrow down where it would be most effective
-      for us to reengineer. Two of our team members- Hope Kirby and Avery Imes- were able to discuss initial ideas with
-      our primary investigator (PI) Dr. Xin Wang, an expert in the synthetic biology field. This provided the necessary
-      guidance for further research once the team was established. </p>
-  <p>Our first objective was to narrow down what part of photosynthesis we wanted to focus on, as it is a very complex
-      170-step process with many areas for improvement <reference identifier="54" />.
-      One consideration was the light reactions. Oftentimes at excessive light levels, a plant’s light-capturing-machinery
-      becomes saturated, having destructive consequences <reference identifier="51" />.
-      While this is an important limit to photosynthetic efficiency, work on the complex light-based structures would have
-      required more resources and previous knowledge than our team could reasonably acquire within the competition
-      timeframe . In addition, if later steps of photosynthesis can’t “keep up” with the energy flow coming in from light
-      capture, then the process can become stalled and thus no overall improvement is gained. From this perspective, it
-      was ideal to focus on energy and metabolite allocation in downstream photosynthetic steps to optimize their constant
-      flow and renewal. </p>
-  <p>From there we looked to the Calvin-Benson-Bassham (CBB) cycle, which comprises the second portion of photosynthesis.
-      The CBB cycle can be further subdivided into three parts: carbon fixation, reduction, and regeneration. The fixation
-      step is catalyzed by the notoriously inefficient enzyme RubisCO. Decades of research have attempted to improve
-      RubisCO without any significant breakthroughs <reference identifier="52" />. Through
-      billions of years of evolutionary selection, Rubisco activity is still slow and promiscuous, which leads to the
-      photorespiration process, another metabolic process that lowers photosynthetic efficiency. There is also a theory in
-      the field that Rubisco has already been optimized through evolution due to its central metabolic role in
-      photosynthetic organisms <reference identifier="57" />.
-      Thus there is not much opportunity left for its activity to be further improved. </p>
-  <p>During the reduction portion, the conversion of 3-phosphoglycerate to glyceraldehyde-3-phosphate is simple and
-      relatively efficient with little room for obvious improvement. This led us to focus on regeneration; this step
-      regenerates a necessary intermediate of the CBB cycle, ribulose-1,5-bisphosphate (RuBP), through a series of
-      reactions <reference identifier="55" />.
-      This series of reactions produces intermediates that are often consumed by reactions not involved in the CBB cycle,
-      taking resources away from direct RuBP formation. We decided that we would find a more direct way of converting the
-      3 carbon compound glyceraldehyde-3-phosphate into the 5 carbon compound ribulose-1,5- bisphosphate.</p>
-  <p> Our literature searches led us to the design of several potential alternative carbon regeneration pathways, two of
-      which, the transaldolase and the glycolaldehyde pathways, showed the most promise. The glycolaldehyde pathway was
-      revised several times until the final version was created, as it was the most novel and required the most extensive
-      analysis for viability. Both pathways were tested using computer modeling. Due to time and resource restrictions, we
-      chose to perform in vivo experiments using only the transaldolase pathway. </p>
-  </section>
-  
-  <section>
+  <p>
+    We began our summer by researching the limitations of photosynthesis to narrow down where it would be most effective
+    for us to reengineer. Two of our team members- Hope Kirby and Avery Imes- were able to discuss initial ideas with
+    our primary investigator (PI) Dr. Xin Wang, an expert in the synthetic biology field. This provided the necessary
+    guidance for further research once the team was established.
+  </p>
+  <p>
+    Our first objective was to narrow down what part of photosynthesis we wanted to focus on, as it is a very complex
+    170-step process with many areas for improvement <reference identifier="54" />. One consideration was the light
+    reactions. Oftentimes at excessive light levels, a plant’s light-capturing-machinery becomes saturated, having
+    destructive consequences <reference identifier="51" />. While this is an important limit to photosynthetic
+    efficiency, work on the complex light-based structures would have required more resources and previous knowledge
+    than our team could reasonably acquire within the competition timeframe . In addition, if later steps of
+    photosynthesis can’t “keep up” with the energy flow coming in from light capture, then the process can become
+    stalled and thus no overall improvement is gained. From this perspective, it was ideal to focus on energy and
+    metabolite allocation in downstream photosynthetic steps to optimize their constant flow and renewal.
+  </p>
+  <p>
+    From there we looked to the Calvin-Benson-Bassham (CBB) cycle, which comprises the second portion of photosynthesis.
+    The CBB cycle can be further subdivided into three parts: carbon fixation, reduction, and regeneration. The fixation
+    step is catalyzed by the notoriously inefficient enzyme RubisCO. Decades of research have attempted to improve
+    RubisCO without any significant breakthroughs <reference identifier="52" />. Through billions of years of
+    evolutionary selection, Rubisco activity is still slow and promiscuous, which leads to the photorespiration process,
+    another metabolic process that lowers photosynthetic efficiency. There is also a theory in the field that Rubisco
+    has already been optimized through evolution due to its central metabolic role in photosynthetic organisms
+    <reference identifier="57" />. Thus there is not much opportunity left for its activity to be further improved.
+  </p>
+  <p>
+    During the reduction portion, the conversion of 3-phosphoglycerate to glyceraldehyde-3-phosphate is simple and
+    relatively efficient with little room for obvious improvement. This led us to focus on regeneration; this step
+    regenerates a necessary intermediate of the CBB cycle, ribulose-1,5-bisphosphate (RuBP), through a series of
+    reactions <reference identifier="55" />. This series of reactions produces intermediates that are often consumed by
+    reactions not involved in the CBB cycle, taking resources away from direct RuBP formation. We decided that we would
+    find a more direct way of converting the 3 carbon compound glyceraldehyde-3-phosphate into the 5 carbon compound
+    ribulose-1,5- bisphosphate.
+  </p>
+  <p>
+    Our literature searches led us to the design of several potential alternative carbon regeneration pathways, two of
+    which, the transaldolase and the glycolaldehyde pathways, showed the most promise. The glycolaldehyde pathway was
+    revised several times until the final version was created, as it was the most novel and required the most extensive
+    analysis for viability. Both pathways were tested using computer modeling. Due to time and resource restrictions, we
+    chose to perform in vivo experiments using only the transaldolase pathway.
+  </p>
+</section>
+
+<section>
   <h2>Build</h2>
   <h3>Constructing the Plasmids</h3>
-  <p>Our primers were carefully designed using <a href="https://nebuilder.neb.com/#!/">NEBuilder</a>. This process was in
-      itself an iterative cycle, in which the student team members designed the primers on their own and then presented
-      them to our PI. We were then able to receive commentary on issues such as length, annealing temperature, and more
-      that allowed for more efficient redesign, allowing our student team members to learn about this vital design process
-      ourselves. </p>
-  <p>Once the proper primers were ordered, we performed PCR to get the desired fragments for Gibson Assembly. We amplified
-      four components for the overexpression enzymes which were pT_tal, pF_fbp, pTF_tal, and pTF_fbp. Amplification was
-      performed using a standard PCR protocol, using the high-fidelity Q5 polymerase to ensure the fewest number of
-      introduced mutations. These fragments contained the genome sequence for transaldolase (tal) or
-      fructose-1,6-bisphosphatase (fbp) as well as overlapping sequences for gibson assembly and restriction enzyme sites
-      for confirmation testing. We used these fragments to assemble three different plasmid vectors to overexpress the
-      enzymes of interest - pGEM-tal (<a
-          href="http://parts.igem.org/wiki/index.php?title=Part:BBa_K4047036">BBa_K4047036</a>), pGEM-fbp (<a
-          href="http://parts.igem.org/Part:BBa_K4047037">BBa_K4047037</a>), and pGEM-tal+fbp (<a
-          href="http://parts.igem.org/Part:BBa_K4047038">BBa_K4047038</a>). Before assembly we had to perform a
-      restriction digest to isolate the backbone of pAM2991 (<a
-          href="http://parts.igem.org/Part:BBa_K4047024">BBa_K4047024</a>). This backbone provides the
-      spectinomycin/streptomycin resistance for selection of successful transformants. It also provides the <em>lacI</em>
-      gene, <em>lacIq</em> promoter, <em>trc</em> promoter, and <em>lac</em> operator. The <em>lac</em> repressor LacI,
-      encoded by the <em>lacI</em> gene, binds to the <em>lac</em> operator to inhibit transcription. We used this
-      regulatory system to induce higher gene expression of <em>tal, fbp, </em> or both through addition of IPTG during
-      growth experiments.</p>
-  <p>We also amplified (via PCR) four components for the sedoheptulose -1,7- bisphosphatase (SBPase) deletion vector- a
-      kanamycin resistance (kmR) cassette (<a href="http://parts.igem.org/Part:BBa_K4047019">BBa_K4047019</a>), a backbone
-      from a previously established plasmid pXWK3-glgC (<a
-          href="http://parts.igem.org/Part:BBa_K4047018">BBa_K4047018</a>), an upstream fragment of the SBPase gene
-      <em>glpX </em>(<a href="http://parts.igem.org/Part:BBa_K4047022">BBa_K4047022</a>), and a downstream fragment of
-      <em>glpX</em> (<a href="http://parts.igem.org/Part:BBa_K4047023">BBa_K4047023</a>). We gibson assembled the
-      components to create the deletion plasmid pGEM-SBPase (<a
-          href="http://parts.igem.org/Part:BBa_K4047039">BBa_K4047039</a>), enabling the interruption of <em>glpX</em> to
-      prevent SBPase expression with a kanamycin resistance cassette. The maintenance of the upstream and downstream
-      portions of <em>glpX </em> ensures enough homology for proper crossover for successful gene deletion. The backbone
-      amplified from pXWK3-glgC contained the gentamicin resistance (gmR) cassette for distinguishing between single and
-      double crossovers. This was important because a single recombination event integrates the entire plasmid and results
-      in a duplication of the <em>glpX</em>- one wildtype allele and one mutant allele <reference identifier="56" />.
-      For these single crossovers, transformed cells would have both gmR and kmR, and thus grow on both kanamycin and
-      gentamicin-containing plates. Only a double crossover results in the desired deletion mutant <reference identifier="56" />.
-      In this double crossover, only the kmR cassette is inserted between the targeted upstream and downstream
-      <em>glpX</em> fragments, inserting the antibiotic into <em>glpX</em> and preventing the synthesis of functional
-      SBPase. The gmR antibiotic, in the plasmid backbone, is not acquired. We could, therefore, select colonies that only
-      grew on media containing kanamycin and not gentamicin to ensure a proper deletion as well as removal of the
-      introduced plasmid vector and wild type copy of <em>glpX</em>.</p>
-  
-  <h3>Transforming and Confirming Colonies</h3>
-  <p> Once our three overexpression and one deletion plasmid were assembled, we used them to transform <em>Escherichia
-          coli</em> DH10β. This was necessary to get a large set of copies of the plasmid for proper transformation into
-      our organism of interest, <em>S. elongatus</em> PCC 7942. Once we replicated and purified the plasmids from
-      <em>E</em>.<em> coli</em>, we confirmed the plasmid components via restriction enzyme digestion, and performed
-      transformation in <em>S. elongatus</em> PCC 7942. For our deletion colonies, we used km and gm selection to locate
-      double crossovers and segregation/colony PCR to evaluate the extent of plasmid integration. <em>S. elongatus</em>
-      PCC 7942 has multiple copies of its genome and not all copies may contain our desired insert. This latter process
-      was similarly performed for our overexpression colonies. We also used several rounds of segregation PCR to monitor
-      the success of integration of our genes with IPTG activated promoters to allow for overexpression at neutral site I
-      (NSI). </p>
-  </section>
-  
-  <section>
-  <h2>Test</h2>
-  <p>Initially, our testing was delayed at the transformation and segregation stage, detailed below in the learning
-      section. We were able to repeat our transformations with new stock colonies and proceed to viable testing detailed
-      here. </p>
-  <p>We were able to achieve a double crossover colony for <em>glpX</em> deletion. However, after several rounds of
-      segregation PCR, we concluded that complete segregation with no remaining functional SBPase was difficult to achieve
-      and not within the competition timeframe (<strong>see </strong><a
-          href="/Notebook"><strong>Notebook</strong></a>). In other words, only some
-      of the genomic copies in the cells had the successful deletion while the remaining copies maintained wild type. This
-      is understandable because <em>glpX</em>, encoding SBPase, is considered an essential gene, so only very few copies
-      could have the deletion without affecting the viability of the cell <reference identifier="53" />.
-         
-          <span class="image half-full-width right"
-      ><img src="assets/images/engineering/figure-1.png" alt="Photo of testing." /><span
-        class="credit"
-        > Figure 1. km5+ from 8/10 with original PCC 7942 colonies transformed with pGEM-SBPase.
-        </span
-      ></span>
-      
-      <span class="image half-full-width right"
-      ><img src="assets/images/engineering/figure-2.png" alt="Photo of testing." /><span
-        class="credit"
-        > Figure 2. km5+ from 8/23 with original colonies in quadrants 1-3 (with several transfers taken afterwards).
-        </span
-      ></span>
-  
-      <span class="image half-full-width right"
-      ><img src="assets/images/engineering/figure-3.png" alt="Photo of testing." /><span
-        class="credit"
-        > Figure 3. gm2+ from 8/23 with original colonies in quadrants 1-3 (with several transfers taken afterwards).
-        </span
-      ></span>
-  
-      <span class="image half-full-width right"
-      ><img src="assets/images/engineering/figure-4.png" alt="Photo of testing." /><span
-        class="credit"
-        > Figure 4. km5+ from 9/9 with dilution series of colony #3 (km5+ 8/30) on quadrants 1-11.
-        </span
-      ></span>
+  <p>
+    Our primers were carefully designed using <a href="https://nebuilder.neb.com/#!/">NEBuilder</a>. This process was in
+    itself an iterative cycle, in which the student team members designed the primers on their own and then presented
+    them to our PI. We were then able to receive commentary on issues such as length, annealing temperature, and more
+    that allowed for more efficient redesign, allowing our student team members to learn about this vital design process
+    ourselves.
   </p>
-  <p> We were additionally able to achieve partial segregation for three <em>tal</em>, three<em> fbp</em>, and four
-      <em>tal-fbp</em> colonies. We compared growth of the wild type strain and the three <em>tal</em>, three <em>fbp,
-      </em>and<em> </em>three <em>tal-fbp </em>colonies using growth curves meant to replicate day-night cycles. Cells
-      alternated between 10 hour light and 14 hour dark cycles at 30ºC for a total of <strong>5 days to replicate the
-          usual stress of alternating days and nights. </strong></p>
-  <p>Our growth experiment showed that overexpressing transaldolase or FBPase alone leads to less growth compared to the
-      wildtype strain. We attribute these results to metabolic stress caused by an accumulation of F6P from FBPase and
-      transaldolase forward activity pulling intermediates away from carbon regeneration into the pentose phosphate
-      pathway. Yet when transaldolase and FBPase were overexpressed together, <strong>rather than growing less robustly as
-          seen for individual gene overexpression strains</strong>, cells picked up growth faster during the light phase
-      and reached a higher yield than with either transaldolase or FBPase alone. <strong>The growth profile supported our
-          modeling results; our transaldolase pathway can be favored over the native CBB regeneration when FBPase provides
-          hexose phosphates</strong>. Without a deletion of SBPase, our pathway had to compete with the native pathway,
-      yet was still able to maintain growth similar to WT in the first few light/dark cycles. In conclusion, our results
-      show that our proposed transaldolase pathway is not only functional but is favored by the cell when hexose
-      phosphates are more available than triose phosphates as suggested by our modeling. By deleting SBPase and excluding
-      the native pathway, we expect to see growth that matches or exceeds that of wildtype. Further details of these
-      results <strong>and analysis</strong> can be found in our <a
-          href="/Proof_Of_Concept">Proof of Concept</a> page. </p>
-  </section>
-      
-  <section>
+  <p>
+    Once the proper primers were ordered, we performed PCR to get the desired fragments for Gibson Assembly. We
+    amplified four components for the overexpression enzymes which were pT_tal, pF_fbp, pTF_tal, and pTF_fbp.
+    Amplification was performed using a standard PCR protocol, using the high-fidelity Q5 polymerase to ensure the
+    fewest number of introduced mutations. These fragments contained the genome sequence for transaldolase (tal) or
+    fructose-1,6-bisphosphatase (fbp) as well as overlapping sequences for gibson assembly and restriction enzyme sites
+    for confirmation testing. We used these fragments to assemble three different plasmid vectors to overexpress the
+    enzymes of interest - pGEM-tal (<a href="http://parts.igem.org/wiki/index.php?title=Part:BBa_K4047036"
+      >BBa_K4047036</a
+    >), pGEM-fbp (<a href="http://parts.igem.org/Part:BBa_K4047037">BBa_K4047037</a>), and pGEM-tal+fbp (<a
+      href="http://parts.igem.org/Part:BBa_K4047038"
+      >BBa_K4047038</a
+    >). Before assembly we had to perform a restriction digest to isolate the backbone of pAM2991 (<a
+      href="http://parts.igem.org/Part:BBa_K4047024"
+      >BBa_K4047024</a
+    >). This backbone provides the spectinomycin/streptomycin resistance for selection of successful transformants. It
+    also provides the <em>lacI</em> gene, <em>lacIq</em> promoter, <em>trc</em> promoter, and <em>lac</em> operator. The
+    <em>lac</em> repressor LacI, encoded by the <em>lacI</em> gene, binds to the <em>lac</em> operator to inhibit
+    transcription. We used this regulatory system to induce higher gene expression of <em>tal, fbp, </em> or both
+    through addition of IPTG during growth experiments.
+  </p>
+  <p>
+    We also amplified (via PCR) four components for the sedoheptulose -1,7- bisphosphatase (SBPase) deletion vector- a
+    kanamycin resistance (kmR) cassette (<a href="http://parts.igem.org/Part:BBa_K4047019">BBa_K4047019</a>), a backbone
+    from a previously established plasmid pXWK3-glgC (<a href="http://parts.igem.org/Part:BBa_K4047018">BBa_K4047018</a
+    >), an upstream fragment of the SBPase gene <em>glpX </em>(<a href="http://parts.igem.org/Part:BBa_K4047022"
+      >BBa_K4047022</a
+    >), and a downstream fragment of <em>glpX</em> (<a href="http://parts.igem.org/Part:BBa_K4047023">BBa_K4047023</a>).
+    We gibson assembled the components to create the deletion plasmid pGEM-SBPase (<a
+      href="http://parts.igem.org/Part:BBa_K4047039"
+      >BBa_K4047039</a
+    >), enabling the interruption of <em>glpX</em> to prevent SBPase expression with a kanamycin resistance cassette.
+    The maintenance of the upstream and downstream portions of <em>glpX </em> ensures enough homology for proper
+    crossover for successful gene deletion. The backbone amplified from pXWK3-glgC contained the gentamicin resistance
+    (gmR) cassette for distinguishing between single and double crossovers. This was important because a single
+    recombination event integrates the entire plasmid and results in a duplication of the <em>glpX</em>- one wildtype
+    allele and one mutant allele <reference identifier="56" />. For these single crossovers, transformed cells would
+    have both gmR and kmR, and thus grow on both kanamycin and gentamicin-containing plates. Only a double crossover
+    results in the desired deletion mutant <reference identifier="56" />. In this double crossover, only the kmR
+    cassette is inserted between the targeted upstream and downstream <em>glpX</em> fragments, inserting the antibiotic
+    into <em>glpX</em> and preventing the synthesis of functional SBPase. The gmR antibiotic, in the plasmid backbone,
+    is not acquired. We could, therefore, select colonies that only grew on media containing kanamycin and not
+    gentamicin to ensure a proper deletion as well as removal of the introduced plasmid vector and wild type copy of
+    <em>glpX</em>.
+  </p>
+
+  <h3>Transforming and Confirming Colonies</h3>
+  <p>
+    Once our three overexpression and one deletion plasmid were assembled, we used them to transform
+    <em>Escherichia coli</em> DH10β. This was necessary to get a large set of copies of the plasmid for proper
+    transformation into our organism of interest, <em>S. elongatus</em> PCC 7942. Once we replicated and purified the
+    plasmids from <em>E</em>.<em> coli</em>, we confirmed the plasmid components via restriction enzyme digestion, and
+    performed transformation in <em>S. elongatus</em> PCC 7942. For our deletion colonies, we used km and gm selection
+    to locate double crossovers and segregation/colony PCR to evaluate the extent of plasmid integration.
+    <em>S. elongatus</em> PCC 7942 has multiple copies of its genome and not all copies may contain our desired insert.
+    This latter process was similarly performed for our overexpression colonies. We also used several rounds of
+    segregation PCR to monitor the success of integration of our genes with IPTG activated promoters to allow for
+    overexpression at neutral site I (NSI).
+  </p>
+</section>
+
+<section>
+  <h2>Test</h2>
+  <p>
+    Initially, our testing was delayed at the transformation and segregation stage, detailed below in the learning
+    section. We were able to repeat our transformations with new stock colonies and proceed to viable testing detailed
+    here.
+  </p>
+  <p>
+    We were able to achieve a double crossover colony for <em>glpX</em> deletion. However, after several rounds of
+    segregation PCR, we concluded that complete segregation with no remaining functional SBPase was difficult to achieve
+    and not within the competition timeframe (<strong>see </strong><a href="/Notebook"><strong>Notebook</strong></a
+    >). In other words, only some of the genomic copies in the cells had the successful deletion while the remaining
+    copies maintained wild type. This is understandable because <em>glpX</em>, encoding SBPase, is considered an
+    essential gene, so only very few copies could have the deletion without affecting the viability of the cell
+    <reference identifier="53" />.
+
+    <span class="image half-full-width right"
+      ><img src="assets/images/engineering/figure-1.png" alt="Photo of testing." /><span class="credit">
+        Figure 1. km5+ from 8/10 with original PCC 7942 colonies transformed with pGEM-SBPase.
+      </span></span
+    >
+
+    <span class="image half-full-width right"
+      ><img src="assets/images/engineering/figure-2.png" alt="Photo of testing." /><span class="credit">
+        Figure 2. km5+ from 8/23 with original colonies in quadrants 1-3 (with several transfers taken afterwards).
+      </span></span
+    >
+
+    <span class="image half-full-width right"
+      ><img src="assets/images/engineering/figure-3.png" alt="Photo of testing." /><span class="credit">
+        Figure 3. gm2+ from 8/23 with original colonies in quadrants 1-3 (with several transfers taken afterwards).
+      </span></span
+    >
+
+    <span class="image half-full-width right"
+      ><img src="assets/images/engineering/figure-4.png" alt="Photo of testing." /><span class="credit">
+        Figure 4. km5+ from 9/9 with dilution series of colony #3 (km5+ 8/30) on quadrants 1-11.
+      </span></span
+    >
+  </p>
+  <p>
+    We were additionally able to achieve partial segregation for three <em>tal</em>, three<em> fbp</em>, and four
+    <em>tal-fbp</em> colonies. We compared growth of the wild type strain and the three <em>tal</em>, three
+    <em>fbp, </em>and<em> </em>three <em>tal-fbp </em>colonies using growth curves meant to replicate day-night cycles.
+    Cells alternated between 10 hour light and 14 hour dark cycles at 30ºC for a total of
+    <strong>5 days to replicate the usual stress of alternating days and nights. </strong>
+  </p>
+  <p>
+    Our growth experiment showed that overexpressing transaldolase or FBPase alone leads to less growth compared to the
+    wildtype strain. We attribute these results to metabolic stress caused by an accumulation of F6P from FBPase and
+    transaldolase forward activity pulling intermediates away from carbon regeneration into the pentose phosphate
+    pathway. Yet when transaldolase and FBPase were overexpressed together,
+    <strong>rather than growing less robustly as seen for individual gene overexpression strains</strong>, cells picked
+    up growth faster during the light phase and reached a higher yield than with either transaldolase or FBPase alone.
+    <strong
+      >The growth profile supported our modeling results; our transaldolase pathway can be favored over the native CBB
+      regeneration when FBPase provides hexose phosphates</strong
+    >. Without a deletion of SBPase, our pathway had to compete with the native pathway, yet was still able to maintain
+    growth similar to WT in the first few light/dark cycles. In conclusion, our results show that our proposed
+    transaldolase pathway is not only functional but is favored by the cell when hexose phosphates are more available
+    than triose phosphates as suggested by our modeling. By deleting SBPase and excluding the native pathway, we expect
+    to see growth that matches or exceeds that of wildtype. Further details of these results
+    <strong>and analysis</strong> can be found in our <a href="/Proof_Of_Concept">Proof of Concept</a> page.
+  </p>
+</section>
+
+<section>
   <h2>Learn and Design 2.0</h2>
-  <p> After several repeats of transformations and segregation PCR, we learned to troubleshoot and accept the natural
-      struggles of working with biological systems. For several initial rounds of transformation, for instance, the growth
-      of transformants was relatively dense. Generally, efficiency of transformation is limited; when growth on the agar
-      plates resembled a “lawn” rather than individual colonies, we had to consider 1) if there antibiotic was present on
-      the plate and 2) if antibiotic resistance was introduced from somewhere other than our plasmid (i.e. a previously
-      transformed strain contaminated our wildtype cultures). To address the first possibility, we remade agar plates and
-      delayed antibiotic addition to when the temperature of the agar wouldn’t denature it. As there was still lawn-like
-      growth, we revived stored wildtype colonies and used those for our next transformation. These transformants showed
-      the expected thinner density and thus, we concluded the wildtype stock previously used was contaminated. We have
-      reason to believe this was due to contaminated media used to supplement the colonies, which must be monitored in the
-      future. </p>
-  <p> Because contamination was the likely cause of our initial problems, we also encountered the importance of careful
-      sterilization and antiseptic technique. Not only does it maintain result value, but it also saves time from
-      repeating experiments and reviving new colonies. <em>S. elongatus</em> PCC 7942 is a slower growing organism than
-      <em>E. coli</em> and transformants can even take up to a week to appear.</p>
-  <p>Although we only completed one full iteration of the engineering process, we learned to navigate experimental issues
-      and repeated several elements of the steps within the cycle. We were able to successfully produce transformants. We
-      registered all parts used, and although several of our linked parts do not have BioBrick compatibility due to the
-      enzymes available to our lab, the basic parts comprising them have a variety of compatibility viable for future iGEM
-      teams. </p>
-  <p> In the future, we plan to test whether or not we can get a full deletion of SBPase in our overexpression strains. We
-      expect that our proposed alternative carbon regeneration cycles would circumvent the need for SBPase and therefore
-      full deletion would be more achievable. </p>
-  </section>
-  
-      <hr />
-      <bibliography />
-    
-      <hr />
-    <explore pages="Parts,Proof_Of_Concept" />
+  <p>
+    After several repeats of transformations and segregation PCR, we learned to troubleshoot and accept the natural
+    struggles of working with biological systems. For several initial rounds of transformation, for instance, the growth
+    of transformants was relatively dense. Generally, efficiency of transformation is limited; when growth on the agar
+    plates resembled a “lawn” rather than individual colonies, we had to consider 1) if there antibiotic was present on
+    the plate and 2) if antibiotic resistance was introduced from somewhere other than our plasmid (i.e. a previously
+    transformed strain contaminated our wildtype cultures). To address the first possibility, we remade agar plates and
+    delayed antibiotic addition to when the temperature of the agar wouldn’t denature it. As there was still lawn-like
+    growth, we revived stored wildtype colonies and used those for our next transformation. These transformants showed
+    the expected thinner density and thus, we concluded the wildtype stock previously used was contaminated. We have
+    reason to believe this was due to contaminated media used to supplement the colonies, which must be monitored in the
+    future.
+  </p>
+  <p>
+    Because contamination was the likely cause of our initial problems, we also encountered the importance of careful
+    sterilization and antiseptic technique. Not only does it maintain result value, but it also saves time from
+    repeating experiments and reviving new colonies. <em>S. elongatus</em> PCC 7942 is a slower growing organism than
+    <em>E. coli</em> and transformants can even take up to a week to appear.
+  </p>
+  <p>
+    Although we only completed one full iteration of the engineering process, we learned to navigate experimental issues
+    and repeated several elements of the steps within the cycle. We were able to successfully produce transformants. We
+    registered all parts used, and although several of our linked parts do not have BioBrick compatibility due to the
+    enzymes available to our lab, the basic parts comprising them have a variety of compatibility viable for future iGEM
+    teams.
+  </p>
+  <p>
+    In the future, we plan to test whether or not we can get a full deletion of SBPase in our overexpression strains. We
+    expect that our proposed alternative carbon regeneration cycles would circumvent the need for SBPase and therefore
+    full deletion would be more achievable.
+  </p>
+</section>
+
+<hr />
+<bibliography />
+
+<hr />
+<explore pages="Parts,Proof_Of_Concept" />
