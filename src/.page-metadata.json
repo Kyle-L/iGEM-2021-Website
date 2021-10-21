@@ -55,7 +55,7 @@
     },
     "Engineering": {
         "name": "Engineering",
-        "description": "In order to find a way to improve crop yield we designed, built, and tested a way to enhance photosynthesis. See our success and what we learned!",
+        "description": "In order to find a way to improve crop yield we designed, built, and tested photosynthesis enhancement. See our success and what we learned!",
         "image": "assets/images/engineering/man-cutting.png",
         "image-alt": "A man cutting a grassy plant."
     },
@@ -79,25 +79,25 @@
     },
     "Notebook": {
         "name": "Notebook",
-        "description": "Our lab team kept an exceptional record of everything throughout the project. See how everything was performed through our timeline.",
+        "description": "Our lab team kept an exceptional record of everything throughout the project. See the exact details of how our wet lab work was conducted.",
         "image": "assets/images/notebook/wheat.png",
         "image-alt": "A closeup of a grain of wheat."
     },
     "Parts": {
         "name": "Parts",
-        "description": "",
+        "description": "See our full list of parts entered into the iGEM Registry.",
         "image": "assets/images/parts/gears.png",
         "image-alt": "A close up of gears."
     },
     "Plant": {
         "name": "Plant Synthetic Biology",
-        "description": "In our project we aimed to achieve the plant special award. Explore how we meet these requirements over the course of our project.",
+        "description": "Our project explored photosynthetic redesign in a cyanobacteria chassis for implementation into plants. Explore our overview of how we aimed to achieve the plant special award.",
         "image": "assets/images/implementation/wheat-grain.png",
         "image-alt": "A close up of a grain of wheat."
     },
     "Proof_Of_Concept": {
         "name": "Proof of Concept",
-        "description": "Explore the research and experiments that inspired us to formulate our project of increasing crop yield.",
+        "description": "Explore the experiments conducted by our wet lab team and see the results of our genetic modification in cyanobacteria!",
         "image": "assets/images/proof-of-concept/cyanobacteria.png",
         "image-alt": "A close up of cyanobacteria."
     },
