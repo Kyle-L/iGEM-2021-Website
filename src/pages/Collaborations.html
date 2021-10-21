@@ -8,8 +8,8 @@
     The <a href="https://igem-bielefeld.de/en/">Bielefeld</a> and
     <a href="https://2021.igem.org/Team:Marburg">Marburg</a> teams initiated the collaborative writing of a handbook for
     future iGEM teams working with phototrophs. Our team authored the Modeling section this handbook. This chapter
-    consists of the three subchapters. "Using computational models for biological analysis" covers the usage of models
-    in phototrophs, the Constraint-Based Reconstruction and Analysis Toolbox, the difference between Kinetics and Flux
+    consists of three subchapters. "Using computational models for biological analysis" covers the usage of models in
+    phototrophs, the Constraint-Based Reconstruction and Analysis Toolbox, the difference between Kinetics and Flux
     based models, and the mathematical justification for flux-balanced model analysis. The second involves "Building a
     Model," where the reader is walked through how to add reactions and metabolites, create an objective, validate the
     model, and create boundary reactions. Finally, the last subchapter discusses "Performing the Simulation." This
@@ -17,7 +17,19 @@
   </p>
   <p>The full modeling chapter can be found at the following download link:</p>
   <ul class="actions">
-    <li><a href="assets/pdfs/modeling-chapter.pdf" class="customButton icon solid fa-file-download">Download Modeling Chapter</a></li>
+    <li>
+      <a href="assets/pdfs/modeling-chapter.pdf" class="customButton icon solid fa-file-download"
+        >Download Modeling Chapter</a
+      >
+    </li>
+  </ul>
+  <p>The full phototroph handbook can be found at the following download link:</p>
+  <ul class="actions">
+    <li>
+      <a href="assets/pdfs/iGEM-phototroph-handbook-compressed.pdf" class="customButton icon solid fa-file-download"
+        >Download Phototroph Handbook</a
+      >
+    </li>
   </ul>
 </section>
 
@@ -46,6 +58,12 @@
     photosynthetic output. Miami’s iGEM team applied Madrid’s modified pathways to our computational model to assess
     metabolic flux levels and biomass formation. Scripts can be found at the MiamiOH iGEM Github repository.
   </p>
+  <p>
+    The main goal in this collaboration was for Miami’s iGEM team to provide a framework and instructions from which
+    Madrid_UCM could perform their own desired computational analysis. The Miami team therefore provided the created
+    models, basic scripts and analysis, and instructions on how to create more advanced scripts and suggested analyses.
+    This can be more thoroughly seen in the description below which was sent to Madrid_UCM.
+  </p>
   <h3>Summary of 4C_Fuel’s pathways</h3>
   <ul>
     <li>
@@ -56,7 +74,7 @@
       Ultimately, the goal of the 4C team is to engineer a more efficient microbe for butanol production. First, the
       microbes can be engineered to synthesize butanol by adding the butanol biosynthesis pathway. This allows butanol
       to be synthesized via the condensation of acetyl-CoA and malonyl-CoA.
-      <ul>
+      <!-- <ul>
         <li>
           To increase the pools of acetyl-CoA and malonyl-CoA, the phosphoketolase bypass and MCG Carbon Fixation
           pathway, can be engineered into cells. Both pathways have been independently previously tested in
@@ -66,7 +84,11 @@
           as acetyl-CoA. The MCG carbon fixation pathway increases the pools by providing adapted citric acid cycles
           with pathways to malyl-CoA via glyoxylate and phosphoenolpyruvate.
         </li>
-      </ul>
+      </ul> -->
+    </li>
+    <li>
+      The MCG carbon fixation pathway increases the pools by providing an adapted Citric Acid Cycle that produces
+      malyl-CoA via glyoxylate and phosphoenolpyruvate.
     </li>
   </ul>
   <h3>Creation of Models</h3>
@@ -90,7 +112,7 @@
   <p>
     First, based on a set of reactions sent to us by the Madrid_UCM team, we created a sheet of all metabolites,
     reactions, and an appropriate stoichiometric matrix of the appropriate pathways. Importantly, all reactions and
-    metabolites were first checked to not be in the model (Supplemental Data). Missing reactions or metabolites were
+    metabolites were first checked to not be in the model. Missing reactions or metabolites were
     then added to the model. Although PCC 7942 has not been shown to perform butanol fermentation, one of its genes
     shows close homology to tartronate semialdehyde reductase (TRSARyr), which converts 2-hydroxy-3-oxopropanoate to
     glycerate through an intermediate of tartronate semialdehyde. Importantly, there is no known gene which allows the
@@ -101,9 +123,9 @@
     and the lack of the combined malyl-CoA-glycerate artificial cycle and PK bypass in vivo analysis in our organism, we
     included reactions that converted glyoxylate to the intermediate of 2-hydroxy-3-oxopropanoate rather than tartonate
     semialdehyde to produce glycerate. All reactions and metabolites were confirmed according to the KEGG (Kyoto
-    Encyclopedia of Genes and Genomes) Reaction and Metabolites set <reference identifier="30" />. Ultimately, this change should not impact
-    analysis of the data as the same set of reactions is represented, simply with different intermediates being
-    specified fitting with our organism.
+    Encyclopedia of Genes and Genomes) Reaction and Metabolites set <reference identifier="30" />. Ultimately, this
+    change should not impact analysis of the data as the same set of reactions is represented, simply with different
+    intermediates being specified fitting with our organism.
   </p>
   <p>
     It is important to note that a sink reaction was also added for n-butanol in the BUT and MALBUT models. A sink
@@ -170,9 +192,9 @@
   </p>
   <p>
     <em
-        >Based on these preliminary results, it seems that the phosphoketolase (PK) bypass and MCG carbon fixation
-        pathway do not allow increased biomass production and instead might actually hinder direct carbon fixation.</em
-      >
+      >Based on these preliminary results, it seems that the phosphoketolase (PK) bypass and MCG carbon fixation pathway
+      do not allow increased biomass production and instead might actually hinder direct carbon fixation.</em
+    >
   </p>
   <h3>Assessment of Models for Butanol Production</h3>
   <p>
@@ -227,14 +249,12 @@
               <ol>
                 <li>
                   <em
-                      >Note: I would recommend performing multiple times if you want to speed up analysis (one with the
-                      central metabolism fluxes and with another set)</em
-                    >
+                    >Note: I would recommend performing multiple times if you want to speed up analysis (one with the
+                    central metabolism fluxes and with another set)</em
+                  >
                 </li>
                 <li>
-                  <em
-                      >These reaction lists must match the reactions listed in the model (pnas1613446113.sd02)</em
-                    >
+                  <em>These reaction lists must match the reactions listed in the model (pnas1613446113.sd02)</em>
                 </li>
               </ol>
             </li>
@@ -316,11 +336,14 @@
   <h2>Science Symposium: Hosted by Wright State University</h2>
   <p>
     <span class="image half right"
-    ><img src="assets/images/collaboration/wright-state.png" alt="A Zoom call screen grab from the Wright State symposium." /><span
-      class="credit"
-      >A Zoom call screen grab from the Wright State symposium. Taken by <a href="https://2021.igem.org/Team:OhioState">The Ohio State Team</a></span
-    ></span
-  >
+      ><img
+        src="assets/images/collaboration/wright-state.png"
+        alt="A Zoom call screen grab from the Wright State symposium."
+      /><span class="credit"
+        >A Zoom call screen grab from the Wright State symposium. Taken by
+        <a href="https://2021.igem.org/Team:OhioState">The Ohio State Team</a></span
+      ></span
+    >
     The Wright State University iGEM team (<a href="https://2021.igem.org/Team:WrightState">WrightState</a>) hosted a
     virtual 2021 Science Symposium on August 12th, which was attended by iGEM teams from the host team, The Ohio State
     University (<a href="https://2021.igem.org/Team:OhioState">OhioState</a>), University of Virginia (<a
