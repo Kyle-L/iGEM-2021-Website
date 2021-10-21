@@ -14,38 +14,38 @@
     "Attributions": {
         "name": "Attributions",
         "description": "Every member of the Miami University iGEM contributed in a meaningful and impactful way. See how and what each person attributed to that made our project what it is!",
-        "image": "assets/images/pic03.jpg",
-        "image-alt": ""
+        "image": "assets/images/attributions/eating-group.png",
+        "image-alt": "A group of people sitting around a table eating."
     },
     "Collaborations": {
         "name": "Collaborations",
         "description": "In order to help out other teams we joined up to share information and create tools for future teams. Explore more below.",
-        "image": "assets/images/pic04.jpg",
-        "image-alt": ""
+        "image": "assets/images/communication/writing-in-book.png",
+        "image-alt": "A man writing in a book with his phone in one hand and pen in the other."
     },
     "Communication": {
         "name": "Communication",
         "description": "We wanted to share our project with others and have an open discussion. Learn how we shared with other communities and what we learned!",
-        "image": "assets/images/pic05.jpg",
-        "image-alt": ""
+        "image": "assets/images/collaboration/4c-full.png",
+        "image-alt": "The 4C team standing in a lab with masks on."
     },
     "Contribution": {
         "name": "Contributions",
         "description": "Through our work we were able to add parts of our project to the registry to aid future teams in their research. See how we were able to aid in the iGEM registry.",
         "image": "assets/images/contributions/contribution.png",
-        "image-alt": ""
+        "image-alt": "A group of people sitting around a table eating."
     },
     "Description": {
         "name": "Description",
         "description": "The world depends on high agricultural productivity to provide food and resources to local and global communities. However, global demand for crop production is expected to increase dramatically. Learn how Miami University's CROP could increase the yields of crop plants.",
         "image": "assets/images/description/farm-equipment.png",
-        "image-alt": ""
+        "image-alt": "A fly over picture of farm equipment."
     },
     "Design": {
         "name": "Design",
         "description": "Our team looked into designing different pathways to enhance photosynthesis of crops in order to increase crop yield. Learn more about our designs!",
-        "image": "assets/images/pic05.jpg",
-        "image-alt": ""
+        "image": "assets/images/design/blue-green-algae.png",
+        "image-alt": "A close up of blue-green algae."
     },
     "Education": {
         "name": "Education",
@@ -56,8 +56,8 @@
     "Engineering": {
         "name": "Engineering",
         "description": "In order to find a way to improve crop yield we designed, built, and tested a way to enhance photosynthesis. See our success and what we learned!",
-        "image": "assets/images/pic04.jpg",
-        "image-alt": ""
+        "image": "assets/images/engineering/man-cutting.png",
+        "image-alt": "A man cutting a grassy plant."
     },
     "Human_Practices": {
         "name": "Human Practices",
@@ -86,8 +86,8 @@
     "Parts": {
         "name": "Parts",
         "description": "",
-        "image": "assets/images/pic04.jpg",
-        "image-alt": ""
+        "image": "assets/images/parts/gears.png",
+        "image-alt": "A close up of gears."
     },
     "Plant": {
         "name": "Plant Synthetic Biology",
@@ -98,14 +98,8 @@
     "Proof_Of_Concept": {
         "name": "Proof of Concept",
         "description": "Explore the research and experiments that inspired us to formulate our project of increasing crop yield.",
-        "image": "assets/images/pic01.jpg",
-        "image-alt": ""
-    },
-    "Results": {
-        "name": "Results",
-        "description": "After many months of dedication from all of the team members we were excited with our results. See what all the hard work led to!",
-        "image": "assets/images/results/road.png",
-        "image-alt": "An overhead photo of a curvey road."
+        "image": "assets/images/proof-of-concept/cyanobacteria.png",
+        "image-alt": "A close up of cyanobacteria."
     },
     "Safety": {
         "name": "Safety",
