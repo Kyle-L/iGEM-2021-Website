@@ -1983,15 +1983,15 @@ input[type="radio"] + label:before {
 
 @media screen and (max-width: 1620px) {
   .image.half-full-width img {
-    min-width: 75% !important;
+    min-width: 50% !important;
   }
 
   .image.three-fourth-full-width img {
-    min-width: 75% !important;
+    min-width: 50% !important;
   }
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 480px) {
   .image.three-fourth-full-width img, .image.half-full-width img {
     min-width: 100% !important;
   }
