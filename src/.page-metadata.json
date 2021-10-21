@@ -44,8 +44,8 @@
     "Design": {
         "name": "Design",
         "description": "Our team looked into designing different pathways to enhance photosynthesis of crops in order to increase crop yield. Learn more about our designs!",
-        "image": "assets/images/pic05.jpg",
-        "image-alt": ""
+        "image": "assets/images/design/blue-green-algae.png",
+        "image-alt": "A close up of blue-green algae."
     },
     "Education": {
         "name": "Education",
@@ -98,8 +98,8 @@
     "Proof_Of_Concept": {
         "name": "Proof of Concept",
         "description": "Explore the research and experiments that inspired us to formulate our project of increasing crop yield.",
-        "image": "assets/images/pic01.jpg",
-        "image-alt": ""
+        "image": "assets/images/proof-of-concept/cyanobacteria.png",
+        "image-alt": "A close up of cyanobacteria."
     },
     "Safety": {
         "name": "Safety",
