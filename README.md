@@ -1,6 +1,5 @@
 ![Logo animation](https://github.com/Kyle-L/iGEM-2021-Website/blob/main/src/assets/images/logo.gif?raw=true)
 # Miami University's iGEM 2021 Team Website <!-- omit in toc -->
-![](https://img.shields.io/badge/-Website%20Under%20construction-orange)
 ![](https://img.shields.io/github/repo-size/Kyle-L/iGEM-2021-Website)
 
 ## Table of Contents <!-- omit in toc -->
